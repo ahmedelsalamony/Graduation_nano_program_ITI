@@ -45,6 +45,7 @@ public class SplashActivity extends AwesomeSplash {
         configSplash.setPathSplashFillColor(R.color.Wheat); //path object filling color
 
 
+
         //Customize Title
         configSplash.setTitleSplash("RE-restaurant");
         configSplash.setTitleTextColor(R.color.primary_text);
