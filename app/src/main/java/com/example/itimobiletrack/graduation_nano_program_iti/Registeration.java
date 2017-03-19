@@ -3,10 +3,14 @@ package com.example.itimobiletrack.graduation_nano_program_iti;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static android.support.design.R.styleable.TextInputLayout;
 
 public class Registeration extends AppCompatActivity {
 
@@ -14,6 +18,7 @@ public class Registeration extends AppCompatActivity {
     EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress,edtCharity,edtRestaurant;
     RadioButton rdCharity,rdRestaurant;
     TextInputLayout layCharity,layRestaurant;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,26 +32,51 @@ public class Registeration extends AppCompatActivity {
         edtPhone=(EditText)findViewById(R.id.xPhone);
         edtAddress=(EditText)findViewById(R.id.xAddress);
         edtCharity=(EditText)findViewById(R.id.xCharityName);
-        edtRestaurant=(EditText)findViewById(R.id.xRestuarantName);
+//        edtRestaurant=(EditText)findViewById(R.id.xRestuarantName);
         rdCharity=(RadioButton)findViewById(R.id.xrdCharity);
         rdRestaurant=(RadioButton)findViewById(R.id.xrdRestaurant);
         layCharity=(TextInputLayout)findViewById(R.id.input_layout_CharityName);
-        layRestaurant=(TextInputLayout)findViewById(R.id.input_layout_RestuarantName);
-        edtRestaurant.setVisibility(View.INVISIBLE);
+//        layRestaurant=(TextInputLayout)findViewById(R.id.input_layout_RestuarantName);
+
+
+        // Invisible For 2 EditText
+      //  layRestaurant.setVisibility(View.INVISIBLE);
+        //edtRestaurant.setVisibility(View.INVISIBLE);
+
+        layCharity.setVisibility(View.INVISIBLE);
         edtCharity.setVisibility(View.INVISIBLE);
 
-        if (rdCharity.isChecked()) {
-            edtCharity.setVisibility(View.VISIBLE);
-        } else if (!rdCharity.isChecked()){
-            edtRestaurant.setVisibility(View.VISIBLE);
-            edtCharity.setVisibility(View.VISIBLE);
-        }else if (rdRestaurant.isChecked()){
-            edtCharity.setVisibility(View.GONE);
-            edtRestaurant.setVisibility(View.VISIBLE);
-        }else if (!rdRestaurant.isChecked()){
-            edtRestaurant.setVisibility(View.VISIBLE);
-            edtCharity.setVisibility(View.VISIBLE);
+
+
+           rdCharity.setOnTouchListener(new View.OnTouchListener() {
+               @Override
+               public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                   layCharity.setVisibility(View.VISIBLE);
+                   edtCharity.setVisibility(View.VISIBLE);
+                   edtCharity.setHint("Charity name");
+
+
+                   return false;
+               }
+           });
+
+        rdRestaurant.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+
+                layCharity.setVisibility(View.VISIBLE);
+                edtCharity.setVisibility(View.VISIBLE);
+                edtCharity.setHint("Restaurant name");
+
+
+
+                return false;
+            }
+        });
+
         }
 
-    }
+
 }
