@@ -9,9 +9,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 import android.text.Html;
+import android.widget.Toast;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.Charity.CharityProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
+import com.example.itimobiletrack.graduation_nano_program_iti.Member.MemberProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
@@ -91,12 +93,18 @@ private webServices web;
                 intent = new Intent(mCtx, LoginRegisterActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
 
+
             }
-            else {
+            else if (web.sharedPreferences.getString("typename" , "******").equals("Charity")) {
                 intent = new Intent(mCtx, CharityProfile.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-            }
 
+            }
+            else if (web.sharedPreferences.getString("typename" , "******").equals("Member")) {
+                intent = new Intent(mCtx, MemberProfile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                Toast.makeText(mCtx, "    ", Toast.LENGTH_SHORT).show();
+            }
             PendingIntent resultPendingIntent =
                     PendingIntent.getActivity(
                             mCtx,
