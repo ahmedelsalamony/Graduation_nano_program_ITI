@@ -77,9 +77,10 @@ public class webServices {
                             activity.startActivity(i);
                         }
                         else
+                        if(userType.equals("Charity"))
                         {
-                            Toast.makeText(activity, "Determine user type", Toast.LENGTH_SHORT).show();
-
+                            //Intent i =new Intent(activity,CharityProfile.class);
+                           // activity.startActivity(i);
                         }
 
 

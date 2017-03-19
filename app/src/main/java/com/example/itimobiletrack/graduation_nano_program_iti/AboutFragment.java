@@ -17,12 +17,12 @@ public class AboutFragment extends Fragment {
 
     ImageView image;
 
-    public AboutFragment() {
-        Toast.makeText(getActivity(), "new", Toast.LENGTH_SHORT).show();    }
+
 
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
         image = (ImageView) getActivity().findViewById(R.id.imageView2);
+        image.setImageResource(R.drawable.green);
 
     }
 
