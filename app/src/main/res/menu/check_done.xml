@@ -7,5 +7,5 @@
         android:orderInCategory="10"
         android:visible="true"
         android:checkable="true"
-        android:checked="true"/>
+        android:checked="false"/>
 </menu>

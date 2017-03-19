@@ -1,5 +1,6 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 
+
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
-
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+
+
 
 public class SendRateActivity extends AppCompatActivity {
 
@@ -18,6 +20,7 @@ public class SendRateActivity extends AppCompatActivity {
     private Button btnSubmit;
     EditText edtFoodQ,edtEstimatedTime;
     Dialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,6 @@ public class SendRateActivity extends AppCompatActivity {
     }
     public void addListenerOnRatingBar() {
 
-
         //if rating value is changed,
         //display the current rating value in the result (textview) automatically
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -66,17 +68,14 @@ public class SendRateActivity extends AppCompatActivity {
 
     public void addListenerOnButton() {
 
-
-
         //if click on me, then display the current rating value.
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(SendRateActivity.this,
-                        String.valueOf(ratingBar.getRating()),
-                        Toast.LENGTH_SHORT).show();
+          Toast.makeText(SendRateActivity.this, String.valueOf(ratingBar.getRating()), Toast.LENGTH_SHORT).show();
 
             }
 

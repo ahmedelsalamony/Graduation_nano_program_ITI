@@ -23,7 +23,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:src="@drawable/username_icon"
-        android:id="@+id/xbtnSendToAll"
+           android:id="@+id/xbtnSendToAll"
         android:onClick="sendToCharities"
         />
 

@@ -3,6 +3,7 @@ package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.itimobiletrack.graduation_nano_program_iti.Charity.AboutFragment;
+import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 
 public class RestaurantProfile extends AppCompatActivity {
@@ -37,14 +40,10 @@ public class RestaurantProfile extends AppCompatActivity {
         fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Restaurant_ProfileFragment restaurantProfileFragment = new Restaurant_ProfileFragment();
-        fragmentTransaction.add(R.id.xContainer, restaurantProfileFragment);
+        fragmentTransaction.replace(R.id.xContainer, restaurantProfileFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-        //imageView = (ImageView) findViewById(R.id.ximageView2);
 
-
-        //----------------------------------------------------
-        // EditProfile fragment
 
     }
 
@@ -59,8 +58,17 @@ public class RestaurantProfile extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
+            case R.id.fragment_about:
+
+                AboutFragment aboutFragment =new AboutFragment();
+                FragmentManager fm =getFragmentManager();
+                FragmentTransaction ft=fm.beginTransaction();
+                ft.replace(R.id.xContainer , aboutFragment);
+                ft.commit();
+                break;
+
+
             case R.id.fragment_edit_restaurant_profile:
-                Toast.makeText(this, "this is edit profile fragment", Toast.LENGTH_SHORT).show();
 
                 fragmentManager = getFragmentManager();
                 FragmentTransaction  fragmentTransaction = fragmentManager.beginTransaction();
@@ -68,13 +76,13 @@ public class RestaurantProfile extends AppCompatActivity {
                 fragmentTransaction.replace(R.id.xContainer, editProfile);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-
                 break;
-            case R.id.fragment_logout:
-                // Intent intent = new Intent(this,Login.class);
-                //startActivity(intent);
-                Toast.makeText(this, "you will go to Login Screen", Toast.LENGTH_SHORT).show();
 
+
+
+            case R.id.fragment_logout:
+                 Intent intent = new Intent(this,LoginRegisterActivity.class);
+                startActivity(intent);
 
             default:
                 // If we got here, the user's action was not recognized.
@@ -106,9 +114,6 @@ public class RestaurantProfile extends AppCompatActivity {
                 break;
 
         }
-
-
-
 
 
         }

@@ -18,6 +18,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.itimobiletrack.graduation_nano_program_iti.Charity.CharityProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.Charity.MembersFragment;
 import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
+import com.example.itimobiletrack.graduation_nano_program_iti.Member.MemberProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile;
 
@@ -57,7 +58,7 @@ public class webServices {
     public static String GETMEMBERDATAOFDIALOG="getMemberDataOfDialog";
     public static String DELTEMEMBER="delete_member";
     public static String UPDATECHARITY="update_charity";
-
+    public static String GETALLCHARITY="getAllCharity";
 
     private RequestQueue queue;
     private String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
@@ -118,9 +119,21 @@ public class webServices {
 
 
                         }
-                        else
+                        else if(userType.equals("Member"))
                         {
-                            Toast.makeText(activity, "not any one", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(activity,MemberProfile.class);
+
+                            intent.putExtra("id",getProfileInfo.getUser_id());
+                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
+                            intent.putExtra("email",getProfileInfo.getEmailVar());
+                            intent.putExtra("username",getProfileInfo.getUserName());
+                            intent.putExtra("password",getProfileInfo.getPassword());
+                            intent.putExtra("phone",getProfileInfo.getPhone());
+                            intent.putExtra("address",getProfileInfo.getAddress());
+
+                            activity.startActivity(intent);
+
 
                         }
 
@@ -446,6 +459,43 @@ public class webServices {
         };
         queue.add(request);
     }
+
+
+
+    // TODO   getAllCharity
+    public void getAllCharity(final Activity activity, final String type, final request_interface object) {
+        queue = Volley.newRequestQueue(activity);
+        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+
+
+            @Override
+            public void onResponse(String response) {
+                object.onResponse(response);
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                object.onError();
+
+            }
+        }) {
+            @Override
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+                params.put(TYPE, type);
+                params.put(TAG, GETALLCHARITY);
+                return params;
+            }
+
+
+        };
+        queue.add(request);
+
+    }
+
 
 
 }

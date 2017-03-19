@@ -48,40 +48,22 @@ public class ImageAdapterGrid extends BaseAdapter {
             v=new View(context);
             v=inflater.inflate(R.layout.customgridview,null);
 // set value into textview
-            TextView textView = (TextView) v
-                    .findViewById(R.id.grid_item_label);
-            textView.setText(CharityValues[position]);
 
+            TextView textView = (TextView) v.findViewById(R.id.grid_item_label);
+            textView.setText(CharityValues[position]);
+             textView.setTextSize(20);
             // set image based on selected text
             ImageView imageView = (ImageView) v
                     .findViewById(R.id.grid_item_image);
 
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
 
-
-                    //Toast.makeText(this, "aboutdialog", Toast.LENGTH_SHORT).show();
-                    final Dialog dialog = new Dialog(context.getApplicationContext());
-                    dialog.setContentView(R.layout.aboutinfodialog);
-                    dialog.setTitle("About Us");
-                    dialog.show();
-
-
-                  }
-            });
 
             String mobile = CharityValues[position];
 
-            if (mobile.equals("charity1")) {
-                imageView.setImageResource(R.drawable.img1);
-            } else if (mobile.equals("charity2")) {
-                imageView.setImageResource(R.drawable.img2);
-            } else if (mobile.equals("charity3")) {
-                imageView.setImageResource(R.drawable.img3);
-            } else {
+
                 imageView.setImageResource(R.drawable.img4);
-            }
+
+
 
         } else {
             v = (View) convertview;
@@ -89,4 +71,6 @@ public class ImageAdapterGrid extends BaseAdapter {
 
         return v;
     }
+
+
 }

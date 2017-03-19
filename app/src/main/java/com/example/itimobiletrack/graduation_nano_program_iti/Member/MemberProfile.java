@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,12 +21,15 @@ public class MemberProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_profile);
 
+
+        setTitle(getIntent().getStringExtra("username"));
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.list);
 
         // Defined Array values to show in ListView
         String[] tasks = new String[] { "Task 1 from Charity 1", "Task 2 from Charity 1", "Task 3 from Charity 1", "Task 4 from Charity 1",
         };
+
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -42,10 +46,30 @@ public class MemberProfile extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
+
+
                 final Dialog taskdialog = new Dialog(MemberProfile.this);
                 taskdialog.setContentView(R.layout.taskdialog);
                 taskdialog.setTitle("Task Details");
                 taskdialog.show();
+
+                Button acceptBtn= (Button) taskdialog.findViewById(R.id.xbtnAccept);
+                Button rejectBtn= (Button) taskdialog.findViewById(R.id.xbtReject);
+
+                acceptBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+
+
+                rejectBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
 
             }
 
@@ -64,7 +88,8 @@ public class MemberProfile extends AppCompatActivity {
             if(item.isChecked()){
                 item.setChecked(false);
                 Toast.makeText(this, "unchecked", Toast.LENGTH_SHORT).show();
-            }else{
+            }
+            else{
                 item.setChecked(true);
                 Toast.makeText(this, "Task done", Toast.LENGTH_SHORT).show();
             }
