@@ -14,6 +14,15 @@ public class GetProfileInfo {
     private String address;
     private String phone;
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    private String token;
     public String getUserName() {
         return userName;
     }

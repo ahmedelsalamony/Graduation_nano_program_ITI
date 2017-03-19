@@ -101,6 +101,9 @@ public class LoginFragment extends Fragment {
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
+
+
+
         web.user_login(getActivity(),email,password);
 
 

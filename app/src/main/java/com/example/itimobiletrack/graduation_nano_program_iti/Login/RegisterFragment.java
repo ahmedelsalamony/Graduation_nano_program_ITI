@@ -120,7 +120,7 @@ public class RegisterFragment extends Fragment {
                     edtEmail.setError("enter valid email");
                 }else{
                   String token = SharedPrefManager.getInstance(getActivity()).getDeviceToken();
-                    System.out.println(token);
+
                     web.addUser(getActivity(), userName, password, email, phone, address, type, typeName, 0,122,token);
                 }
 

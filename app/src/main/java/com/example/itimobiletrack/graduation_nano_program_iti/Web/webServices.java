@@ -3,6 +3,7 @@ package com.example.itimobiletrack.graduation_nano_program_iti.Web;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
@@ -37,8 +38,12 @@ public class webServices {
     public SharedPreferences sharedPreferences ;
     public SharedPreferences.Editor editor;
 
-    private  GetProfileInfo getProfileInfo ;
 
+
+
+
+    private  GetProfileInfo getProfileInfo ;
+    private ProgressDialog mProgressDialog;
 
     // TODO Parameters Of Tables and WebService Function
     public static String ID = "id";
@@ -53,7 +58,7 @@ public class webServices {
     public static String CHARITY_PARENT_ID = "charity_parent_id";
     public static String KEY_TOKEN = "token";
 
-
+  // For table Tasks
     public static String RESTAURANT_ID = "restaurant_id";
     public static String REQUESTSTAUS = "request_status";
     public static String TASKQUANTITY = "task_quantity";
@@ -76,7 +81,7 @@ public class webServices {
     public static String UPDATERESTAURANT="update_rest";
     public static String ADDTASK="add_request_toTask";
     public static String GETTASKSPOSTED="getAllRequsts";
-
+    public static String UPDATETOKEN="update_token";
     private RequestQueue queue;
     private String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
 
@@ -93,6 +98,7 @@ public class webServices {
             @Override
             public void onResponse(String response) {
                 try {
+
 
                     sharedPreferences = activity.getSharedPreferences("load_data",0);
                     editor = sharedPreferences.edit();
@@ -113,7 +119,6 @@ public class webServices {
                         getProfileInfo. setPhone(jsonObject.getString("phone"));
                         getProfileInfo. setAddress(jsonObject.getString("address"));
 
-
                         if(userType.equals("Restaurant")){
 
                              editor.putInt("id" ,Integer.parseInt(getProfileInfo.getUser_id()));
@@ -125,15 +130,9 @@ public class webServices {
                              editor.putString("address" , getProfileInfo.getAddress());
                              editor.commit();
 
-
+                            sharedPreferences=activity.getSharedPreferences("load_data" , 0);
+                            new webServices().updateToken(activity ,SharedPrefManager.getInstance(activity).getDeviceToken() ,sharedPreferences.getString("username" , "******"));
                             Intent intent = new Intent(activity,RestaurantProfile.class);
-                           // intent.putExtra("id",getProfileInfo.getUser_id());
-//                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
-//                            intent.putExtra("email",getProfileInfo.getEmailVar());
-//                            intent.putExtra("username",getProfileInfo.getUserName());
-//                            intent.putExtra("password",getProfileInfo.getPassword());
-//                            intent.putExtra("phone",getProfileInfo.getPhone());
-//                            intent.putExtra("address",getProfileInfo.getAddress());
                             activity.startActivity(intent);
                         }
                         else if(userType.equals("Charity"))
@@ -149,17 +148,17 @@ public class webServices {
                             editor.putString("phone" , getProfileInfo.getPhone());
                             editor.putString("address" , getProfileInfo.getAddress());
                             editor.commit();
+
+
+
+
+                  // TODO  Call of update_token
+
+                    sharedPreferences=activity.getSharedPreferences("load_data" , 0);
+                     new webServices().updateToken(activity ,SharedPrefManager.getInstance(activity).getDeviceToken() ,sharedPreferences.getString("username" , "******"));
                             Intent intent = new Intent(activity,CharityProfile.class);
-
-//                            intent.putExtra("id",getProfileInfo.getUser_id());
-//                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
-//                            intent.putExtra("email",getProfileInfo.getEmailVar());
-//                            intent.putExtra("username",getProfileInfo.getUserName());
-//                            intent.putExtra("password",getProfileInfo.getPassword());
-//                            intent.putExtra("phone",getProfileInfo.getPhone());
-//                            intent.putExtra("address",getProfileInfo.getAddress());
-
                             activity.startActivity(intent);
+
 
 
                         }
@@ -174,17 +173,13 @@ public class webServices {
                             editor.putString("password" , getProfileInfo.getPassword());
                             editor.putString("phone" , getProfileInfo.getPhone());
                             editor.putString("address" , getProfileInfo.getAddress());
+                            editor.putString("token" , getProfileInfo.getToken());
                             editor.commit();
 
-                            Intent intent = new Intent(activity,MemberProfile.class);
 
-//                            intent.putExtra("id",getProfileInfo.getUser_id());
-//                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
-//                            intent.putExtra("email",getProfileInfo.getEmailVar());
-//                            intent.putExtra("username",getProfileInfo.getUserName());
-//                            intent.putExtra("password",getProfileInfo.getPassword());
-//                            intent.putExtra("phone",getProfileInfo.getPhone());
-//                            intent.putExtra("address",getProfileInfo.getAddress());
+                            sharedPreferences=activity.getSharedPreferences("load_data" , 0);
+                            new webServices().updateToken(activity ,SharedPrefManager.getInstance(activity).getDeviceToken() ,sharedPreferences.getString("username" , "******"));
+                            Intent intent = new Intent(activity,MemberProfile.class);
 
                             activity.startActivity(intent);
 
@@ -238,10 +233,21 @@ public class webServices {
 
 
 
+        sharedPreferences =activity.getSharedPreferences("register_data" , 0);
+        editor =sharedPreferences.edit();
+
         queue = Volley.newRequestQueue(activity);
         StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+                editor.putString("username_r",username);
+                editor.putString("password_r" , password);
+                editor.putString("token_r" , keyToken);
+                editor.commit();
+
+
+
                 Intent intent = new Intent(activity, LoginRegisterActivity.class);
                 activity.startActivity(intent);
             }
@@ -686,6 +692,51 @@ public class webServices {
         queue.add(request);
 
     }
+
+
+    //=========================================================//
+
+
+   // TODO update Token
+
+
+    public void updateToken(final Activity activity,final String token,  final String userName)
+          {
+
+
+              mProgressDialog =new ProgressDialog(activity);
+              mProgressDialog.setMessage("Loading.....");
+              mProgressDialog.show();
+        queue = Volley.newRequestQueue(activity);
+        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+              mProgressDialog .dismiss();
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Snackbar.make(activity.findViewById(android.R.id.content), "Internet Connection", Snackbar.LENGTH_LONG).show();
+            }
+        })
+
+        {
+            @Override
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+
+                params.put(KEY_TOKEN, token);
+                params.put(USERNAME, userName);
+                params.put(TAG,UPDATETOKEN );
+                return params;
+            }
+        };
+        queue.add(request);
+    }
+
 
 }
 

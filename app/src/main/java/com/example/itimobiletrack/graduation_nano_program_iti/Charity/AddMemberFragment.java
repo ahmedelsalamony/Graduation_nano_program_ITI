@@ -26,20 +26,14 @@ import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class AddMemberFragment extends Fragment {
 
     TextView txtTitle;
     EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress;
-    String strUserName, strPassword, strConfirm, strEmail, strPhone, strAddress, strCharity;
-
     boolean flag = false;
     Intent intent;
     public Place startAddress;
-
-
     private webServices web;
 
     @Override
@@ -63,14 +57,6 @@ public class AddMemberFragment extends Fragment {
         edtEmail=(EditText)v.findViewById(R.id.xEmail);
         edtPhone=(EditText)v.findViewById(R.id.xPhone);
         edtAddress=(EditText)v.findViewById(R.id.xAddress);
-
-
-        strUserName = edtUserName.getText().toString();
-        strPassword = edtPassword.getText().toString();
-        strConfirm = edtConfirmPassword.getText().toString();
-        strEmail = edtEmail.getText().toString();
-        strPhone = edtPhone.getText().toString();
-        strAddress = edtAddress.getText().toString();
 
 
         Button btn=(Button)v.findViewById(R.id.xbtnsave);
@@ -110,12 +96,8 @@ public class AddMemberFragment extends Fragment {
 
                 }
 
-
-
             }
         });
-
-
 
 
         edtAddress.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +116,8 @@ public class AddMemberFragment extends Fragment {
         });
         return v;
     }
+
+
     public boolean isValidEmailAddress(String email) {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
@@ -158,10 +142,14 @@ public class AddMemberFragment extends Fragment {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
                 Log.e("Tag", status.getStatusMessage());
 
-            } else if (resultCode == RESULT_CANCELED) {
             }
-        }
+
+            else if (resultCode == RESULT_CANCELED) {
+            }
+
+             }
+
     }
 
 
-}
+            }
