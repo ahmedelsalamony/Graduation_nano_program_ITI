@@ -12,14 +12,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
+import java.sql.SQLOutput;
 
 public class CharityProfile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    private  GetProfileInfo getProfileInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charity_profile);
+
+        getProfileInfo = new GetProfileInfo();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -45,6 +58,16 @@ public class CharityProfile extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView txtTypeName = (TextView) headerView.findViewById(R.id.textView2);
+        TextView txtEmail = (TextView) headerView.findViewById(R.id.textView);
+
+         txtTypeName.setText(getIntent().getStringExtra("typename"));
+
+         txtEmail.setText(getIntent().getStringExtra("email"));
+
     }
 
     @Override

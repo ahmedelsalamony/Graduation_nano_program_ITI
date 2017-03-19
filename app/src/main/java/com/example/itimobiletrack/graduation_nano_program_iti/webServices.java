@@ -21,6 +21,7 @@ import java.util.HashMap;
 
 public class webServices {
 
+    private  GetProfileInfo getProfileInfo ;
 
 
     // TODO Parameters Of Tables and WebService Function
@@ -41,8 +42,15 @@ public class webServices {
     public static String FORGETUSERPASSWORD = "forget_password_user";
 
 
+
+
     private RequestQueue queue;
     private String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
+
+
+    // TODO Vars to get user loged  data  && Getter Setter
+
+
 
 
 
@@ -50,6 +58,7 @@ public class webServices {
     // TODO Login Method ----------------------------------//
     public void  user_login(final Activity activity, final String username, final String password)
         {
+            getProfileInfo = new GetProfileInfo();
 
         queue = Volley.newRequestQueue(activity);
         final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
@@ -63,7 +72,11 @@ public class webServices {
                     if(login_response.equals("done")) {
 
                          ID = jsonObject.getString("user_id");
-                        String userType = jsonObject.getString("type");
+                         String userType = jsonObject.getString("type");
+
+
+                        getProfileInfo.setTypeNameVar(jsonObject.getString("typename"));
+                        getProfileInfo. setEmailVar(jsonObject.getString("email"));
 
                         if(userType.equals("Restaurant")){
 
@@ -73,14 +86,18 @@ public class webServices {
                         }
                         else if(userType.equals("Charity"))
                         {
-                            Intent i =new Intent(activity,CharityProfile.class);
-                            activity.startActivity(i);
+
+                            Intent intent = new Intent(activity,CharityProfile.class);
+                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
+                            intent.putExtra("email",getProfileInfo.getEmailVar());
+                            activity.startActivity(intent);
+
+
                         }
                         else
-                        if(userType.equals("Charity"))
                         {
-                            //Intent i =new Intent(activity,CharityProfile.class);
-                           // activity.startActivity(i);
+                            Toast.makeText(activity, "not any one", Toast.LENGTH_SHORT).show();
+
                         }
 
 
