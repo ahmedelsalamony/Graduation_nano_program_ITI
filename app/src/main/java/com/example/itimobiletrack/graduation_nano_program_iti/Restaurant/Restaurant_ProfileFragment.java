@@ -2,11 +2,13 @@ package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 
 import android.app.Dialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.FloatingActionButton;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,14 @@ import android.widget.Toast;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.ActivitySendPushNotification;
+import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.EndPoints;
+import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.MyVolley;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.request_interface;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
@@ -27,11 +37,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Restaurant_ProfileFragment extends Fragment implements View.OnClickListener {
-
+    private ProgressDialog progressDialog;
     String[] MOBILE_OS ;
 
     webServices web;
@@ -55,7 +66,7 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
         web =new webServices();
         charityBuffer=new StringBuffer();
 
-
+        progressDialog = new ProgressDialog(getActivity());
      //TODO Call getAllCharity
         web.getAllCharity(getActivity(), "Charity" , new request_interface() {
             @Override
@@ -124,6 +135,8 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
         btnCancel = (Button) dialog.findViewById(R.id.xCancel);
         edtFoodQ = (EditText) dialog.findViewById(R.id.xFoodQ);
         edtEstimatedTime = (EditText) dialog.findViewById(R.id.xEstimatedTime);
+
+
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,8 +146,58 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
                     edtEstimatedTime.setError("enter valid time");
                 } else {
                     showConfirmSendToast();
+
+
                     dialog.dismiss();
+
+
+
+                // TODO Call of  Send Notification to All charities
+
+                    final String title =getActivity().getIntent().getStringExtra("username");
+                    final String quantity =edtFoodQ.getText().toString() ;
+                   // final String image = editTextImage.getText().toString();
+
+                    progressDialog.setMessage("Sending.......");
+                    progressDialog.show();
+
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, EndPoints.URL_SEND_MULTIPLE_PUSH,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    progressDialog.dismiss();
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+
+                                }
+                            }) {
+                        @Override
+                        protected Map<String,String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("title", title);
+                            params.put("message", quantity);
+//
+//                            if (!TextUtils.isEmpty(image))
+//                                params.put("image", image);
+                            return params;
+                        }
+                    };
+
+                    MyVolley.getInstance(getActivity()).addToRequestQueue(stringRequest);
+
+
+
+                  // TODO Add Request To Table Task
+
+               web.addTask(getActivity(),Integer.parseInt(getActivity().getIntent().getStringExtra("id")),"Posted",quantity,"1 hour",0);
+
+
                 }
+
+
             }
         });
         btnCancel.setOnClickListener(new View.OnClickListener() {

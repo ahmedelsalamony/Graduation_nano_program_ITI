@@ -17,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.SharedPrefManager;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -118,8 +119,9 @@ public class RegisterFragment extends Fragment {
                 }else if (!isValidEmailAddress(edtEmail.getText().toString().trim())){
                     edtEmail.setError("enter valid email");
                 }else{
-
-                    web.addUser(getActivity(), userName, password, email, phone, address, type, typeName, 0,122,"amshdjjsjiwwkkskskskkskk");
+                  String token = SharedPrefManager.getInstance(getActivity()).getDeviceToken();
+                    System.out.println(token);
+                    web.addUser(getActivity(), userName, password, email, phone, address, type, typeName, 0,122,token);
                 }
 
             }

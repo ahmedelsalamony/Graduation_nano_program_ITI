@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "921144330321",
+    "firebase_url": "https://re-restaurant.firebaseio.com",
+    "project_id": "re-restaurant",
+    "storage_bucket": "re-restaurant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921144330321:android:e127d1c77d4e59fc",
+        "android_client_info": {
+          "package_name": "com.example.itimobiletrack.graduation_nano_program_iti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "921144330321-ei68a2amildnpco22m7vi5m6moh4kgg6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.itimobiletrack.graduation_nano_program_iti",
+            "certificate_hash": "a0ce8526e865e04ad028aea312d5d0ae357a34c7"
+          }
+        },
+        {
+          "client_id": "921144330321-7sbta1qcv0ljjfgl3i6ujj9qv1ffcdb5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPH52hX-azKpcz-G1bOKi-fyO_qVJXOVA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "921144330321-7sbta1qcv0ljjfgl3i6ujj9qv1ffcdb5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

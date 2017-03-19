@@ -19,6 +19,7 @@ import com.example.itimobiletrack.graduation_nano_program_iti.Charity.CharityPro
 import com.example.itimobiletrack.graduation_nano_program_iti.Charity.MembersFragment;
 import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
 import com.example.itimobiletrack.graduation_nano_program_iti.Member.MemberProfile;
+import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.SharedPrefManager;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile;
 
@@ -45,7 +46,15 @@ public class webServices {
     public static String TYPENAME = "typename";
     public static String STATUS = "status_of_member";
     public static String CHARITY_PARENT_ID = "charity_parent_id";
-    public static String KEY_TOKEN = "key_token";
+    public static String KEY_TOKEN = "token";
+
+
+    public static String RESTAURANT_ID = "restaurant_id";
+    public static String REQUESTSTAUS = "request_status";
+    public static String TASKQUANTITY = "task_quantity";
+    public static String TASKESTIMATEDTIME = "task_estimated_time";
+    public static String MEMBER_ID = "member_id";
+
 
 
     // TODO Tag that use it to know type of WebService   >> you can here put the TAG  of your method Name ------//
@@ -60,10 +69,11 @@ public class webServices {
     public static String UPDATECHARITY="update_charity";
     public static String GETALLCHARITY="getAllCharity";
     public static String UPDATERESTAURANT="update_rest";
+    public static String ADDTASK="add_request_toTask";
     private RequestQueue queue;
     private String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
 
-
+    //
 
 
     // TODO Login Method ----------------------------------//
@@ -183,8 +193,11 @@ public class webServices {
 
     public void addUser(final Activity activity, final String username, final String password, final String email,
                         final String phone, final String address, final String type ,final  String typename, final int status
-                        ,final int charityParentId , final  String keyToken)
+                        ,final int charityParentId ,   final  String keyToken)
         {
+
+
+
         queue = Volley.newRequestQueue(activity);
         StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -214,7 +227,7 @@ public class webServices {
                 params.put(TYPENAME, typename);
                 params.put(STATUS, ""+status);
                 params.put(CHARITY_PARENT_ID, ""+charityParentId);
-                params.put(KEY_TOKEN, ""+keyToken);
+                params.put(KEY_TOKEN, keyToken);
 
                 params.put(TAG,ADD_USER_TAG );
                 return params;
@@ -543,6 +556,50 @@ public class webServices {
                 params.put(EMAIL, email);
 
                 params.put(TAG,UPDATERESTAURANT );
+                return params;
+            }
+        };
+        queue.add(request);
+    }
+
+
+
+    //======================================================================================================//
+
+    public void addTask(final Activity activity, final int restaurant_id, final String request_status, final String task_quantity,
+                        final String task_estimated_time, final int  member_id)
+    {
+
+
+
+        queue = Volley.newRequestQueue(activity);
+        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Snackbar.make(activity.findViewById(android.R.id.content), "Internet Connection", Snackbar.LENGTH_LONG).show();
+            }
+        })
+
+        {
+            @Override
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+                params.put(RESTAURANT_ID, ""+restaurant_id);
+                params.put(REQUESTSTAUS, request_status);
+                params.put(TASKQUANTITY, task_quantity);
+                params.put(TASKESTIMATEDTIME, task_estimated_time);
+                params.put(MEMBER_ID, ""+member_id);
+
+
+                params.put(TAG,ADDTASK );
                 return params;
             }
         };
