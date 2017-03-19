@@ -122,6 +122,7 @@ public class RegisterFragment extends Fragment {
 
             }
         });
+
         rdCharity.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -129,6 +130,7 @@ public class RegisterFragment extends Fragment {
                 layCharity.setVisibility(View.VISIBLE);
                 edtCharity.setVisibility(View.VISIBLE);
                 edtCharity.setHint("Charity name");
+
                 return false;
             }
         });
@@ -216,32 +218,6 @@ public class RegisterFragment extends Fragment {
 
 
 
-
-    // TODO SignUP Action to database
-  public  void registerToDatabse(View view){
-
-      String userName=edtUserName.getText().toString();
-      String password=edtPassword.getText().toString();
-      String email=edtEmail.getText().toString();
-      String phone=edtPhone.getText().toString();
-      String address=edtAddress.getText().toString();
-      String type=null;
-
-      if(rdRestaurant.isChecked()){
-          type=rdRestaurant.getText().toString();
-      }
-      else{
-          type=rdCharity.getText().toString();
-      }
-
-     String typeName =edtCharity.getText().toString();
-
-
-    web.addUser(getActivity(),userName,password,email,phone,address,type,typeName,0);
-
-
-
-  }
 
 
 

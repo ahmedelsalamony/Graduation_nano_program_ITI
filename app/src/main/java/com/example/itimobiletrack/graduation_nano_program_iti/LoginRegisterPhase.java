@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class LoginRegisterPhase extends AppCompatActivity {
 
     private  FragmentManager fm;
-
+    private  FragmentReplace fragmentReplace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +38,13 @@ public class LoginRegisterPhase extends AppCompatActivity {
         ft.commit();
     }
 
+
     public void toForgetPassword(View v){
-        // replace
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.xPlaceHolder, new ForgetPass());
+
+        ForgetPass forgetPass=new ForgetPass();
+        FragmentManager fm =getFragmentManager();
+        FragmentTransaction  ft=fm.beginTransaction();
+        ft.replace(R.id.xPlaceHolder,forgetPass);
         ft.addToBackStack(null);
         ft.commit();
 

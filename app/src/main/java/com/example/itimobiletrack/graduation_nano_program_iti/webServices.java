@@ -1,7 +1,9 @@
 package com.example.itimobiletrack.graduation_nano_program_iti;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -20,7 +22,6 @@ import java.util.HashMap;
 public class webServices {
 
 
-    // public static String url_upload="http://super-buzz-tree.hostoi.com/uploads/";
 
     // TODO Parameters Of Tables and WebService Function
     public static String ID = "id";
@@ -33,19 +34,22 @@ public class webServices {
     public static String TYPENAME = "typename";
     public static String STATUS = "status_of_member";
 
-
-    // TODO Tag that use it to know type of WebService
+    // TODO Tag that use it to know type of WebService   >> you can here put the TAG  of your method Name ------//
     public static String TAG = "tag";
     public static String ADD_USER_TAG = "add_user";
     public static String USERLOGINTAG = "user_login";
+    public static String FORGETUSERPASSWORD = "forget_password_user";
 
-    //------------------------------------
-    RequestQueue queue;
 
-    String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
+    private RequestQueue queue;
+    private String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
+
+
+
 
     // TODO Login Method ----------------------------------//
-    public void user_login(final Activity activity, final String username, final String password){
+    public void  user_login(final Activity activity, final String username, final String password)
+        {
 
         queue = Volley.newRequestQueue(activity);
         final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
@@ -58,12 +62,21 @@ public class webServices {
 
                     if(login_response.equals("done")) {
 
-                        String id = jsonObject.getString("user_id");
+                         ID = jsonObject.getString("user_id");
                         String userType = jsonObject.getString("type");
 
                         if(userType.equals("restaurant")){
-                            Toast.makeText(activity, "Open Restaurant Profile", Toast.LENGTH_SHORT).show();
-                        }else {
+
+                         Intent i =new Intent(activity,MainActivity.class);
+                         activity.startActivity(i);
+
+                        }
+                        else if(userType.equals("community"))
+                        {
+
+                        }
+                        else
+                        {
                             Toast.makeText(activity, "Determine user type", Toast.LENGTH_SHORT).show();
 
                         }
@@ -103,6 +116,7 @@ public class webServices {
         queue.add(request);
 
     }
+
 
 
 
@@ -148,6 +162,46 @@ public class webServices {
         };
         queue.add(request);
     }
+
+
+
+    // TODO forget_password_user   Method
+    public void forgetPasswordUser(final Activity activity, final String user_name,  final request_interface object)
+        {
+        queue = Volley.newRequestQueue(activity);
+        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("RESPONSE",response);
+                object.onResponse(response);
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                object.onError();
+
+            }
+        }) {
+            @Override
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+                params.put(USERNAME, user_name);
+                params.put(TAG,FORGETUSERPASSWORD);
+                return params;
+            }
+
+
+        };
+        queue.add(request);
+
+    }
+
+
+
+
+
+
 }
 
 
