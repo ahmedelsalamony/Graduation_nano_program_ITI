@@ -21,6 +21,12 @@
             >
 
             <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="25dp"
+                android:textColor="@color/accent"
+                android:textStyle="bold"
+                android:textSize="50sp"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="RE-restaurant"
@@ -143,19 +149,6 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <!--<android.support.design.widget.TextInputLayout-->
-                <!--android:id="@+id/input_layout_RestuarantName"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-              <!--&gt;-->
-
-                <!--<EditText-->
-                    <!--android:id="@+id/xRestuarantName"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:hint="enter RestaurantName" />-->
-
-            <!--</android.support.design.widget.TextInputLayout>-->
 
             <Button
                 android:layout_width="match_parent"

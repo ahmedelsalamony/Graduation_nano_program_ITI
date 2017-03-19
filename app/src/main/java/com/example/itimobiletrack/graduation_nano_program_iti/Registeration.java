@@ -1,5 +1,6 @@
 package com.example.itimobiletrack.graduation_nano_program_iti;
 
+import android.graphics.Typeface;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,9 +16,9 @@ import static android.support.design.R.styleable.TextInputLayout;
 public class Registeration extends AppCompatActivity {
 
     TextView txtTitle;
-    EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress,edtCharity,edtRestaurant;
+    EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress,edtCharity;
     RadioButton rdCharity,rdRestaurant;
-    TextInputLayout layCharity,layRestaurant;
+    TextInputLayout layCharity;
 
 
     @Override
@@ -32,23 +33,24 @@ public class Registeration extends AppCompatActivity {
         edtPhone=(EditText)findViewById(R.id.xPhone);
         edtAddress=(EditText)findViewById(R.id.xAddress);
         edtCharity=(EditText)findViewById(R.id.xCharityName);
-//        edtRestaurant=(EditText)findViewById(R.id.xRestuarantName);
         rdCharity=(RadioButton)findViewById(R.id.xrdCharity);
         rdRestaurant=(RadioButton)findViewById(R.id.xrdRestaurant);
         layCharity=(TextInputLayout)findViewById(R.id.input_layout_CharityName);
-//        layRestaurant=(TextInputLayout)findViewById(R.id.input_layout_RestuarantName);
+        txtTitle= (TextView) findViewById(R.id.xTitle);
 
 
-        // Invisible For 2 EditText
-      //  layRestaurant.setVisibility(View.INVISIBLE);
-        //edtRestaurant.setVisibility(View.INVISIBLE);
+
 
         layCharity.setVisibility(View.INVISIBLE);
         edtCharity.setVisibility(View.INVISIBLE);
 
 
 
-           rdCharity.setOnTouchListener(new View.OnTouchListener() {
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/title.ttf");
+        txtTitle.setTypeface(custom_font);
+
+
+        rdCharity.setOnTouchListener(new View.OnTouchListener() {
                @Override
                public boolean onTouch(View view, MotionEvent motionEvent) {
 
