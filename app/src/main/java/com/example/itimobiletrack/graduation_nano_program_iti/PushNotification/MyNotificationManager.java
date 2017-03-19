@@ -95,15 +95,16 @@ private webServices web;
 
 
             }
-            else if (web.sharedPreferences.getString("typename" , "******").equals("Charity")) {
+             if (web.sharedPreferences.getString("typename" , "******").equals("Charity")) {
                 intent = new Intent(mCtx, CharityProfile.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
 
             }
-            else if (web.sharedPreferences.getString("typename" , "******").equals("Member")) {
+
+             if (web.sharedPreferences.getString("typename" , "******").equals("Member")) {
                 intent = new Intent(mCtx, MemberProfile.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                Toast.makeText(mCtx, "    ", Toast.LENGTH_SHORT).show();
+
             }
             PendingIntent resultPendingIntent =
                     PendingIntent.getActivity(
