@@ -71,7 +71,7 @@ public class webServices {
                          activity.startActivity(i);
 
                         }
-                        else if(userType.equals("community"))
+                        else if(userType.equals("charity"))
                         {
 
                         }
