@@ -79,10 +79,10 @@ public class webServices {
                         getProfileInfo. setEmailVar(jsonObject.getString("email"));
 
                         if(userType.equals("Restaurant")){
-
-                         Intent i =new Intent(activity,MainActivity.class);
-                         activity.startActivity(i);
-
+                            Intent intent = new Intent(activity,RestaurantProfile.class);
+                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
+                            intent.putExtra("email",getProfileInfo.getEmailVar());
+                            activity.startActivity(intent);
                         }
                         else if(userType.equals("Charity"))
                         {
