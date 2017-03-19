@@ -9,20 +9,23 @@ import android.view.View;
 import android.widget.Toast;
 
 public class LoginRegisterPhase extends AppCompatActivity {
-    FragmentManager fm;
+
+    private  FragmentManager fm;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register_phase);
+
+
         // get fragment manager
          fm = getFragmentManager();
         // add
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.xPlaceHolder, new LoginFragment());
+        ft.replace(R.id.xPlaceHolder, new LoginFragment());
         ft.addToBackStack(null);
 
-        // alternatively add it with a tag
-        // trx.add(R.id.your_placehodler, new YourFragment(), "detail");
         ft.commit();
 
 
@@ -30,7 +33,7 @@ public class LoginRegisterPhase extends AppCompatActivity {
     public void toSignUp(View v){
         // replace
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.xPlaceHolder, new RegisterFragment());
+        ft.replace(R.id.xPlaceHolder, new RegisterFragment());
         ft.addToBackStack(null);
         ft.commit();
     }
@@ -43,5 +46,7 @@ public class LoginRegisterPhase extends AppCompatActivity {
         ft.commit();
 
     }
+
+
 
 }
