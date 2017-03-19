@@ -65,15 +65,16 @@ public class webServices {
                          ID = jsonObject.getString("user_id");
                         String userType = jsonObject.getString("type");
 
-                        if(userType.equals("restaurant")){
+                        if(userType.equals("Restaurant")){
 
                          Intent i =new Intent(activity,MainActivity.class);
                          activity.startActivity(i);
 
                         }
-                        else if(userType.equals("charity"))
+                        else if(userType.equals("Charity"))
                         {
-
+                            Intent i =new Intent(activity,CharityProfile.class);
+                            activity.startActivity(i);
                         }
                         else
                         {
