@@ -1,4 +1,4 @@
-package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
+package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -119,7 +119,7 @@ public class RegisterFragment extends Fragment {
                     edtEmail.setError("enter valid email");
                 }else{
 
-                    web.addUser(getActivity(), userName, password, email, phone, address, type, typeName, 0);
+                    web.addUser(getActivity(), userName, password, email, phone, address, type, typeName, 0,122,"amshdjjsjiwwkkskskskkskk");
                 }
 
             }

@@ -1,25 +1,35 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/add_member_layoutContainer"
     tools:context="com.example.owner.community.MembersFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
+
+
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="493dp"
+        android:layout_height="400dp"
         android:id="@+id/members"/>
+
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/members"
+        app:fabSize="normal"
+        android:src="@drawable/add_member"
         android:id="@+id/floatingActionButton"
-        android:layout_marginTop="420dp"
-        android:layout_marginLeft="270dp"
-        android:backgroundTint="@color/colorPrimary"/>
-</FrameLayout>
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="22dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        app:backgroundTint="@android:color/holo_blue_light" />
+
+
+</RelativeLayout>

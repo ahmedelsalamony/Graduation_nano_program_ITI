@@ -3,59 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.owner.community.EditFragment"
-    android:weightSum="7"
+    android:weightSum="5"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ScrollView
+
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <LinearLayout
-            android:id="@+id/email_login_form"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Name"
-            android:ems="10"
-            android:id="@+id/association_name"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="@string/prompt_email"
-            android:ems="10"
-            android:id="@+id/association_email"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:inputType="textPersonName"
+        android:hint="Name"
+        android:ems="10"
+        android:id="@+id/xUserNameEdit"
+        android:layout_weight="1"
+        android:layout_margin="5dp"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -63,15 +25,9 @@
         android:inputType="phone"
         android:hint="Phone"
         android:ems="10"
-        android:id="@+id/Phone"
+        android:id="@+id/xPhoneEdit"
         android:layout_weight="1"
-        android:layout_margin="10dp"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_margin="5dp"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -79,33 +35,9 @@
         android:inputType="textPostalAddress"
         android:hint="Address"
         android:ems="10"
-        android:id="@+id/Address"
+        android:id="@+id/xAddressEdit"
         android:layout_weight="1"
-        android:layout_margin="10dp"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Association username"
-        android:ems="10"
-        android:id="@+id/userName"
-        android:layout_weight="1"
-        android:layout_margin="10dp"
-        />
-
-    </android.support.design.widget.TextInputLayout>
-
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_margin="5dp"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -113,26 +45,17 @@
         android:inputType="numberPassword"
         android:hint="Password"
         android:ems="10"
-        android:id="@+id/Password"
+        android:id="@+id/xPasswordEdit"
         android:layout_weight="1"
-        android:layout_margin="10dp"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    </LinearLayout>
-
-    </ScrollView>
-
-
-
+        android:layout_margin="5dp"/>
 
     <LinearLayout
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp">
+        android:layout_margin="5dp">
 
         <Button
             android:layout_width="wrap_content"
@@ -144,7 +67,7 @@
             android:background="#00A5F1"
             android:textColor="@color/WhiteSmoke"
             android:id="@+id/Save"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             />
         <Button
             android:layout_width="wrap_content"
@@ -156,7 +79,7 @@
             android:background="#00A5F1"
             android:textColor="@color/WhiteSmoke"
             android:id="@+id/Cancel"
-            android:layout_margin="10dp"/>
+            android:layout_margin="5dp"/>
 
     </LinearLayout>
 

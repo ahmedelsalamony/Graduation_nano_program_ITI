@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
-import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RegisterFragment;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
 /**

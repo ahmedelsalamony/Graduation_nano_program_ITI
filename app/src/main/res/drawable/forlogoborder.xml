@@ -6,11 +6,11 @@
             <corners android:radius="4dp" />
             <solid android:color="@color/accent"
                 ></solid>
-            <stroke android:width="3dp" android:color="@color/accent"></stroke>
+            <stroke android:width="6dp" android:color="@color/accent"></stroke>
             <gradient
-                android:centerColor="@color/primary"
-                android:endColor="@color/primary"
-                android:startColor="@color/primary" />
+                android:centerColor="@color/WhiteSmoke"
+                android:endColor="@color/WhiteSmoke"
+                android:startColor="@color/WhiteSmoke" />
         </shape>
     </item>
     <item android:state_focused="true">-

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
-import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RegisterFragment;
 
 public class LoginRegisterActivity extends AppCompatActivity {
 
