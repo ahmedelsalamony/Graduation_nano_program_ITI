@@ -5,38 +5,30 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.FloatingActionButton;
-import android.text.TextUtils;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.Toast;
 import android.widget.RatingBar;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.ActivitySendPushNotification;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.EndPoints;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.MyVolley;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.request_interface;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,6 +56,7 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
         gridView = (GridView) v.findViewById(R.id.gridView1);
         btn = (FloatingActionButton) v.findViewById(R.id.xbtnSendToAll);
         web =new webServices();
+        web.sharedPreferences = getActivity().getSharedPreferences("load_data" , 0);
         charityBuffer=new StringBuffer();
 
         progressDialog = new ProgressDialog(getActivity());
@@ -154,7 +147,7 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
 
                 // TODO Call of  Send Notification to All charities
 
-                    final String title =getActivity().getIntent().getStringExtra("username");
+                    final String title =web.sharedPreferences.getString("typename" , "******");
                     final String quantity =edtFoodQ.getText().toString() ;
                    // final String image = editTextImage.getText().toString();
 
@@ -192,7 +185,7 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
 
                   // TODO Add Request To Table Task
 
-               web.addTask(getActivity(),Integer.parseInt(getActivity().getIntent().getStringExtra("id")),"Posted",quantity,"1 hour",0);
+               web.addTask(getActivity(),web.sharedPreferences.getInt("id" , 0),"Posted",quantity,edtEstimatedTime.getText().toString(),0);
 
 
                 }

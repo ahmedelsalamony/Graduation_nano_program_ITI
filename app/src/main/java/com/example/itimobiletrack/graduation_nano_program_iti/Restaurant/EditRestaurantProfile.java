@@ -30,6 +30,9 @@ Button bEditRestaurant;
         Snackbar.make(getActivity().findViewById(android.R.id.content), "If you update yor data you need to login again.", Snackbar.LENGTH_LONG).show();
 
         web=new webServices();
+        web.sharedPreferences=getActivity().getSharedPreferences("load_data" , 0);
+
+
         bEditRestaurant= (Button) v.findViewById(R.id.xEditRestaurantFinish);
         edtUserName=(EditText)v.findViewById(R.id.xUserName);
         edtPassword=(EditText)v.findViewById(R.id.xPassword);
@@ -42,11 +45,11 @@ Button bEditRestaurant;
 
 
 
-        edtUserName.setText(getActivity().getIntent().getStringExtra("username"));
-        edtPassword.setText(getActivity().getIntent().getStringExtra("password"));
-        edtEmail.setText(getActivity().getIntent().getStringExtra("email"));
-        edtPhone.setText(getActivity().getIntent().getStringExtra("phone"));
-        edtAddress.setText(getActivity().getIntent().getStringExtra("address"));
+        edtUserName.setText(web.sharedPreferences.getString("username" , "******"));
+        edtPassword.setText(web.sharedPreferences.getString("password" , "******"));
+        edtEmail.setText(web.sharedPreferences.getString("email" , "******"));
+        edtPhone.setText(web.sharedPreferences.getString("phone" , "******"));
+        edtAddress.setText(web.sharedPreferences.getString("address" , "******"));
 
 
         bEditRestaurant.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +70,7 @@ Button bEditRestaurant;
                     edtEmail.setError("enter valid email");
                 }else{
 
-                    web.update_restaurant(getActivity(),"Restaurant",getActivity().getIntent().getStringExtra("username"),edtUserName.getText().toString(),edtPassword.getText().toString(),edtPhone.getText().toString(),edtAddress.getText().toString(),edtEmail.getText().toString());
+                    web.update_restaurant(getActivity(),"Restaurant",web.sharedPreferences.getString("username" , "******"),edtUserName.getText().toString(),edtPassword.getText().toString(),edtPhone.getText().toString(),edtAddress.getText().toString(),edtEmail.getText().toString());
                 }
 
             }

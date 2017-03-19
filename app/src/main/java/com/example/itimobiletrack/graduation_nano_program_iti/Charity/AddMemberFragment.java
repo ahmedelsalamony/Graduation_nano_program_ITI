@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.SharedPrefManager;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -52,7 +53,7 @@ public class AddMemberFragment extends Fragment {
 
 
         web=new webServices();
-
+        web.sharedPreferences=getActivity().getSharedPreferences("load_data" , 0 );
         txtTitle=(TextView)v.findViewById(R.id.xTitle);
         Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/title.ttf");
         txtTitle.setTypeface(custom_font);
@@ -84,9 +85,10 @@ public class AddMemberFragment extends Fragment {
                 String phone = edtPhone.getText().toString();
                 String address = edtAddress.getText().toString();
                 String type = "Member";
-                String typeName = getActivity().getIntent().getStringExtra("typename");
-                strCharity=getActivity().getIntent().getStringExtra("id");
-                int charity_Id=Integer.parseInt(strCharity);
+
+                String typeName = web.sharedPreferences.getString("typename" , "******");
+             int    strCharity=web.sharedPreferences.getInt("id" , 0);
+                int charity_Id=strCharity;
 
                 if (edtUserName.getText().toString().trim().equals("")){
                     edtUserName.setError("enter valid username");
@@ -103,8 +105,8 @@ public class AddMemberFragment extends Fragment {
                 }else if (!isValidEmailAddress(edtEmail.getText().toString().trim())){
                     edtEmail.setError("enter valid email");
                 }else{
-
-                    web.addMember(getActivity(), userName, password, email, phone, address, type, typeName, 0,charity_Id ,"amshdjjsjiwwkkskskskkskk");
+                    String token = SharedPrefManager.getInstance(getActivity()).getDeviceToken();
+                    web.addMember(getActivity(), userName, password, email, phone, address, type, typeName, 0,charity_Id ,token);
 
                 }
 

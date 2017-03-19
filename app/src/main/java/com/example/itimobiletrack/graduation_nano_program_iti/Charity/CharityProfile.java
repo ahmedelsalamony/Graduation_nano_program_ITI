@@ -16,20 +16,21 @@ import android.widget.TextView;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
 public class CharityProfile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-
+    private webServices web ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charity_profile);
 
-
-
+        web =new webServices();
+        web.sharedPreferences = getSharedPreferences("load_data" , 0);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         HomeFragment homeFragment = new HomeFragment();
@@ -37,9 +38,13 @@ public class CharityProfile extends AppCompatActivity
         manager.beginTransaction().replace(R.id.content_main,homeFragment,homeFragment.getTag()).commit();
 //        getSupportActionBar().setHomeAsUpIndicator(R.drawable.green);
 
+//
+//          toolbar.setTitle(getIntent().getStringExtra("typename"));
+//          setTitle(getIntent().getStringExtra("typename"));
 
-          toolbar.setTitle(getIntent().getStringExtra("typename"));
-          setTitle(getIntent().getStringExtra("typename"));
+
+          toolbar.setTitle(web.sharedPreferences.getString("typename" , "******"));
+          setTitle(web.sharedPreferences.getString("typename" , "******"));
 
 
         /*Default fragment*/
@@ -68,9 +73,11 @@ public class CharityProfile extends AppCompatActivity
         TextView txtTypeName = (TextView) headerView.findViewById(R.id.textView2);
         TextView txtEmail = (TextView) headerView.findViewById(R.id.textView);
 
-         txtTypeName.setText(getIntent().getStringExtra("typename"));
 
-         txtEmail.setText(getIntent().getStringExtra("email"));
+
+         txtTypeName.setText(web.sharedPreferences.getString("typename" , "******"));
+
+         txtEmail.setText(web.sharedPreferences.getString("email" , "******"));
 
     }
 

@@ -72,7 +72,7 @@ public class MembersFragment extends Fragment {
          // TODO call getMemberData
 
 
-
+ // TODO ERRRORRRRRRRRRRRR
             if(getActivity().getIntent().getStringExtra("id") !=null) {
 
 

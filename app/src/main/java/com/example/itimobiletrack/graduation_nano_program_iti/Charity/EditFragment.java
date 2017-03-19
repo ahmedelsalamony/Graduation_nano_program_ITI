@@ -47,7 +47,7 @@ public class EditFragment extends Fragment {
 
         View v= inflater.inflate(R.layout.fragment_edit, container, false);
         web=new webServices();
-
+         web.sharedPreferences = getActivity().getSharedPreferences("load_data" ,0 );
         Snackbar.make(getActivity().findViewById(android.R.id.content), "If you update yor data you need to login again.", Snackbar.LENGTH_LONG).show();
 
 
@@ -73,10 +73,10 @@ public class EditFragment extends Fragment {
             }
         });
 
-        edUserName.setText(getActivity().getIntent().getStringExtra("username"));
-        edPassword.setText(getActivity().getIntent().getStringExtra("password"));
-        edPhone.setText(getActivity().getIntent().getStringExtra("phone"));
-        edAddress.setText(getActivity().getIntent().getStringExtra("address"));
+        edUserName.setText(web.sharedPreferences.getString("username" , "******"));
+        edPassword.setText(web.sharedPreferences.getString("password" , "******"));
+        edPhone.setText(web.sharedPreferences.getString("phone" , "******"));
+        edAddress.setText(web.sharedPreferences.getString("address" , "******"));
 
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -84,13 +84,13 @@ public class EditFragment extends Fragment {
             public void onClick(View v) {
 
                  web.updateCharity(getActivity()
-                 ,"Charity",getActivity().getIntent().getStringExtra("username")
+                 ,"Charity",web.sharedPreferences.getString("username" , "******")
                 , edUserName.getText().toString()
                 , edPassword.getText().toString()
                 , edPhone.getText().toString() , edAddress.getText().toString());
 
 
-                System.out.println(getActivity().getIntent().getStringExtra("username"));
+                System.out.println(web.sharedPreferences.getString("username" , "******"));
             }
         });
 

@@ -18,11 +18,13 @@ import android.widget.Toast;
 import com.example.itimobiletrack.graduation_nano_program_iti.Charity.AboutFragment;
 import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
 public class RestaurantProfile extends AppCompatActivity {
     FragmentManager fragmentManager;
     ImageView imageView;
      Toolbar toolbar;
+     private  webServices web ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,12 @@ public class RestaurantProfile extends AppCompatActivity {
         setTitle("");
 
          TextView txt=(TextView)findViewById(R.id.xTxtTitleBar);
-          txt.setText(getIntent().getStringExtra("typename"));
+
+
+          web =new webServices();
+           web.sharedPreferences =getSharedPreferences("load_data",0);
+
+          txt.setText(web.sharedPreferences.getString("typename" , "******"));
 
 
         fragmentManager = getFragmentManager();

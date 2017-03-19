@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.itimobiletrack.graduation_nano_program_iti.Charity.CharityPro
 import com.example.itimobiletrack.graduation_nano_program_iti.Charity.MembersFragment;
 import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
 import com.example.itimobiletrack.graduation_nano_program_iti.Member.MemberProfile;
+import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.EndPoints;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.SharedPrefManager;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile;
@@ -31,6 +33,9 @@ import java.util.HashMap;
 
 
 public class webServices {
+
+    public SharedPreferences sharedPreferences ;
+    public SharedPreferences.Editor editor;
 
     private  GetProfileInfo getProfileInfo ;
 
@@ -70,6 +75,8 @@ public class webServices {
     public static String GETALLCHARITY="getAllCharity";
     public static String UPDATERESTAURANT="update_rest";
     public static String ADDTASK="add_request_toTask";
+    public static String GETTASKSPOSTED="getAllRequsts";
+
     private RequestQueue queue;
     private String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
 
@@ -86,6 +93,9 @@ public class webServices {
             @Override
             public void onResponse(String response) {
                 try {
+
+                    sharedPreferences = activity.getSharedPreferences("load_data",0);
+                    editor = sharedPreferences.edit();
 
                     JSONObject jsonObject=new JSONObject(response);
                     String login_response=jsonObject.getString("login_response");
@@ -106,28 +116,48 @@ public class webServices {
 
                         if(userType.equals("Restaurant")){
 
+                             editor.putInt("id" ,Integer.parseInt(getProfileInfo.getUser_id()));
+                             editor.putString("typename" ,getProfileInfo.getTypeNameVar() );
+                             editor.putString("email" , getProfileInfo.getEmailVar());
+                             editor.putString("username" , getProfileInfo.getUserName());
+                             editor.putString("password" , getProfileInfo.getPassword());
+                             editor.putString("phone" , getProfileInfo.getPhone());
+                             editor.putString("address" , getProfileInfo.getAddress());
+                             editor.commit();
+
+
                             Intent intent = new Intent(activity,RestaurantProfile.class);
-                            intent.putExtra("id",getProfileInfo.getUser_id());
-                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
-                            intent.putExtra("email",getProfileInfo.getEmailVar());
-                            intent.putExtra("username",getProfileInfo.getUserName());
-                            intent.putExtra("password",getProfileInfo.getPassword());
-                            intent.putExtra("phone",getProfileInfo.getPhone());
-                            intent.putExtra("address",getProfileInfo.getAddress());
+                           // intent.putExtra("id",getProfileInfo.getUser_id());
+//                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
+//                            intent.putExtra("email",getProfileInfo.getEmailVar());
+//                            intent.putExtra("username",getProfileInfo.getUserName());
+//                            intent.putExtra("password",getProfileInfo.getPassword());
+//                            intent.putExtra("phone",getProfileInfo.getPhone());
+//                            intent.putExtra("address",getProfileInfo.getAddress());
                             activity.startActivity(intent);
                         }
                         else if(userType.equals("Charity"))
                         {
 
+
+
+                            editor.putInt("id" ,Integer.parseInt(getProfileInfo.getUser_id()));
+                            editor.putString("typename" ,getProfileInfo.getTypeNameVar() );
+                            editor.putString("email" , getProfileInfo.getEmailVar());
+                            editor.putString("username" , getProfileInfo.getUserName());
+                            editor.putString("password" , getProfileInfo.getPassword());
+                            editor.putString("phone" , getProfileInfo.getPhone());
+                            editor.putString("address" , getProfileInfo.getAddress());
+                            editor.commit();
                             Intent intent = new Intent(activity,CharityProfile.class);
 
-                            intent.putExtra("id",getProfileInfo.getUser_id());
-                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
-                            intent.putExtra("email",getProfileInfo.getEmailVar());
-                            intent.putExtra("username",getProfileInfo.getUserName());
-                            intent.putExtra("password",getProfileInfo.getPassword());
-                            intent.putExtra("phone",getProfileInfo.getPhone());
-                            intent.putExtra("address",getProfileInfo.getAddress());
+//                            intent.putExtra("id",getProfileInfo.getUser_id());
+//                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
+//                            intent.putExtra("email",getProfileInfo.getEmailVar());
+//                            intent.putExtra("username",getProfileInfo.getUserName());
+//                            intent.putExtra("password",getProfileInfo.getPassword());
+//                            intent.putExtra("phone",getProfileInfo.getPhone());
+//                            intent.putExtra("address",getProfileInfo.getAddress());
 
                             activity.startActivity(intent);
 
@@ -136,15 +166,25 @@ public class webServices {
                         else if(userType.equals("Member"))
                         {
 
+
+                            editor.putInt("id" ,Integer.parseInt(getProfileInfo.getUser_id()));
+                            editor.putString("typename" ,getProfileInfo.getTypeNameVar() );
+                            editor.putString("email" , getProfileInfo.getEmailVar());
+                            editor.putString("username" , getProfileInfo.getUserName());
+                            editor.putString("password" , getProfileInfo.getPassword());
+                            editor.putString("phone" , getProfileInfo.getPhone());
+                            editor.putString("address" , getProfileInfo.getAddress());
+                            editor.commit();
+
                             Intent intent = new Intent(activity,MemberProfile.class);
 
-                            intent.putExtra("id",getProfileInfo.getUser_id());
-                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
-                            intent.putExtra("email",getProfileInfo.getEmailVar());
-                            intent.putExtra("username",getProfileInfo.getUserName());
-                            intent.putExtra("password",getProfileInfo.getPassword());
-                            intent.putExtra("phone",getProfileInfo.getPhone());
-                            intent.putExtra("address",getProfileInfo.getAddress());
+//                            intent.putExtra("id",getProfileInfo.getUser_id());
+//                            intent.putExtra("typename",getProfileInfo.getTypeNameVar());
+//                            intent.putExtra("email",getProfileInfo.getEmailVar());
+//                            intent.putExtra("username",getProfileInfo.getUserName());
+//                            intent.putExtra("password",getProfileInfo.getPassword());
+//                            intent.putExtra("phone",getProfileInfo.getPhone());
+//                            intent.putExtra("address",getProfileInfo.getAddress());
 
                             activity.startActivity(intent);
 
@@ -360,6 +400,7 @@ public class webServices {
         queue.add(request);
 
     }
+
 
 
 
@@ -607,6 +648,44 @@ public class webServices {
     }
 
 
+
+
+    //========================================================
+
+    // TODO GetAllRequests
+
+    public void getAllRequests(final Activity activity, final request_interface object) {
+        queue = Volley.newRequestQueue(activity);
+        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+
+
+            @Override
+            public void onResponse(String response) {
+                object.onResponse(response);
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                object.onError();
+
+            }
+        }) {
+            @Override
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+
+                params.put(TAG, GETTASKSPOSTED);
+                return params;
+            }
+
+
+        };
+        queue.add(request);
+
+    }
 
 }
 

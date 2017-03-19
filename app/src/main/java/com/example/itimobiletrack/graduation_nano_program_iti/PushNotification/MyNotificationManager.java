@@ -10,7 +10,10 @@ import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 
+import com.example.itimobiletrack.graduation_nano_program_iti.Charity.CharityProfile;
+import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,13 +27,15 @@ import java.net.URL;
 //this class to create the required method to show the notifications
 public class MyNotificationManager {
 
-
+private webServices web;
         public static final int ID_BIG_NOTIFICATION = 234;
         public static final int ID_SMALL_NOTIFICATION = 235;
 
         private Context mCtx;
 
         public MyNotificationManager(Context mCtx) {
+            web =new webServices();
+            web.sharedPreferences =mCtx.getSharedPreferences("load_data",0);
             this.mCtx = mCtx;
         }
 
@@ -38,12 +43,18 @@ public class MyNotificationManager {
         //parameters are title for message title, message for message text, url of the big image and an intent that will open
         //when you will tap on the notification
         public void showBigNotification(String title, String message, String url, Intent intent) {
-            PendingIntent resultPendingIntent =
-                    PendingIntent.getActivity(
-                            mCtx,
-                            ID_BIG_NOTIFICATION,
-                            intent,
-                            PendingIntent.FLAG_UPDATE_CURRENT
+
+
+            if(web.sharedPreferences.getString("typename" , "******").equals("******")){
+                intent = new Intent(mCtx, LoginRegisterActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+
+            }else {
+                intent = new Intent(mCtx, CharityProfile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+            }
+
+            PendingIntent resultPendingIntent = PendingIntent.getActivity(mCtx, ID_BIG_NOTIFICATION, intent,PendingIntent.FLAG_UPDATE_CURRENT
                     );
             NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
             bigPictureStyle.setBigContentTitle(title);
@@ -51,15 +62,18 @@ public class MyNotificationManager {
             bigPictureStyle.bigPicture(getBitmapFromURL(url));
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mCtx);
             Notification notification;
-            notification = mBuilder.setSmallIcon(R.mipmap.ic_launcher).setTicker(title).setWhen(0)
-                    .setAutoCancel(true)
+            notification = mBuilder.setSmallIcon(R.mipmap.green).setTicker(title).setWhen(0)
+//                    .setAutoCancel(true)
                     .setContentIntent(resultPendingIntent)
                     .setContentTitle(title)
                     .setStyle(bigPictureStyle)
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.ic_launcher))
+                    .setSmallIcon(R.mipmap.green)
+                    .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.green))
                     .setContentText(message)
                     .build();
+
+            notification.defaults |= Notification.DEFAULT_SOUND;
+            notification.defaults |= Notification.DEFAULT_VIBRATE;
 
             notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
@@ -71,6 +85,18 @@ public class MyNotificationManager {
         //parameters are title for message title, message for message text and an intent that will open
         //when you will tap on the notification
         public void showSmallNotification(String title, String message, Intent intent) {
+
+
+            if(web.sharedPreferences.getString("typename" , "******").equals("******")){
+                intent = new Intent(mCtx, LoginRegisterActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+
+            }
+            else {
+                intent = new Intent(mCtx, CharityProfile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+            }
+
             PendingIntent resultPendingIntent =
                     PendingIntent.getActivity(
                             mCtx,
@@ -82,15 +108,17 @@ public class MyNotificationManager {
 
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mCtx);
             Notification notification;
-            notification = mBuilder.setSmallIcon(R.mipmap.ic_launcher).setTicker(title).setWhen(0)
+            notification = mBuilder.setSmallIcon(R.mipmap.green).setTicker(title).setWhen(0)
                     .setAutoCancel(true)
                     .setContentIntent(resultPendingIntent)
                     .setContentTitle(title)
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.ic_launcher))
+                    .setSmallIcon(R.mipmap.green)
+                    .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.green))
                     .setContentText(message)
                     .build();
 
+            notification.defaults |= Notification.DEFAULT_SOUND;
+            notification.defaults |= Notification.DEFAULT_VIBRATE;
             notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
             NotificationManager notificationManager = (NotificationManager) mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
