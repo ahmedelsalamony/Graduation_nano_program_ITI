@@ -59,7 +59,7 @@ public class webServices {
     public static String DELTEMEMBER="delete_member";
     public static String UPDATECHARITY="update_charity";
     public static String GETALLCHARITY="getAllCharity";
-
+    public static String UPDATERESTAURANT="update_rest";
     private RequestQueue queue;
     private String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
 
@@ -100,6 +100,10 @@ public class webServices {
                             intent.putExtra("id",getProfileInfo.getUser_id());
                             intent.putExtra("typename",getProfileInfo.getTypeNameVar());
                             intent.putExtra("email",getProfileInfo.getEmailVar());
+                            intent.putExtra("username",getProfileInfo.getUserName());
+                            intent.putExtra("password",getProfileInfo.getPassword());
+                            intent.putExtra("phone",getProfileInfo.getPhone());
+                            intent.putExtra("address",getProfileInfo.getAddress());
                             activity.startActivity(intent);
                         }
                         else if(userType.equals("Charity"))
@@ -494,6 +498,55 @@ public class webServices {
         };
         queue.add(request);
 
+    }
+
+
+
+
+
+    //=========================================================//
+    // TODO Update_rest
+
+    //TODO Update Charity data
+    public void update_restaurant(final Activity activity,final  String type ,final String  oldUserName,final String userName, final String password , final String phone , final String address ,final  String email)
+    {
+        queue = Volley.newRequestQueue(activity);
+        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Intent intent =new Intent(activity,LoginRegisterActivity.class);
+                activity.startActivity(intent);
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Snackbar.make(activity.findViewById(android.R.id.content), "Internet Connection", Snackbar.LENGTH_LONG).show();
+            }
+        })
+
+        {
+            @Override
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+
+                params.put(TYPE, type);
+                params.put(USERNAME, oldUserName);
+
+                params.put(USERNAME, userName);
+                params.put(PASSWORD, password);
+                params.put(PHONE, phone);
+                params.put(ADDRESS, address);
+                params.put(EMAIL, email);
+
+                params.put(TAG,UPDATERESTAURANT );
+                return params;
+            }
+        };
+        queue.add(request);
     }
 
 
