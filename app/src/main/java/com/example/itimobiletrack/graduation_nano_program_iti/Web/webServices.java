@@ -38,12 +38,9 @@ public class webServices {
     public SharedPreferences sharedPreferences ;
     public SharedPreferences.Editor editor;
 
-
-
-
-
     private  GetProfileInfo getProfileInfo ;
     private ProgressDialog mProgressDialog;
+
 
     // TODO Parameters Of Tables and WebService Function
     public static String ID = "id";
@@ -58,6 +55,10 @@ public class webServices {
     public static String CHARITY_PARENT_ID = "charity_parent_id";
     public static String KEY_TOKEN = "token";
 
+
+
+
+
   // For table Tasks
     public static String RESTAURANT_ID = "restaurant_id";
     public static String REQUESTSTAUS = "request_status";
@@ -65,6 +66,9 @@ public class webServices {
     public static String TASKESTIMATEDTIME = "task_estimated_time";
     public static String MEMBER_ID = "member_id";
 
+
+// For table Charity_tasks
+    public static String TASK_ID = "task_id";
 
 
     // TODO Tag that use it to know type of WebService   >> you can here put the TAG  of your method Name ------//
@@ -82,6 +86,8 @@ public class webServices {
     public static String ADDTASK="add_request_toTask";
     public static String GETTASKSPOSTED="getAllRequsts";
     public static String UPDATETOKEN="update_token";
+    public static String UPDATETASK="update_Task";
+    public static String ADDCHARITYTASK="add_Charity_Task";
     private RequestQueue queue;
     private String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
 
@@ -113,16 +119,19 @@ public class webServices {
 
                         getProfileInfo. setUser_id(jsonObject.getString("user_id"));
                         getProfileInfo.setTypeNameVar(jsonObject.getString("typename"));
+                        getProfileInfo.setType(jsonObject.getString("type"));
                         getProfileInfo. setEmailVar(jsonObject.getString("email"));
                         getProfileInfo. setUserName(jsonObject.getString("username"));
                         getProfileInfo. setPassword(jsonObject.getString("password"));
                         getProfileInfo. setPhone(jsonObject.getString("phone"));
                         getProfileInfo. setAddress(jsonObject.getString("address"));
-
+                        getProfileInfo. setCharity_parent_id(jsonObject.getString("charity_parent_id"));
                         if(userType.equals("Restaurant")){
 
                              editor.putInt("id" ,Integer.parseInt(getProfileInfo.getUser_id()));
                              editor.putString("typename" ,getProfileInfo.getTypeNameVar() );
+                             editor.putString("type" ,getProfileInfo.getType() );
+
                              editor.putString("email" , getProfileInfo.getEmailVar());
                              editor.putString("username" , getProfileInfo.getUserName());
                              editor.putString("password" , getProfileInfo.getPassword());
@@ -142,6 +151,7 @@ public class webServices {
 
                             editor.putInt("id" ,Integer.parseInt(getProfileInfo.getUser_id()));
                             editor.putString("typename" ,getProfileInfo.getTypeNameVar() );
+                            editor.putString("type" ,getProfileInfo.getType() );
                             editor.putString("email" , getProfileInfo.getEmailVar());
                             editor.putString("username" , getProfileInfo.getUserName());
                             editor.putString("password" , getProfileInfo.getPassword());
@@ -168,12 +178,14 @@ public class webServices {
 
                             editor.putInt("id" ,Integer.parseInt(getProfileInfo.getUser_id()));
                             editor.putString("typename" ,getProfileInfo.getTypeNameVar() );
+                            editor.putString("type" ,getProfileInfo.getType() );
                             editor.putString("email" , getProfileInfo.getEmailVar());
                             editor.putString("username" , getProfileInfo.getUserName());
                             editor.putString("password" , getProfileInfo.getPassword());
                             editor.putString("phone" , getProfileInfo.getPhone());
                             editor.putString("address" , getProfileInfo.getAddress());
                             editor.putString("token" , getProfileInfo.getToken());
+                            editor.putString("charity_parent_id" , getProfileInfo.getCharity_parent_id());
                             editor.commit();
 
 
@@ -670,6 +682,7 @@ public class webServices {
             public void onResponse(String response) {
                 object.onResponse(response);
 
+
             }
 
         }, new Response.ErrorListener() {
@@ -736,6 +749,93 @@ public class webServices {
         };
         queue.add(request);
     }
+
+
+
+
+
+    // TODO Upate _ Task
+
+
+    public void updateTask(final Activity activity,final int member_id ,final int   id)
+    {
+        queue = Volley.newRequestQueue(activity);
+        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Snackbar.make(activity.findViewById(android.R.id.content), "Now, you Are Accept the task", Snackbar.LENGTH_LONG).show();
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Snackbar.make(activity.findViewById(android.R.id.content), "Internet Connection", Snackbar.LENGTH_LONG).show();
+            }
+        })
+
+        {
+            @Override
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+
+                params.put(MEMBER_ID, ""+member_id);
+                params.put(ID, ""+id);
+                params.put(TAG,UPDATETASK );
+                return params;
+            }
+        };
+        queue.add(request);
+    }
+
+
+
+
+    // TODO Add Charity _ Task
+
+    public void addCharityTask(final Activity activity,final int charityParentId ,   final  int  task_id)
+    {
+
+
+
+        sharedPreferences =activity.getSharedPreferences("register_data" , 0);
+        editor =sharedPreferences.edit();
+
+        queue = Volley.newRequestQueue(activity);
+        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+
+
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Snackbar.make(activity.findViewById(android.R.id.content), "Internet Connection", Snackbar.LENGTH_LONG).show();
+            }
+        })
+
+        {
+            @Override
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+
+                params.put(CHARITY_PARENT_ID, ""+charityParentId);
+                params.put(TASK_ID, ""+task_id);
+
+                params.put(TAG,ADDCHARITYTASK );
+                return params;
+            }
+        };
+        queue.add(request);
+    }
+
+
 
 
 }

@@ -15,6 +15,7 @@ import com.example.itimobiletrack.graduation_nano_program_iti.Charity.CharityPro
 import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
 import com.example.itimobiletrack.graduation_nano_program_iti.Member.MemberProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
 import java.io.IOException;
@@ -47,14 +48,35 @@ private webServices web;
         public void showBigNotification(String title, String message, String url, Intent intent) {
 
 
-            if(web.sharedPreferences.getString("typename" , "******").equals("******")){
+
+            if (web.sharedPreferences.getString("type" , "******").equals("Member")) {
+                intent = new Intent(mCtx, MemberProfile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+
+            }
+
+            else    if (web.sharedPreferences.getString("type" , "******").equals("Charity")) {
+                System.out.println("******"+web.sharedPreferences.getString("type" , "******"));
+                intent = new Intent(mCtx, CharityProfile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+
+            }
+
+            else    if (web.sharedPreferences.getString("type" , "******").equals("Restaurant")) {
+                intent = new Intent(mCtx, RestaurantProfile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+
+            }
+            else {
+
                 intent = new Intent(mCtx, LoginRegisterActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
 
-            }else {
-                intent = new Intent(mCtx, CharityProfile.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+
             }
+
+
+
 
             PendingIntent resultPendingIntent = PendingIntent.getActivity(mCtx, ID_BIG_NOTIFICATION, intent,PendingIntent.FLAG_UPDATE_CURRENT
                     );
@@ -88,24 +110,38 @@ private webServices web;
         //when you will tap on the notification
         public void showSmallNotification(String title, String message, Intent intent) {
 
+            System.out.println("BELAL  "+title  + "      "+message);
 
-            if(web.sharedPreferences.getString("typename" , "******").equals("******")){
-                intent = new Intent(mCtx, LoginRegisterActivity.class);
+            if (web.sharedPreferences.getString("type" , "******").equals("Member")) {
+                intent = new Intent(mCtx, MemberProfile.class);
+                intent.putExtra("title" ,title);
+                intent.putExtra("message" , message);
                 intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
 
-
             }
-             if (web.sharedPreferences.getString("typename" , "******").equals("Charity")) {
+
+          else    if (web.sharedPreferences.getString("type" , "******").equals("Charity")) {
                 intent = new Intent(mCtx, CharityProfile.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
 
             }
 
-             if (web.sharedPreferences.getString("typename" , "******").equals("Member")) {
-                intent = new Intent(mCtx, MemberProfile.class);
+
+            else    if (web.sharedPreferences.getString("type" , "******").equals("Restaurant")) {
+                intent = new Intent(mCtx, RestaurantProfile.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
 
             }
+                 else {
+
+                intent = new Intent(mCtx, LoginRegisterActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+
+
+            }
+
+
+
             PendingIntent resultPendingIntent =
                     PendingIntent.getActivity(
                             mCtx,
@@ -123,7 +159,7 @@ private webServices web;
                     .setContentTitle(title)
                     .setSmallIcon(R.mipmap.green)
                     .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.green))
-                    .setContentText(message)
+                    .setContentText("click to see task")
                     .build();
 
             notification.defaults |= Notification.DEFAULT_SOUND;

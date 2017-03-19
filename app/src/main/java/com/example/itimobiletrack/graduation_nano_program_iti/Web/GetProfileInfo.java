@@ -13,7 +13,26 @@ public class GetProfileInfo {
     private String password;
     private String address;
     private String phone;
+    private  String charity_parent_id;
 
+    public String getCharity_parent_id() {
+        return charity_parent_id;
+    }
+
+    public void setCharity_parent_id(String charity_parent_id) {
+        this.charity_parent_id = charity_parent_id;
+    }
+
+    public String getType() {
+        return type;
+
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    private  String type;
     public String getToken() {
         return token;
     }

@@ -33,7 +33,6 @@ dependencies {
     //for google maps api
 
     // for Volley
-    
 
 
     compile 'com.android.support:appcompat-v7:25.2.0'
@@ -50,6 +49,7 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:10.2.0'
     testCompile 'junit:junit:4.12'
 }
+
 
 
 apply plugin: 'com.google.gms.google-services'

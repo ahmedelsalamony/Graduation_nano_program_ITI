@@ -82,7 +82,7 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
                     gridView.setAdapter(new ImageAdapterGrid(getActivity(), MOBILE_OS));
 
 
-                    btn.setOnClickListener(Restaurant_ProfileFragment.this);
+                     btn.setOnClickListener(Restaurant_ProfileFragment.this);
 
 
 

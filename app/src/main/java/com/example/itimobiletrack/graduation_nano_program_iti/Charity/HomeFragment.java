@@ -48,6 +48,7 @@ public class HomeFragment extends Fragment {
      String[] requests = null;
      String address[]=null;
      String quantity[]=null;
+     String x[];
      private ProgressDialog progressDialog;
     public HomeFragment() {
         // Required empty public constructor
@@ -81,7 +82,7 @@ public class HomeFragment extends Fragment {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject search_object = jsonArray.getJSONObject(i);
                         typeNameBuffer.append(search_object.getString("typename") + "#");
-                        task_quantity.append(search_object.getString("address")+":"+search_object.getString("task_quantity")+":"+search_object.getString("task_estimated_time")+ "#");
+                        task_quantity.append(search_object.getInt("id")+":"+search_object.getString("address")+":"+search_object.getString("task_quantity")+":"+search_object.getString("task_estimated_time")+ "#");
 
                     }
 
@@ -109,30 +110,6 @@ public class HomeFragment extends Fragment {
         });
 
 
-
-
-/*
-        if(requests == null ){
-
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft=fm.beginTransaction();
-            ft.replace(R.id.content_main,new DefaultNoRequestsFragment());
-            ft.commit();
-
-        }else {
-
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft=fm.beginTransaction();
-            ft.replace(R.id.content_main,new HomeFragment());
-            ft.commit();
-
-
-
-//=============
-
-        }
-*/
-
         requests_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -147,10 +124,10 @@ public class HomeFragment extends Fragment {
                 Button   assignBtn= (Button) dialog.findViewById(R.id.xAssignTaskBtn);
 
 
-                String x[] = quantity[position].split(":");
-                address.setText(x[0]);
-                taskQuantity.setText(x[1]);
-                taskEstimatedTime.setText(x[2]);
+                 x = quantity[position].split(":");
+                address.setText(x[1]);
+                taskQuantity.setText(x[2]);
+                taskEstimatedTime.setText(x[3]);
                 dialog.show();
 
 
@@ -184,9 +161,10 @@ public class HomeFragment extends Fragment {
                             protected Map<String,String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
                                 params.put("title","Task From Charity" );
-                                params.put("message", address.getText().toString() + " \n " +taskQuantity.getText().toString() +" \n "+taskEstimatedTime.getText().toString());
+                                params.put("message",x[0]+"#"+ address.getText().toString() + "#" +taskQuantity.getText().toString() +"#"+taskEstimatedTime.getText().toString()+"#");
                                 params.put("charity_parent_id", ""+web.sharedPreferences.getInt("id" , 0));
-//
+
+
 //                            if (!TextUtils.isEmpty(image))
 //                                params.put("image", image);
                                 return params;
