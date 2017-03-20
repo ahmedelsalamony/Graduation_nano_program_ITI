@@ -23,7 +23,6 @@ public class SplashActivity extends AwesomeSplash {
         configSplash.setRevealFlagY(Flags.REVEAL_BOTTOM); //or Flags.REVEAL_TOP
 
         //Choose LOGO OR PATH; if you don't provide String value for path it's logo by default
-/*
 
         //Customize Logo
         configSplash.setLogoSplash(R.drawable.green); //or any other drawable
@@ -31,9 +30,9 @@ public class SplashActivity extends AwesomeSplash {
         configSplash.setAnimLogoSplashTechnique(Techniques.FlipInX);
         configSplash.setPathSplashFillColor(R.color.colorAccent);
         //choose one form Techniques (ref: https://github.com/daimajia/AndroidViewAnimations)
-*/
 
 
+/*
         //Customize Path
         configSplash.setPathSplash(SyncStateContract.Constants.CONTENT_DIRECTORY); //set path String
         configSplash.setOriginalHeight(400); //in relation to your svg (path) resource
@@ -43,6 +42,7 @@ public class SplashActivity extends AwesomeSplash {
         configSplash.setPathSplashStrokeColor(R.color.accent); //any color you want form colors.xml
         configSplash.setAnimPathFillingDuration(1000);
         configSplash.setPathSplashFillColor(R.color.Wheat); //path object filling color
+*/
 
 
 
@@ -60,7 +60,7 @@ public class SplashActivity extends AwesomeSplash {
     //--------------------this refer to the next screen after splash screen finished----------------------//
     @Override
     public void animationsFinished() {
-        Intent i =new Intent(SplashActivity.this,MainActivity.class);
+        Intent i =new Intent(SplashActivity.this,Registeration.class);
         startActivity(i);
     }
 }

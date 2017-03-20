@@ -5,11 +5,11 @@
     <color name="primary_light">#cdf2ff</color>
     <color name="accent">#ff9e89</color>
     <color name="primary_text">#212121</color>
-    <color name="secondary_text">#727272</color>
+    <color name="secondary_text">#665baa</color>
     <color name="icons">#FFFFFF</color>
-    <color name="divider">#B6B6B6</color>
-    <color name="colorPrimary">#00a5f1</color>
-    <color name="colorPrimaryDark">#665baa</color>
+    <color name="divider">#665baa</color>
+    <color name="colorPrimary">#0000a5f1</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#ff9e89</color>
 
 
