@@ -1,15 +1,26 @@
 package com.example.itimobiletrack.graduation_nano_program_iti;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import android.widget.Toast;
 
 import static android.support.design.R.styleable.TextInputLayout;
@@ -19,6 +30,10 @@ public class Registeration extends AppCompatActivity {
     TextView txtTitle;
     EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress,edtCharity;
     RadioButton rdCharity,rdRestaurant;
+    TextInputLayout layCharity, layRestaurant, layAddress;
+    boolean flag = false;
+    Intent intent;
+    public Place startAddress;
     TextInputLayout layCharity;
 
 
@@ -37,6 +52,9 @@ public class Registeration extends AppCompatActivity {
         rdCharity=(RadioButton)findViewById(R.id.xrdCharity);
         rdRestaurant=(RadioButton)findViewById(R.id.xrdRestaurant);
         layCharity=(TextInputLayout)findViewById(R.id.input_layout_CharityName);
+        layRestaurant=(TextInputLayout)findViewById(R.id.input_layout_RestuarantName);
+        layAddress = (TextInputLayout) findViewById(R.id.input_layout_Address);
+        edtRestaurant.setVisibility(View.INVISIBLE);
         txtTitle= (TextView) findViewById(R.id.xTitle);
 
 
@@ -45,6 +63,19 @@ public class Registeration extends AppCompatActivity {
         layCharity.setVisibility(View.INVISIBLE);
         edtCharity.setVisibility(View.INVISIBLE);
 
+
+        if (rdCharity.isChecked()) {
+            edtCharity.setVisibility(View.VISIBLE);
+        } else if (!rdCharity.isChecked()){
+            edtRestaurant.setVisibility(View.VISIBLE);
+            edtCharity.setVisibility(View.VISIBLE);
+        }else if (rdRestaurant.isChecked()){
+            edtCharity.setVisibility(View.GONE);
+            edtRestaurant.setVisibility(View.VISIBLE);
+        }else if (!rdRestaurant.isChecked()){
+            edtRestaurant.setVisibility(View.VISIBLE);
+            edtCharity.setVisibility(View.VISIBLE);
+        }
 
 
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/title.ttf");
@@ -73,6 +104,44 @@ public class Registeration extends AppCompatActivity {
             }
         });
 
+
+        edtAddress.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                flag = false;
+                try {
+                    intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY).build(Registeration.this);
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                }
+                startActivityForResult(intent, 1);
+                return false;
+            }
+        });
+
+
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+
+                if (flag == false) {
+                    startAddress = PlaceAutocomplete.getPlace(this, data);
+                    edtAddress.setText(startAddress.getAddress());
+                    Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+                }
+
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(this, data);
+                Log.e("Tag", status.getStatusMessage());
+
+            } else if (resultCode == RESULT_CANCELED) {
+            }
+        }
         }
 
     @Override

@@ -57,7 +57,9 @@
                     android:id="@+id/xPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="enter password" />
+                    android:hint="enter password"
+                    android:inputType="textPassword"
+                    />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -71,7 +73,9 @@
                     android:id="@+id/xConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="enter confirmPassword" />
+                    android:hint="enter confirmPassword"
+                    android:inputType="textPassword"
+                    />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -84,7 +88,9 @@
                     android:id="@+id/xEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="enter Email" />
+                    android:hint="enter Email"
+                    android:inputType="textEmailAddress"
+                    />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -97,7 +103,9 @@
                     android:id="@+id/xPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="enter Phone" />
+                    android:hint="enter Phone"
+                    android:inputType="phone"
+                    />
 
             </android.support.design.widget.TextInputLayout>
 
