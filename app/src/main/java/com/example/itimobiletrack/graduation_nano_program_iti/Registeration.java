@@ -23,14 +23,13 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import android.widget.Toast;
 
-import static android.support.design.R.styleable.TextInputLayout;
 
 public class Registeration extends AppCompatActivity {
 
     TextView txtTitle;
-    EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress,edtCharity;
+    EditText edtUserName,edtRestaurant,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress,edtCharity;
     RadioButton rdCharity,rdRestaurant;
-    TextInputLayout layCharity, layRestaurant, layAddress;
+    TextInputLayout  layRestaurant, layAddress;
     boolean flag = false;
     Intent intent;
     public Place startAddress;
@@ -48,21 +47,10 @@ public class Registeration extends AppCompatActivity {
         edtEmail=(EditText)findViewById(R.id.xEmail);
         edtPhone=(EditText)findViewById(R.id.xPhone);
         edtAddress=(EditText)findViewById(R.id.xAddress);
+        edtRestaurant=(EditText)findViewById(R.id.xRestaurantName);
         edtCharity=(EditText)findViewById(R.id.xCharityName);
         rdCharity=(RadioButton)findViewById(R.id.xrdCharity);
         rdRestaurant=(RadioButton)findViewById(R.id.xrdRestaurant);
-        layCharity=(TextInputLayout)findViewById(R.id.input_layout_CharityName);
-        layRestaurant=(TextInputLayout)findViewById(R.id.input_layout_RestuarantName);
-        layAddress = (TextInputLayout) findViewById(R.id.input_layout_Address);
-        edtRestaurant.setVisibility(View.INVISIBLE);
-        txtTitle= (TextView) findViewById(R.id.xTitle);
-
-
-
-
-        layCharity.setVisibility(View.INVISIBLE);
-        edtCharity.setVisibility(View.INVISIBLE);
-
 
         if (rdCharity.isChecked()) {
             edtCharity.setVisibility(View.VISIBLE);
@@ -105,9 +93,9 @@ public class Registeration extends AppCompatActivity {
         });
 
 
-        edtAddress.setOnTouchListener(new View.OnTouchListener() {
+        edtAddress.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
+            public void onClick(View view) {
                 flag = false;
                 try {
                     intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY).build(Registeration.this);
@@ -117,7 +105,6 @@ public class Registeration extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 startActivityForResult(intent, 1);
-                return false;
             }
         });
 

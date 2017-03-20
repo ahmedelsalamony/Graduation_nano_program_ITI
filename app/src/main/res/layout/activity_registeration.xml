@@ -145,6 +145,23 @@
                 android:textColor="@color/Black"
                 ></android.support.v7.widget.AppCompatRadioButton>
             </RadioGroup>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_RestaurantName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/xRestaurantName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="RestaurantName"
+                    />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_layout_CharityName"
                 android:layout_width="match_parent"
@@ -154,7 +171,8 @@
                     android:id="@+id/xCharityName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                     />
+                    android:hint="CharityName"
+                    />
 
 
             </android.support.design.widget.TextInputLayout>
