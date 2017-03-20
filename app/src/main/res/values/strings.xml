@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Graduation_nano_program_ITI</string>
+
+    <string-array name="colors">
+        <item>@color/primary</item>
+        <item>@color/accent</item>
+        <item>@color/Brown</item>
+        <item>@color/Cyan</item>
+        <item>@color/Beige</item>
+        <item>@color/Coral</item>
+        <item>@color/Chocolate</item>
+        <item>@color/Green</item>
+        <item>@color/DarkViolet</item>
+        <item>@color/WhiteSmoke</item>
+        <item>@color/Black</item>
+        <item>@color/Blue</item>
+        <item>@color/DarkRed</item>
+        <item>@color/DodgerBlue</item>
+        <item>@color/YellowGreen</item>
+    </string-array>
 </resources>
