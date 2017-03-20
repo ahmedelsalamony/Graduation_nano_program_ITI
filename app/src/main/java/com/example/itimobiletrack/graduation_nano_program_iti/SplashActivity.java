@@ -49,12 +49,12 @@ public class SplashActivity extends AwesomeSplash {
 
 
         //Customize Title
-        configSplash.setTitleSplash("RE-restaurant");
-        configSplash.setTitleTextColor(R.color.primary_text);
-        configSplash.setTitleTextSize(30f); //float value
+        configSplash.setTitleSplash("Re-restaurant");
+        configSplash.setTitleTextColor(R.color.WhiteSmoke);
+        configSplash.setTitleTextSize(60f); //float value
         configSplash.setAnimTitleDuration(1500);
         configSplash.setAnimTitleTechnique(Techniques.FlipInX);
-        configSplash.setTitleFont("fonts/germania_one.ttf"); //provide string to your font located in assets/fonts/
+        configSplash.setTitleFont("fonts/title.ttf"); //provide string to your font located in assets/fonts/
 
 
     }
