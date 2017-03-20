@@ -1,5 +1,6 @@
 package com.example.itimobiletrack.graduation_nano_program_iti;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -57,8 +58,6 @@ public class Registeration extends AppCompatActivity {
                    layCharity.setVisibility(View.VISIBLE);
                    edtCharity.setVisibility(View.VISIBLE);
                    edtCharity.setHint("Charity name");
-
-
                    return false;
                }
            });
@@ -67,18 +66,20 @@ public class Registeration extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-
                 layCharity.setVisibility(View.VISIBLE);
                 edtCharity.setVisibility(View.VISIBLE);
                 edtCharity.setHint("Restaurant name");
-
-
-
                 return false;
             }
         });
 
         }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(Registeration.this,LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
