@@ -33,7 +33,7 @@ public class Registeration extends AppCompatActivity {
     boolean flag = false;
     Intent intent;
     public Place startAddress;
-    TextInputLayout layCharity;
+    TextInputLayout layCharity,LayRestaurant;
 
 
     @Override
@@ -47,12 +47,12 @@ public class Registeration extends AppCompatActivity {
         edtEmail=(EditText)findViewById(R.id.xEmail);
         edtPhone=(EditText)findViewById(R.id.xPhone);
         edtAddress=(EditText)findViewById(R.id.xAddress);
-        edtRestaurant=(EditText)findViewById(R.id.xRestaurantName);
         edtCharity=(EditText)findViewById(R.id.xCharityName);
         rdCharity=(RadioButton)findViewById(R.id.xrdCharity);
         rdRestaurant=(RadioButton)findViewById(R.id.xrdRestaurant);
+        layCharity=(TextInputLayout)findViewById(R.id.input_layout_CharityName) ;
 
-        if (rdCharity.isChecked()) {
+    /*    if (rdCharity.isChecked()) {
             edtCharity.setVisibility(View.VISIBLE);
         } else if (!rdCharity.isChecked()){
             edtRestaurant.setVisibility(View.VISIBLE);
@@ -64,7 +64,7 @@ public class Registeration extends AppCompatActivity {
             edtRestaurant.setVisibility(View.VISIBLE);
             edtCharity.setVisibility(View.VISIBLE);
         }
-
+*/
 
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/title.ttf");
         txtTitle.setTypeface(custom_font);
