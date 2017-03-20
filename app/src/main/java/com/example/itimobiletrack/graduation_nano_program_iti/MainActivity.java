@@ -1,5 +1,6 @@
 package com.example.itimobiletrack.graduation_nano_program_iti;
 
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,5 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        Toast.makeText(this,"Main Activity",Toast.LENGTH_SHORT).show();
     }
 }

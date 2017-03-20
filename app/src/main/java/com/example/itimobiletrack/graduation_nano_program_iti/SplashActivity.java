@@ -60,7 +60,7 @@ public class SplashActivity extends AwesomeSplash {
     //--------------------this refer to the next screen after splash screen finished----------------------//
     @Override
     public void animationsFinished() {
-        Intent i =new Intent(SplashActivity.this,Registeration.class);
+        Intent i =new Intent(SplashActivity.this,LoginActivity.class);
         startActivity(i);
     }
 }
