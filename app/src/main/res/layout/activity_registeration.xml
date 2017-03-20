@@ -23,7 +23,7 @@
             <TextView
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="25dp"
-                android:textColor="@color/accent"
+                android:textColor="@color/primary"
                 android:textStyle="bold"
                 android:textSize="50sp"
                 android:gravity="center"
@@ -65,12 +65,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/xConfirmPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="enter confirmPassword" />
-
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -90,6 +84,13 @@
                 android:id="@+id/input_layout_Phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/xConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="enter confirmPassword"
+                    android:layout_weight="1" />
 
                 <EditText
                     android:id="@+id/xPhone"
