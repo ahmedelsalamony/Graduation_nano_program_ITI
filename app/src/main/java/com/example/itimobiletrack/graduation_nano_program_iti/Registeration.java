@@ -27,13 +27,12 @@ import android.widget.Toast;
 public class Registeration extends AppCompatActivity {
 
     TextView txtTitle;
-    EditText edtUserName,edtRestaurant,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress,edtCharity;
+    EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress,edtCharity;
     RadioButton rdCharity,rdRestaurant;
-    TextInputLayout  layRestaurant, layAddress;
     boolean flag = false;
     Intent intent;
     public Place startAddress;
-    TextInputLayout layCharity,LayRestaurant;
+    TextInputLayout layCharity;
 
 
     @Override
@@ -134,7 +133,7 @@ public class Registeration extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(Registeration.this,LoginActivity.class);
+        Intent intent = new Intent(Registeration.this,LoginRegisterPhase.class);
         startActivity(intent);
         finish();
     }

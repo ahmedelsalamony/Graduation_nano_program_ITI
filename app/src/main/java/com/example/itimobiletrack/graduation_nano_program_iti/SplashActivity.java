@@ -56,13 +56,12 @@ public class SplashActivity extends AwesomeSplash {
         configSplash.setAnimTitleTechnique(Techniques.FlipInX);
         configSplash.setTitleFont("fonts/title.ttf"); //provide string to your font located in assets/fonts/
 
-
     }
 
     //--------------------this refer to the next screen after splash screen finished----------------------//
     @Override
     public void animationsFinished() {
-        Intent i =new Intent(SplashActivity.this,LoginActivity.class);
+        Intent i =new Intent(SplashActivity.this,LoginRegisterPhase.class);
         startActivity(i);
         finish();
     }

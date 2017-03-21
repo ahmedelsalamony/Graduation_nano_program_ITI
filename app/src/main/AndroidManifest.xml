@@ -16,6 +16,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDtTzMMUUgAy5Mo0KmlmncFuTQKefozLnQ" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,16 +37,13 @@
             android:name=".Registeration"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            ></activity>
-        <activity
             android:name=".Registeration"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".CharityProfile"
             android:label="@string/title_activity_charity_profile"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LoginRegisterPhase"></activity>
     </application>
 
 </manifest>

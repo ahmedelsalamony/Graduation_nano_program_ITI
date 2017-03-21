@@ -88,8 +88,17 @@
                 android:layout_marginRight="30dp"
                 android:background="#00A5F1"
                 android:textColor="@color/WhiteSmoke"
-                android:text="Don't have account Signup here!"/>
-
+                android:text="Don't have account Signup here!"
+                android:onClick="toSignUp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="forget password ?"
+                android:textColor="@color/Black"
+                android:onClick="toForgetPassword"
+                />
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>
