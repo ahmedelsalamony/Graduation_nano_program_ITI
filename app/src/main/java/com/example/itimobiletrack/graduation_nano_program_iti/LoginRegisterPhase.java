@@ -9,11 +9,16 @@ import android.view.View;
 import android.widget.Toast;
 
 public class LoginRegisterPhase extends AppCompatActivity {
-    FragmentManager fm;
+
+    private  FragmentManager fm;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register_phase);
+
+
         // get fragment manager
          fm = getFragmentManager();
         // add
@@ -21,8 +26,6 @@ public class LoginRegisterPhase extends AppCompatActivity {
         ft.replace(R.id.xPlaceHolder, new LoginFragment());
         ft.addToBackStack(null);
 
-        // alternatively add it with a tag
-        // trx.add(R.id.your_placehodler, new YourFragment(), "detail");
         ft.commit();
 
 
@@ -43,5 +46,7 @@ public class LoginRegisterPhase extends AppCompatActivity {
         ft.commit();
 
     }
+
+
 
 }

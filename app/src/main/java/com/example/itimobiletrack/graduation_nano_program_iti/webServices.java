@@ -2,8 +2,6 @@ package com.example.itimobiletrack.graduation_nano_program_iti;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -46,7 +44,7 @@ public class webServices {
 
     String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
 
-    //----------------------------------
+    // TODO Login Method ----------------------------------//
     public void user_login(final Activity activity, final String username, final String password){
 
         queue = Volley.newRequestQueue(activity);
@@ -59,19 +57,16 @@ public class webServices {
                     String login_response=jsonObject.getString("login_response");
 
                     if(login_response.equals("done")) {
-                        Toast.makeText(activity, jsonObject.toString()+"       \n" +
-                                "after if", Toast.LENGTH_SHORT).show();
 
                         String id = jsonObject.getString("user_id");
                         String userType = jsonObject.getString("type");
+
                         if(userType.equals("restaurant")){
                             Toast.makeText(activity, "Open Restaurant Profile", Toast.LENGTH_SHORT).show();
                         }else {
                             Toast.makeText(activity, "Determine user type", Toast.LENGTH_SHORT).show();
 
-
                         }
-                        //TODO Code of Profile login
 
 
                     }
@@ -108,6 +103,10 @@ public class webServices {
         queue.add(request);
 
     }
+
+
+
+    // TODO Register Method --------------------//
 
     public void addUser(final Activity activity, final String username, final String password, final String email,
                         final String phone, final String address, final String type ,final  String typename, final int status)

@@ -37,6 +37,10 @@ public class RegisterFragment extends Fragment {
     Intent intent;
     public Place startAddress;
     TextInputLayout layCharity;
+
+
+    private  webServices web;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,10 @@ public class RegisterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.activity_registeration, parent, false);
+
+
+        web=new webServices();
+
         txtTitle=(TextView)v.findViewById(R.id.xTitle);
         edtUserName=(EditText)v.findViewById(R.id.xUserName);
         edtPassword=(EditText)v.findViewById(R.id.xPassword);
@@ -122,6 +130,37 @@ public class RegisterFragment extends Fragment {
             }
         }
     }
+
+
+
+
+    // TODO SignUP Action to database
+  public  void registerToDatabse(View view){
+
+      String userName=edtUserName.getText().toString();
+      String password=edtPassword.getText().toString();
+      String email=edtEmail.getText().toString();
+      String phone=edtPhone.getText().toString();
+      String address=edtAddress.getText().toString();
+      String type=null;
+
+      if(rdRestaurant.isChecked()){
+          type=rdRestaurant.getText().toString();
+      }
+      else{
+          type=rdCharity.getText().toString();
+      }
+
+     String typeName =edtCharity.getText().toString();
+
+
+    web.addUser(getActivity(),userName,password,email,phone,address,type,typeName,0);
+
+
+
+  }
+
+
 
 
 }
