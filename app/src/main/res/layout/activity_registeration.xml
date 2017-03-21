@@ -163,7 +163,8 @@
 
 
             <Button
-                android:onClick="registerToDatabse"
+                android:onClick="toSaveInfo"
+                android:id="@+id/xbtnsave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/txtstyle"

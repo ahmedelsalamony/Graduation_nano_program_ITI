@@ -37,9 +37,6 @@
             android:name=".Registeration"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Registeration"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
             android:name=".CharityProfile"
             android:label="@string/title_activity_charity_profile"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -18,7 +18,7 @@ public class LoginRegisterPhase extends AppCompatActivity {
          fm = getFragmentManager();
         // add
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.xPlaceHolder, new LoginFragment());
+        ft.replace(R.id.xPlaceHolder, new LoginFragment());
         ft.addToBackStack(null);
 
         // alternatively add it with a tag
@@ -30,7 +30,7 @@ public class LoginRegisterPhase extends AppCompatActivity {
     public void toSignUp(View v){
         // replace
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.xPlaceHolder, new RegisterFragment());
+        ft.replace(R.id.xPlaceHolder, new RegisterFragment());
         ft.addToBackStack(null);
         ft.commit();
     }

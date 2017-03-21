@@ -45,8 +45,12 @@ public class LoginFragment extends Fragment {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),Registeration.class);
-                startActivity(intent);
+                // replace
+                FragmentManager fm=getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.xPlaceHolder, new RegisterFragment());
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
         // Set up the login form.

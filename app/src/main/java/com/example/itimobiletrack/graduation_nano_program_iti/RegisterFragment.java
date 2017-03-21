@@ -3,13 +3,13 @@ package com.example.itimobiletrack.graduation_nano_program_iti;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -42,7 +42,6 @@ public class RegisterFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.activity_registeration, parent, false);
@@ -57,6 +56,13 @@ public class RegisterFragment extends Fragment {
         rdCharity=(RadioButton)v.findViewById(R.id.xrdCharity);
         rdRestaurant=(RadioButton)v.findViewById(R.id.xrdRestaurant);
         layCharity=(TextInputLayout)v.findViewById(R.id.input_layout_CharityName) ;
+        Button btn=(Button)v.findViewById(R.id.xbtnsave);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "registerationnnn", Toast.LENGTH_SHORT).show();
+            }
+        });
         rdCharity.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -116,4 +122,6 @@ public class RegisterFragment extends Fragment {
             }
         }
     }
+
+
 }

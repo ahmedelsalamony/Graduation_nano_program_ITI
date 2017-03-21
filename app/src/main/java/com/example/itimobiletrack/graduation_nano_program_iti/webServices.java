@@ -117,7 +117,7 @@ public class webServices {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(activity, " register done", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(activity, LoginActivity.class);
+                Intent intent = new Intent(activity, LoginRegisterPhase.class);
                 activity.startActivity(intent);
             }
 
