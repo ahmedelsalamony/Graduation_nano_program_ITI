@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_members"
+            android:icon="@android:drawable/ic_menu_view"
+            android:title="Members" />
+        <item
+            android:id="@+id/nav_edit"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:title="Edit" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@android:drawable/ic_menu_help"
+            android:title="About us" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Logout" />
+
+    </group>
+
+
+
+</menu>
