@@ -34,6 +34,8 @@ public class RestaurantProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_profile);
+        //this line to delete shadow between actionbar and tool bar
+        getSupportActionBar().setElevation(0);
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setTitle("");
 
