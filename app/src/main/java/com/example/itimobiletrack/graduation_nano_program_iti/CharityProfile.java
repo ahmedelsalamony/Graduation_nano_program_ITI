@@ -34,12 +34,10 @@ public class CharityProfile extends AppCompatActivity
         getProfileInfo = new GetProfileInfo();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.green);
+
 
         /*Default fragment*/
-        HomeFragment homeFragment = new HomeFragment();
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.content_main,homeFragment,homeFragment.getTag()).commit();
 
 //        /*the floating action button declaration and action*/
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

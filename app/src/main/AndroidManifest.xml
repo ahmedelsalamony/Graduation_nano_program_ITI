@@ -39,7 +39,8 @@
         <activity
             android:name=".CharityProfile"
             android:label="@string/title_activity_charity_profile"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity android:name=".LoginRegisterPhase" />
         <activity android:name=".SendRateActivity"></activity>
     </application>

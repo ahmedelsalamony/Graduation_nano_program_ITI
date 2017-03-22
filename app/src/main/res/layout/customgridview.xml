@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/grid_item_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginRight="10px"
-        android:src="@drawable/green" >
+        android:src="@drawable/img1" >
     </ImageView>
 
     <TextView

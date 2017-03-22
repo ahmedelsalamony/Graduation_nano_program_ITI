@@ -56,14 +56,14 @@ public class ImageAdapterGrid extends BaseAdapter {
 
             String mobile = CharityValues[position];
 
-            if (mobile.equals("Windows")) {
-                imageView.setImageResource(R.drawable.green);
-            } else if (mobile.equals("iOS")) {
-                imageView.setImageResource(R.drawable.green);
-            } else if (mobile.equals("Blackberry")) {
-                imageView.setImageResource(R.drawable.green);
+            if (mobile.equals("charity1")) {
+                imageView.setImageResource(R.drawable.img1);
+            } else if (mobile.equals("charity2")) {
+                imageView.setImageResource(R.drawable.img2);
+            } else if (mobile.equals("charity3")) {
+                imageView.setImageResource(R.drawable.img3);
             } else {
-                imageView.setImageResource(R.drawable.green);
+                imageView.setImageResource(R.drawable.img4);
             }
 
         } else {

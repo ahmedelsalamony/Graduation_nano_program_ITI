@@ -20,6 +20,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import static com.example.itimobiletrack.graduation_nano_program_iti.R.layout.dialog;
@@ -27,12 +28,17 @@ import static com.example.itimobiletrack.graduation_nano_program_iti.R.layout.di
 public class RestaurantProfile extends AppCompatActivity {
     FragmentManager fragmentManager;
     ImageView imageView;
-
+     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_profile);
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setTitle("");
+
+         TextView txt=(TextView)findViewById(R.id.xTxtTitleBar);
+          txt.setText(getIntent().getStringExtra("typename"));
 
 
         fragmentManager = getFragmentManager();
