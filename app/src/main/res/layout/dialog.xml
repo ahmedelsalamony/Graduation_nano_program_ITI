@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:inputType="textMultiLine"
+    android:ems="10"
+        android:hint="Quantity of Food"
+    android:id="@+id/xquantity"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_marginTop="11dp"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true" />
+
+
+    <Button
+        android:text="Send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/xbtnsend"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp"
+        android:onClick="onClick"
+        android:layout_marginBottom="137dp" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/xbtnsend"
+        android:layout_alignRight="@+id/xtime"
+        android:layout_alignEnd="@+id/xtime"
+        android:layout_marginRight="82dp"
+        android:layout_marginEnd="82dp"
+        android:onClick="onClick"
+        android:id="@+id/xbtncancel" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/xtime"
+        android:hint="Estimated Time"
+        android:layout_marginTop="94dp"
+        android:layout_below="@+id/xquantity"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

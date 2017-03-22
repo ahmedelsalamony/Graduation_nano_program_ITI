@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/green"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/xAboutInfo"
+        android:layout_below="@+id/imageView2"
+        android:text=" this is our app it helps people to eat
+ and consume unused food in a good way developed by iti
+ group :mohamed , ahmed ,mahmoud , amin"
+        android:layout_centerHorizontal="true"
+
+        />
+</RelativeLayout>
