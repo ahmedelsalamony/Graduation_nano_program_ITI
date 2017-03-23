@@ -19,15 +19,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDtTzMMUUgAy5Mo0KmlmncFuTQKefozLnQ" />
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".Login.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,14 +28,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RestaurantProfile" />
+        <activity android:name=".Restaurant.RestaurantProfile" />
         <activity
-            android:name=".Association.CharityProfile"
+            android:name=".Charity.CharityProfile"
             android:label="@string/title_activity_charity_profile"
             android:theme="@style/AppTheme.NoActionBar"
             />
-        <activity android:name=".LoginRegisterPhase" />
-        <activity android:name=".SendRateActivity"></activity>
+        <activity android:name=".Login.LoginRegisterActivity" />
+        <activity android:name=".Restaurant.SendRateActivity"></activity>
     </application>
 
 </manifest>

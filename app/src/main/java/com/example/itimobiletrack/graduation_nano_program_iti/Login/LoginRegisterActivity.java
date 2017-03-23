@@ -1,17 +1,17 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Toast;
 
-public class LoginRegisterPhase extends AppCompatActivity {
+import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RegisterFragment;
+
+public class LoginRegisterActivity extends AppCompatActivity {
 
     private  FragmentManager fm;
-    private  FragmentReplace fragmentReplace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

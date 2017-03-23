@@ -1,4 +1,4 @@
-package com.example.itimobiletrack.graduation_nano_program_iti.Association;
+package com.example.itimobiletrack.graduation_nano_program_iti.Charity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

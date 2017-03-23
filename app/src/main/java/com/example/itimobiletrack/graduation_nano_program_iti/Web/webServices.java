@@ -1,4 +1,4 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Web;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,7 +11,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.itimobiletrack.graduation_nano_program_iti.Association.CharityProfile;
+import com.example.itimobiletrack.graduation_nano_program_iti.Charity.CharityProfile;
+import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
+import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -149,7 +151,7 @@ public class webServices {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(activity, " register done", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(activity, LoginRegisterPhase.class);
+                Intent intent = new Intent(activity, LoginRegisterActivity.class);
                 activity.startActivity(intent);
             }
 

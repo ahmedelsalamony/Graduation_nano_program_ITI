@@ -5,7 +5,7 @@
     android:id="@+id/activity_restaurant_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.itimobiletrack.graduation_nano_program_iti.RestaurantProfile"
+    tools:context="com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile"
     android:orientation="vertical"
     android:weightSum="1"
     >

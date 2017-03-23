@@ -1,4 +1,4 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -16,6 +16,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.request_interface;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,7 +31,7 @@ public class ForgetPass extends Fragment {
 
     private EditText edRestorePassword;
     private Button   buRestorePassword;
-    private  webServices web;
+    private webServices web;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

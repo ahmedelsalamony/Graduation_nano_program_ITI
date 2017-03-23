@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.itimobiletrack.graduation_nano_program_iti.SendRateActivity">
+    tools:context="com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.SendRateActivity">
 
     <Button
         android:text="send request to charity"

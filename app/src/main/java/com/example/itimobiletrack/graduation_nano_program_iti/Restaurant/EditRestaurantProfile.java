@@ -1,4 +1,4 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 
 
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.itimobiletrack.graduation_nano_program_iti.R;
 
 
 public class EditRestaurantProfile extends Fragment {

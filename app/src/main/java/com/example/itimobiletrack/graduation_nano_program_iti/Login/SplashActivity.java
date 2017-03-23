@@ -1,12 +1,9 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
 import android.content.Intent;
-import android.provider.SyncStateContract;
-import android.support.v4.media.MediaBrowserCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.daimajia.androidanimations.library.Techniques;
+import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
@@ -61,7 +58,7 @@ public class SplashActivity extends AwesomeSplash {
     //--------------------this refer to the next screen after splash screen finished----------------------//
     @Override
     public void animationsFinished() {
-        Intent i =new Intent(SplashActivity.this,LoginRegisterPhase.class);
+        Intent i =new Intent(SplashActivity.this,LoginRegisterActivity.class);
         startActivity(i);
         finish();
     }

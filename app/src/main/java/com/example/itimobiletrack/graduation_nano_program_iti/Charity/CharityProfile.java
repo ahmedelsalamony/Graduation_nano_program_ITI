@@ -1,4 +1,4 @@
-package com.example.itimobiletrack.graduation_nano_program_iti.Association;
+package com.example.itimobiletrack.graduation_nano_program_iti.Charity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.itimobiletrack.graduation_nano_program_iti.GetProfileInfo;
-import com.example.itimobiletrack.graduation_nano_program_iti.LoginRegisterPhase;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.GetProfileInfo;
+import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 
 public class CharityProfile extends AppCompatActivity
@@ -124,7 +124,7 @@ public class CharityProfile extends AppCompatActivity
             manager.beginTransaction().replace(R.id.content_main,aboutFragment,aboutFragment.getTag()).commit();
 
         } else if (id == R.id.nav_logout) {
-            Intent intent  = new Intent(CharityProfile.this, LoginRegisterPhase.class);
+            Intent intent  = new Intent(CharityProfile.this, LoginRegisterActivity.class);
             startActivity(intent);
             finish();
 

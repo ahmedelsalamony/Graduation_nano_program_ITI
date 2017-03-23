@@ -1,28 +1,21 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.zip.Inflater;
+import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RegisterFragment;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
 /**
  * Created by ahmed on 3/21/2017.
@@ -36,8 +29,7 @@ public class LoginFragment extends Fragment {
     private View mLoginFormView;
     private Button signUp;
 
-    private  webServices web;
-    private  FragmentReplace fragmentReplace;
+    private webServices web;
 
 
     @Override

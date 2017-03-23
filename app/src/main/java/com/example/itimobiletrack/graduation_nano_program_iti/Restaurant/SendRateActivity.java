@@ -1,4 +1,4 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -7,8 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.itimobiletrack.graduation_nano_program_iti.R;
 
 public class SendRateActivity extends AppCompatActivity {
 

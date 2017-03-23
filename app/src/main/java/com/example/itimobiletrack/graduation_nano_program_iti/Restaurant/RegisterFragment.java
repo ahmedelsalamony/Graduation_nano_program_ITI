@@ -1,4 +1,4 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
@@ -43,7 +45,7 @@ public class RegisterFragment extends Fragment {
     TextInputLayout layCharity;
 
 
-    private  webServices web;
+    private webServices web;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
