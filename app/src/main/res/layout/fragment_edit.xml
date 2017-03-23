@@ -85,6 +85,7 @@
             android:layout_marginLeft="10dp"
             android:text="Save"
             android:background="#00A5F1"
+            android:textColor="@color/WhiteSmoke"
             android:id="@+id/Save"
             android:layout_margin="5dp"
             />
@@ -96,6 +97,7 @@
             android:layout_marginLeft="10dp"
             android:text="Cancel"
             android:background="#00A5F1"
+            android:textColor="@color/WhiteSmoke"
             android:id="@+id/Cancel"
             android:layout_margin="5dp"/>
 

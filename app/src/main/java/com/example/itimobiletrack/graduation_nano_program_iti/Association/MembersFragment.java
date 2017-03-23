@@ -1,13 +1,20 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Association;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.itimobiletrack.graduation_nano_program_iti.R;
 
 
 /**
@@ -15,11 +22,16 @@ import android.widget.ListView;
  */
 public class MembersFragment extends Fragment {
 
+    FloatingActionButton fab;
 
     public MembersFragment() {
         // Required empty public constructor
     }
 
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+        fab = (FloatingActionButton) getActivity().findViewById(R.id.floatingActionButton);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,7 +39,7 @@ public class MembersFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_members, container, false);
 
-        String[] members = {"mahmod","ahmed","mohamed","mostafa","shady","omar","kareem","said","salem","nour","peter","hossam"};
+        String[] members = {"mahmod","ahmed","mohamed","mostafa","shady","omar","kareem","said","salem","nour","peter","hossam","123","456","whatever"};
 
         ListView members_list = (ListView) view.findViewById(R.id.members);
 

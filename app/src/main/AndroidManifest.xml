@@ -37,7 +37,7 @@
         </activity>
         <activity android:name=".RestaurantProfile" />
         <activity
-            android:name=".CharityProfile"
+            android:name=".Association.CharityProfile"
             android:label="@string/title_activity_charity_profile"
             android:theme="@style/AppTheme.NoActionBar"
             />

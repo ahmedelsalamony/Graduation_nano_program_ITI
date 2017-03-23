@@ -1,4 +1,4 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Association;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.itimobiletrack.graduation_nano_program_iti.R;
 
 
 /**

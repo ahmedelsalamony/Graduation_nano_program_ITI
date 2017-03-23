@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,18 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="493dp"
         android:id="@+id/members"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/members"
+        android:id="@+id/floatingActionButton"
+        android:layout_marginTop="420dp"
+        android:layout_marginLeft="270dp"
+        android:backgroundTint="@color/colorPrimary"/>
 </FrameLayout>

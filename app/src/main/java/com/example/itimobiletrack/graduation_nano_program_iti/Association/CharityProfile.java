@@ -1,7 +1,7 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Association;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -13,17 +13,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.sql.SQLOutput;
+import com.example.itimobiletrack.graduation_nano_program_iti.GetProfileInfo;
+import com.example.itimobiletrack.graduation_nano_program_iti.LoginRegisterPhase;
+import com.example.itimobiletrack.graduation_nano_program_iti.R;
 
 public class CharityProfile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    private  GetProfileInfo getProfileInfo;
+    private GetProfileInfo getProfileInfo;
 
 
     @Override
@@ -34,7 +33,11 @@ public class CharityProfile extends AppCompatActivity
         getProfileInfo = new GetProfileInfo();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.green);
+
+        HomeFragment homeFragment = new HomeFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.content_main,homeFragment,homeFragment.getTag()).commit();
+//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.green);
 
 
         /*Default fragment*/
@@ -121,6 +124,9 @@ public class CharityProfile extends AppCompatActivity
             manager.beginTransaction().replace(R.id.content_main,aboutFragment,aboutFragment.getTag()).commit();
 
         } else if (id == R.id.nav_logout) {
+            Intent intent  = new Intent(CharityProfile.this, LoginRegisterPhase.class);
+            startActivity(intent);
+            finish();
 
         }
 

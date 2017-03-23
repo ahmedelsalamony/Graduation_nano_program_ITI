@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.itimobiletrack.graduation_nano_program_iti.RestaurantProfile"
-    android:orientation="vertical">
+    android:weightSum="3"
+    android:orientation="vertical"
+    tools:context="com.example.owner.community.AboutFragment">
 
 
     <ImageView
@@ -21,7 +22,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:text="This application is made for charity purpose to help poor people"
-    android:layout_weight="1"/>
+    android:layout_weight="2"/>
 
 </LinearLayout>
 

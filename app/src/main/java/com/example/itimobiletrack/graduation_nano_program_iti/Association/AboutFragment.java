@@ -1,4 +1,4 @@
-package com.example.itimobiletrack.graduation_nano_program_iti;
+package com.example.itimobiletrack.graduation_nano_program_iti.Association;
 
 
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.itimobiletrack.graduation_nano_program_iti.R;
 
 
 /**
@@ -21,7 +23,7 @@ public class AboutFragment extends Fragment {
 
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
-        image = (ImageView) getActivity().findViewById(R.id.imageView2);
+        image = (ImageView) getActivity().findViewById(R.id.xlogo);
         image.setImageResource(R.drawable.green);
 
     }
