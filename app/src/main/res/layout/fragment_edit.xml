@@ -8,26 +8,54 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-
-    <EditText
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Name"
-        android:ems="10"
-        android:id="@+id/association_name"
-        android:layout_weight="1"
-        android:layout_margin="5dp"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <LinearLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="Email"
-        android:ems="10"
-        android:id="@+id/association_email"
-        android:layout_weight="1"
-        android:layout_margin="5dp"/>
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            android:ems="10"
+            android:id="@+id/association_name"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/prompt_email"
+            android:ems="10"
+            android:id="@+id/association_email"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <EditText
         android:layout_width="match_parent"
@@ -37,7 +65,13 @@
         android:ems="10"
         android:id="@+id/Phone"
         android:layout_weight="1"
-        android:layout_margin="5dp"/>
+        android:layout_margin="10dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <EditText
         android:layout_width="match_parent"
@@ -47,7 +81,13 @@
         android:ems="10"
         android:id="@+id/Address"
         android:layout_weight="1"
-        android:layout_margin="5dp"/>
+        android:layout_margin="10dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <EditText
         android:layout_width="match_parent"
@@ -57,7 +97,15 @@
         android:ems="10"
         android:id="@+id/userName"
         android:layout_weight="1"
-        android:layout_margin="5dp"/>
+        android:layout_margin="10dp"
+        />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <EditText
         android:layout_width="match_parent"
@@ -67,15 +115,24 @@
         android:ems="10"
         android:id="@+id/Password"
         android:layout_weight="1"
-        android:layout_margin="5dp"/>
+        android:layout_margin="10dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+
+
 
     <LinearLayout
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="horizontal"
         android:weightSum="2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_margin="15dp">
 
         <Button
             android:layout_width="wrap_content"
@@ -87,7 +144,7 @@
             android:background="#00A5F1"
             android:textColor="@color/WhiteSmoke"
             android:id="@+id/Save"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             />
         <Button
             android:layout_width="wrap_content"
@@ -99,7 +156,7 @@
             android:background="#00A5F1"
             android:textColor="@color/WhiteSmoke"
             android:id="@+id/Cancel"
-            android:layout_margin="5dp"/>
+            android:layout_margin="10dp"/>
 
     </LinearLayout>
 
