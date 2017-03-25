@@ -1,5 +1,6 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +56,20 @@ public class ImageAdapterGrid extends BaseAdapter {
             ImageView imageView = (ImageView) v
                     .findViewById(R.id.grid_item_image);
 
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
+                    //Toast.makeText(this, "aboutdialog", Toast.LENGTH_SHORT).show();
+                    final Dialog dialog = new Dialog(context.getApplicationContext());
+                    dialog.setContentView(R.layout.aboutinfodialog);
+                    dialog.setTitle("About Us");
+                    dialog.show();
+
+
+                  }
+            });
 
             String mobile = CharityValues[position];
 

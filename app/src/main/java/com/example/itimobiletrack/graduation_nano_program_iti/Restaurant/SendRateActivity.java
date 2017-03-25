@@ -25,40 +25,8 @@ public class SendRateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_send_rate);
     }
 
-    public void requestToCharity(View v) {
-        dialog = new Dialog(SendRateActivity.this);
-        dialog.setContentView(R.layout.sendrequesttocharitydialog);
-        btnSend = (Button) dialog.findViewById(R.id.xbtnConfirmSend);
-        btnCancel = (Button) dialog.findViewById(R.id.xCancel);
-        edtFoodQ=(EditText)dialog.findViewById(R.id.xFoodQ);
-        edtEstimatedTime=(EditText)dialog.findViewById(R.id.xEstimatedTime);
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (edtFoodQ.getText().toString().trim().equals("")){
-                    edtFoodQ.setError("enter valid text");
-                }else if(edtEstimatedTime.getText().toString().trim().equals("")){
-                    edtEstimatedTime.setError("enter valid time");
-                }else {
-                showConfirmSendToast();
-                dialog.dismiss();}
-            }
-        });
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
 
-        dialog.setTitle(" request to charity ");
-        dialog.show();
 
-    }
-
-    public void showConfirmSendToast() {
-        Toast.makeText(this, "send successfully", Toast.LENGTH_SHORT).show();
-    }
 
     public void showRateToast(int position) {
         Toast.makeText(this, "start" + position, Toast.LENGTH_SHORT).show();

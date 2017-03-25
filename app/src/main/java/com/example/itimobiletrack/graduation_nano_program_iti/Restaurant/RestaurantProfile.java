@@ -58,16 +58,7 @@ public class RestaurantProfile extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.fragment_about:
 
-                //Toast.makeText(this, "aboutdialog", Toast.LENGTH_SHORT).show();
-                final Dialog dialog = new Dialog(RestaurantProfile.this);
-                dialog.setContentView(R.layout.aboutinfodialog);
-                dialog.setTitle("About Us");
-                dialog.show();
-
-
-                break;
             case R.id.fragment_edit_restaurant_profile:
                 Toast.makeText(this, "this is edit profile fragment", Toast.LENGTH_SHORT).show();
 
@@ -119,12 +110,6 @@ public class RestaurantProfile extends AppCompatActivity {
 
 
 
-//
-//            final  Dialog dialog2 = new Dialog(RestaurantProfile.this);
-//            setContentView(R.layout.dialog2);
-//            dialog2.setTitle("Rate Dialog");
-//            dialog2.show();
-//            dialog2.onBackPressed();
 
         }
 
