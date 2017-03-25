@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Task name "
+        android:id="@+id/xtaskname"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xtaskname"
+        android:text="Quantity"
+        android:id="@+id/xtasQuantity"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estimated Time"
+        android:layout_below="@+id/xtasQuantity"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/xtaskEstimatedtime"/>
+    <Button
+        android:text="Accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xtaskEstimatedtime"
+        android:layout_marginRight="120dp"
+        android:onClick="onClick"
+        android:id="@+id/xbtnAccept" />
+
+    <Button
+        android:text="Reject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="90dp"
+        android:onClick="onClick"
+        android:id="@+id/xbtReject"
+
+        />
+
+
+
+
+
+
+</RelativeLayout>

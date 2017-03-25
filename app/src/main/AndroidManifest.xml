@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="android.support.multidex.MultiDexApplication"
@@ -32,10 +32,10 @@
         <activity
             android:name=".Charity.CharityProfile"
             android:label="@string/title_activity_charity_profile"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Login.LoginRegisterActivity" />
-        <activity android:name=".Restaurant.SendRateActivity"></activity>
+        <activity android:name=".Restaurant.SendRateActivity" />
+        <activity android:name=".Member.MemberProfile"></activity>
     </application>
 
 </manifest>
