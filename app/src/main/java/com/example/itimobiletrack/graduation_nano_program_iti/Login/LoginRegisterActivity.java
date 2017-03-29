@@ -60,14 +60,5 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
 
-//-------------------following lines are to handle when press back button on
-// login fragment exit application ---------------------------//
-        Intent i=new Intent(Intent.ACTION_MAIN);
-        i.addCategory(Intent.CATEGORY_HOME);
-        i.setFlags(i.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
-    }
 }

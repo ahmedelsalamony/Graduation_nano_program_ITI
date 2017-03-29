@@ -59,10 +59,10 @@ public class RegisterFragment extends Fragment {
 
 
         web=new webServices();
-
-        txtTitle=(TextView)v.findViewById(R.id.xTitle);
-        Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/title.ttf");
-        txtTitle.setTypeface(custom_font);
+//
+//        txtTitle=(TextView)v.findViewById(R.id.xTitle);
+//        Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/title.ttf");
+//        txtTitle.setTypeface(custom_font);
         edtUserName=(EditText)v.findViewById(R.id.xUserName);
         edtPassword=(EditText)v.findViewById(R.id.xPassword);
         edtConfirmPassword=(EditText)v.findViewById(R.id.xConfirmPassword);
