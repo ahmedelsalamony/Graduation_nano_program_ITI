@@ -38,7 +38,7 @@ public class LoginFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View v= inflater.inflate(R.layout.activity_login, parent, false);
+        View v= inflater.inflate(R.layout.fragment_login, parent, false);
 
 
 
@@ -86,7 +86,7 @@ public class LoginFragment extends Fragment {
         });
 
         mLoginFormView = v.findViewById(R.id.login_form);
-        mProgressView = v.findViewById(R.id.login_progress);
+
         return v;
     }
 
