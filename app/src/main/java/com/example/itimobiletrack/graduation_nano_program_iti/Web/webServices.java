@@ -38,9 +38,12 @@ public class webServices {
     public SharedPreferences sharedPreferences ;
     public SharedPreferences.Editor editor;
 
+
+
+
+
     private  GetProfileInfo getProfileInfo ;
     private ProgressDialog mProgressDialog;
-
 
     // TODO Parameters Of Tables and WebService Function
     public static String ID = "id";
@@ -55,10 +58,6 @@ public class webServices {
     public static String CHARITY_PARENT_ID = "charity_parent_id";
     public static String KEY_TOKEN = "token";
 
-
-
-
-
   // For table Tasks
     public static String RESTAURANT_ID = "restaurant_id";
     public static String REQUESTSTAUS = "request_status";
@@ -67,6 +66,13 @@ public class webServices {
     public static String MEMBER_ID = "member_id";
 
 
+   //for table rate
+    public static String rate_charity="rate_charity";
+    public static String rate_restaurant="rate_restaurant";
+    public static String User_Id="user_id";
+    public static String charity_Name="charity_name";
+    public static String restaurant_Name="restaurant_name";
+    public static String rate_Type="type";
 // For table Charity_tasks
     public static String TASK_ID = "task_id";
 
@@ -88,6 +94,8 @@ public class webServices {
     public static String UPDATETOKEN="update_token";
     public static String UPDATETASK="update_Task";
     public static String ADDCHARITYTASK="add_Charity_Task";
+    public static String CHARITY_RATE_BY_USER="rateCharityByRestaurant";
+
     private RequestQueue queue;
     private String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
 
@@ -118,8 +126,9 @@ public class webServices {
                          String userType = jsonObject.getString("type");
 
                         getProfileInfo. setUser_id(jsonObject.getString("user_id"));
-                        getProfileInfo.setTypeNameVar(jsonObject.getString("typename"));
-                        getProfileInfo.setType(jsonObject.getString("type"));
+                        getProfileInfo. setTypeNameVar(jsonObject.getString("typename"));
+                        getProfileInfo. setType(jsonObject.getString("type"));
+                        getProfileInfo. setTypeNameVar(jsonObject.getString("typename"));
                         getProfileInfo. setEmailVar(jsonObject.getString("email"));
                         getProfileInfo. setUserName(jsonObject.getString("username"));
                         getProfileInfo. setPassword(jsonObject.getString("password"));
@@ -664,8 +673,46 @@ public class webServices {
         };
         queue.add(request);
     }
+//----------------------add rate to charity by restaurant -------------------------------------------//
+   public void addRateCharityByRestaurant(final Activity activity ,final int charity_rate,final int restaurant_rate ,
+                 final int user_id,final String charity_name,final String restaurant_name,final String type){
 
 
+       queue = Volley.newRequestQueue(activity);
+       StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+           @Override
+           public void onResponse(String response) {
+
+               Toast.makeText(activity, "on response in rate action ", Toast.LENGTH_SHORT).show();
+           }
+
+
+       }, new Response.ErrorListener() {
+           @Override
+           public void onErrorResponse(VolleyError error) {
+               Snackbar.make(activity.findViewById(android.R.id.content), "Internet Connection", Snackbar.LENGTH_LONG).show();
+           }
+       })
+
+       {
+           @Override
+           protected java.util.Map<String, String> getParams() throws AuthFailureError {
+               java.util.Map<String, String> params = new HashMap<String, String>();
+
+               params.put(rate_charity, ""+charity_rate);
+               params.put(rate_restaurant, ""+restaurant_rate);
+               params.put(User_Id , ""+ user_id);
+               params.put(charity_Name,charity_name);
+               params.put(restaurant_Name,restaurant_name);
+               params.put(rate_Type,type);
+
+
+               params.put(TAG,CHARITY_RATE_BY_USER );
+               return params;
+           }
+       };
+       queue.add(request);
+   }
 
 
     //========================================================

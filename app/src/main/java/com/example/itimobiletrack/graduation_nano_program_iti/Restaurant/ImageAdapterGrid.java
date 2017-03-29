@@ -1,15 +1,23 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
+
+import static com.example.itimobiletrack.graduation_nano_program_iti.R.id.btnSubmit;
+import static com.example.itimobiletrack.graduation_nano_program_iti.R.id.ratingBar;
 
 /**
  * Created by ahmed on 3/22/2017.
@@ -18,11 +26,16 @@ import com.example.itimobiletrack.graduation_nano_program_iti.R;
 public class ImageAdapterGrid extends BaseAdapter {
     private Context context;
     private final String[] CharityValues;
+    webServices web= new webServices();
+    public String mobile;
 
     public ImageAdapterGrid(Context context, String[] CharityValues) {
         this.context=context;
         this.CharityValues =CharityValues;
+
     }
+
+
 
     @Override
     public int getCount() {
@@ -47,18 +60,17 @@ public class ImageAdapterGrid extends BaseAdapter {
         if (convertview == null){
             v=new View(context);
             v=inflater.inflate(R.layout.customgridview,null);
-// set value into textview
-
+           //---------------------------------- set value into text view --------------------------------//
             TextView textView = (TextView) v.findViewById(R.id.grid_item_label);
             textView.setText(CharityValues[position]);
              textView.setTextSize(20);
-            // set image based on selected text
+            //---------------------------- set image based on selected text--------------------------------------//
             ImageView imageView = (ImageView) v
                     .findViewById(R.id.grid_item_image);
 
 
 
-            String mobile = CharityValues[position];
+             mobile= CharityValues[position];
 
 
                 imageView.setImageResource(R.drawable.img4);

@@ -150,40 +150,23 @@ public class MembersFragment extends Fragment {
                                   status.setText("onLine");
                               }else {
                                   status.setText("offLone");
-
                               }
-
-
                     deleteBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             web.deleteMember(getActivity(), userName.getText().toString());
-
                         }
                     });
-
-
                         }}catch (JSONException j){
-
                          Toast.makeText(getActivity(), ""+j.getMessage(), Toast.LENGTH_SHORT).show();
-                     }
-                    }
+                     }}
                     @Override
                     public void onError() {
 
                     }
                 });
-
-
-
-
             }
         });
-
-
-
-
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -195,10 +178,6 @@ public class MembersFragment extends Fragment {
 
             }
         });
-
-
-
-
         // Inflate the layout for this fragment
         return view;
     }

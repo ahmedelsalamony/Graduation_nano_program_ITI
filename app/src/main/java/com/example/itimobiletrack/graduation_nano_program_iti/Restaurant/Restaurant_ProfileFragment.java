@@ -1,5 +1,6 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
@@ -31,6 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class Restaurant_ProfileFragment extends Fragment implements View.OnClickListener {
@@ -47,6 +49,7 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
     Dialog dialog;
     GridView gridView;
     FloatingActionButton btn;
+    String rate_type;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,15 +79,12 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
 
                     }
 
-
                     MOBILE_OS = charityBuffer.toString().split("#");
-
                     gridView.setAdapter(new ImageAdapterGrid(getActivity(), MOBILE_OS));
+                    btn.setOnClickListener(Restaurant_ProfileFragment.this);
 
 
                      btn.setOnClickListener(Restaurant_ProfileFragment.this);
-
-
 
                 } catch (JSONException e) {
                     Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -102,16 +102,37 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-
-                Intent i = new Intent(getActivity(), SendRateActivity.class);
-                startActivity(i);
+                //set value of charity name depending on OnItemClick of gridView
+                String charityname=MOBILE_OS[position];
+                rateCharity(v,charityname);
             }
         });
 
         return v;
 
     }
+    public void rateCharity(View v, final String charityname) {
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.dialog2);
+        ratingBar = (RatingBar) dialog.findViewById(R.id.ratingBar);
+        btnSubmit = (Button) dialog.findViewById(R.id.btnSubmit);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+
+                String x=web.sharedPreferences.getString("typename","default-restaurant-name");
+                String y=web.sharedPreferences.getString("type","hhhhhhhhhh");
+                Toast.makeText(getActivity(), y, Toast.LENGTH_SHORT).show();
+                web.sharedPreferences=getActivity().getSharedPreferences("load_data",0);
+                web.addRateCharityByRestaurant(getActivity(), (int) ratingBar.getRating(),0,
+                        web.sharedPreferences.getInt("id",2017),charityname,x,y);
+                Toast.makeText(getActivity(), String.valueOf(ratingBar.getRating()), Toast.LENGTH_SHORT).show();
+            }
+        });
+        dialog.setTitle("Rate Charity");
+        dialog.show();
+    }
 
     // TODO Send Request Function From Restaurant To Charities
     public void showConfirmSendToast() {
@@ -185,7 +206,8 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
 
                   // TODO Add Request To Table Task
 
-               web.addTask(getActivity(),web.sharedPreferences.getInt("id" , 0),"Posted",quantity,edtEstimatedTime.getText().toString(),0);
+               web.addTask(getActivity(),web.sharedPreferences.getInt("id" , 0),"Posted",quantity,
+                       edtEstimatedTime.getText().toString(),0);
 
 
                 }

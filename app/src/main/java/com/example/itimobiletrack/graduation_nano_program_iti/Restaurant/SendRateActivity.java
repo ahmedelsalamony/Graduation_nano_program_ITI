@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
-
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
 
 public class SendRateActivity extends AppCompatActivity {
@@ -20,12 +20,13 @@ public class SendRateActivity extends AppCompatActivity {
     private Button btnSubmit;
     EditText edtFoodQ,edtEstimatedTime;
     Dialog dialog;
-
+    webServices web;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_rate);
+        web=new webServices();
     }
 
 
@@ -40,19 +41,26 @@ public class SendRateActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog2);
         ratingBar = (RatingBar) dialog.findViewById(R.id.ratingBar);
         btnSubmit = (Button) dialog.findViewById(R.id.btnSubmit);
-
-        addListenerOnRatingBar();
-        addListenerOnButton();
         btnSubmit.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View view) {
-                dialog.dismiss();
+            public void onClick(View v) {
+
+
+
+                web.sharedPreferences=getSharedPreferences("load_data",0);
+
+                web.addRateCharityByRestaurant(SendRateActivity.this, (int) ratingBar.getRating(),0,
+                        web.sharedPreferences.getInt("id",2017),"","","");
+                Toast.makeText(SendRateActivity.this, String.valueOf(ratingBar.getRating()), Toast.LENGTH_SHORT).show();
+
             }
+
         });
         dialog.setTitle("Rate Charity");
         dialog.show();
     }
-    public void addListenerOnRatingBar() {
+/*    public void addListenerOnRatingBar() {
 
         //if rating value is changed,
         //display the current rating value in the result (textview) automatically
@@ -60,26 +68,9 @@ public class SendRateActivity extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating,
                                         boolean fromUser) {
 
-             /*   txtRatingValue.setText(String.valueOf(rating));*/
+             *//*   txtRatingValue.setText(String.valueOf(rating));*//*
                 showRateToast((int) rating);
             }
         });
-    }
-
-    public void addListenerOnButton() {
-
-        //if click on me, then display the current rating value.
-
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-          Toast.makeText(SendRateActivity.this, String.valueOf(ratingBar.getRating()), Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
-
-    }
+    }*/
 }
