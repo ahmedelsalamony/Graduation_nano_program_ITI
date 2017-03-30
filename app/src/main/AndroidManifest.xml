@@ -73,18 +73,25 @@
             android:configChanges="keyboardHidden|orientation|screenSize"  />
 
         <activity android:name=".Restaurant.SendRateActivity" />
-        <activity android:name=".Member.MemberProfile"></activity>
+
+
+        <activity android:name=".Member.MemberProfile"
+
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            ></activity>
 
          <activity android:name=".MainActivity">
          </activity>
 
          <activity android:name=".ActivitySendPushNotification"></activity>
 
+
          <service android:name="com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.MyFirebaseInstanceIDService">
              <intent-filter>
                  <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
              </intent-filter>
          </service>
+
          <service android:name="com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.MyFirebaseMessagingService">
              <intent-filter>
                  <action android:name="com.google.firebase.MESSAGING_EVENT" />
