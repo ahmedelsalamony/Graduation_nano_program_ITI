@@ -99,7 +99,7 @@ public class MemberProfile extends AppCompatActivity {
                         sendToCharity();
                         sendToResturant();
 
-
+//
 
                         // To update Charity_tasks Table
                         web.addCharityTask(MemberProfile.this, Integer.parseInt(web.sharedPreferences.getString("charity_parent_id", "*****")), Integer.parseInt(note[1]));
