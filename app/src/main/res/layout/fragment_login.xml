@@ -41,7 +41,9 @@
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:drawableLeft="@drawable/username_icon"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@color/primary"
+                    />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -51,7 +53,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:id="@+id/txtpassword"
-
+                android:textColor="@color/primary"
                 >
 
                 <EditText

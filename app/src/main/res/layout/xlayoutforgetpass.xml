@@ -3,13 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_gravity="center"
-        android:src="@drawable/green"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2" />
-
     <EditText
         android:id="@+id/xRestorePasswordEditText"
         android:layout_marginTop="40dp"
