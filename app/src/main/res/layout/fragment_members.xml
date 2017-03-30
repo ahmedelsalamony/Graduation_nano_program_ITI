@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_light"
     android:id="@+id/add_member_layoutContainer"
     tools:context="com.example.owner.community.MembersFragment">
 
@@ -29,7 +30,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        app:backgroundTint="@android:color/holo_blue_light" />
+        app:backgroundTint="@color/primary"
+        />
 
 
 </RelativeLayout>

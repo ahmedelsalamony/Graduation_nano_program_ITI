@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/primary_light"
     tools:context="com.example.itimobiletrack.graduation_nano_program_iti.Registeration">
 
     <ScrollView
@@ -25,7 +26,7 @@
             <TextView
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="25dp"
-                android:textColor="#00A5F1"
+                android:textColor="@color/primary"
                 android:textStyle="bold"
                 android:textSize="50sp"
                 android:gravity="center"
@@ -44,21 +45,29 @@
                     android:id="@+id/xUserName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="enter UserName" />
+                    android:hint="Username"
+                    android:textColorHint="@color/accent"
+                    android:textColor="@color/primary"
+                    android:maxLength="20"/>
 
             </android.support.design.widget.TextInputLayout>
+
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_layout_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
 
                 <EditText
                     android:id="@+id/xPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="enter password"
+                    android:hint="Password"
                     android:inputType="textPassword"
+                    android:textColorHint="@color/accent"
+                    android:textColor="@color/primary"
+                    android:maxLength="20"
                     />
 
             </android.support.design.widget.TextInputLayout>
@@ -73,8 +82,11 @@
                     android:id="@+id/xConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="enter confirmPassword"
+                    android:hint="confirm password"
                     android:inputType="textPassword"
+                    android:textColorHint="@color/accent"
+                    android:textColor="@color/primary"
+                    android:maxLength="20"
                     />
 
             </android.support.design.widget.TextInputLayout>
@@ -88,8 +100,11 @@
                     android:id="@+id/xEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="enter Email"
+                    android:hint="Email Address"
                     android:inputType="textEmailAddress"
+                    android:textColorHint="@color/accent"
+                    android:textColor="@color/primary"
+                    android:maxLength="40"
                     />
 
             </android.support.design.widget.TextInputLayout>
@@ -103,8 +118,11 @@
                     android:id="@+id/xPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="enter Phone"
+                    android:hint="Mobile number"
                     android:inputType="phone"
+                    android:textColorHint="@color/accent"
+                    android:textColor="@color/primary"
+                    android:maxLength="11"
                     />
 
             </android.support.design.widget.TextInputLayout>
@@ -119,7 +137,10 @@
                     android:id="@+id/xAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="enter Address" />
+                    android:hint="Address"
+                    android:textColorHint="@color/accent"
+                    android:textColor="@color/primary"
+                    />
 
             </android.support.design.widget.TextInputLayout>
 

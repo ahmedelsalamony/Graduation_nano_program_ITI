@@ -1,6 +1,8 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Member;
 
 import android.app.Dialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -106,8 +108,9 @@ public class MemberProfile extends AppCompatActivity {
                         //to update Tasks Table
                         web.updateTask(MemberProfile.this, my_id, Integer.parseInt(note[1]));
 
-
-
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.add(R.id.activity_main,new Member_GoogleMap()).commit();
 
 
                     }
