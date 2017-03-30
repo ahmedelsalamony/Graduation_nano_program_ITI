@@ -1,13 +1,9 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Member;
 
 import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +19,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.ActivitySendPushNotification;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.EndPoints;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.MyVolley;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
@@ -41,6 +36,8 @@ public class MemberProfile extends AppCompatActivity {
     String note[] =null;
     ProgressDialog progressDialog;
     Dialog taskdialog;
+    int xx;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +47,8 @@ public class MemberProfile extends AppCompatActivity {
         web.sharedPreferences = getSharedPreferences("load_data", 0);
 
         setTitle(web.sharedPreferences.getString("username", "******"));
+        xx=  Integer.parseInt(web.sharedPreferences.getString("charity_parent_id", "*****"));
+        Toast.makeText(this, ""+xx, Toast.LENGTH_SHORT).show();
         my_id = web.sharedPreferences.getInt("id", 2017);
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.list);
@@ -86,9 +85,9 @@ public class MemberProfile extends AppCompatActivity {
                 String message = getIntent().getStringExtra("message");
                 note= message.split("#");
 
-                taskName_tv.setText(note[2]);
-                taskQuantity_tv.setText(note[3]);
-                taskEstimatedTime_tv.setText(note[4]);
+                taskName_tv.setText(note[1]);
+                taskQuantity_tv.setText(note[2]);
+                taskEstimatedTime_tv.setText(note[3]);
 
 
                 System.out.println("mahmoud belal" + getIntent().getStringExtra("message"));
@@ -96,13 +95,14 @@ public class MemberProfile extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
+                        sendToRstaurant();
                         sendToCharity();
-                        sendToResturant();
+
 
 //
 
                         // To update Charity_tasks Table
-                        web.addCharityTask(MemberProfile.this, Integer.parseInt(web.sharedPreferences.getString("charity_parent_id", "*****")), Integer.parseInt(note[1]));
+                        web.addCharityTask(MemberProfile.this,xx , Integer.parseInt(note[1]));
                         //to update Tasks Table
                         web.updateTask(MemberProfile.this, my_id, Integer.parseInt(note[1]));
 
@@ -151,7 +151,7 @@ public class MemberProfile extends AppCompatActivity {
     }
 
     // TODO
-    public void sendToResturant (){
+    public void sendToCharity (){
 
 
         progressDialog.setMessage("Sending Push");
@@ -175,10 +175,10 @@ public class MemberProfile extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("title", type_Name);
-                params.put("message", web.sharedPreferences.getString("username", "******"));
+                params.put("title", note[0]);
+                params.put("message", "to charity");
 
-                params.put("typename", type_Name);
+                params.put("typename", note[0]);
 
                 return params;
             }
@@ -193,7 +193,7 @@ public class MemberProfile extends AppCompatActivity {
 
 
     // TODO
-    public void sendToCharity() {
+    public void sendToRstaurant() {
 
         progressDialog.setMessage("Sending Push");
         progressDialog.show();
@@ -204,7 +204,7 @@ public class MemberProfile extends AppCompatActivity {
                     public void onResponse(String response) {
                         progressDialog.dismiss();
 
-                        Toast.makeText(MemberProfile.this, ""+note[0] + "     "+note[1], Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MemberProfile.this, ""+note[0] + "     "+note[1]    +"     "+type_Name, Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -216,10 +216,10 @@ public class MemberProfile extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("title", note[0]);
-                params.put("message", "to charity ");
+                params.put("title", type_Name);
+                params.put("message", "to Restaurant ");
 
-                params.put("typename", note[0]);
+                params.put("typename", type_Name);
 
                 return params;
             }

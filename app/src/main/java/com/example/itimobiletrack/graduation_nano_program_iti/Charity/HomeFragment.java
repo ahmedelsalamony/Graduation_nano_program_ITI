@@ -49,6 +49,7 @@ public class HomeFragment extends Fragment {
      String address[]=null;
      String quantity[]=null;
      String x[];
+     String charity_NameType;
      private ProgressDialog progressDialog;
     public HomeFragment() {
         // Required empty public constructor
@@ -62,10 +63,12 @@ public class HomeFragment extends Fragment {
         web= new webServices();
         progressDialog =new ProgressDialog(getActivity());
 
+
         typeNameBuffer =new StringBuffer();
          task_quantity=new StringBuffer();
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+web.sharedPreferences=getActivity().getSharedPreferences("load_data" ,0);
+        charity_NameType=web.sharedPreferences.getString("typename" , "******");
 
         final ListView requests_list = (ListView) view.findViewById(R.id.home_requests);
 
@@ -82,7 +85,7 @@ public class HomeFragment extends Fragment {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject search_object = jsonArray.getJSONObject(i);
                         typeNameBuffer.append(search_object.getString("typename") + "#");
-                        task_quantity.append(search_object.getInt("id")+":"+search_object.getString("address")+":"+search_object.getString("task_quantity")+":"+search_object.getString("task_estimated_time")+ "#");
+                        task_quantity.append(charity_NameType+":"+search_object.getInt("id")+":"+search_object.getString("address")+":"+search_object.getString("task_quantity")+":"+search_object.getString("task_estimated_time")+ "#");
 
                     }
 
@@ -125,9 +128,9 @@ public class HomeFragment extends Fragment {
 
 
                  x = quantity[position].split(":");
-                address.setText(x[1]);
-                taskQuantity.setText(x[2]);
-                taskEstimatedTime.setText(x[3]);
+                address.setText(x[2]);
+                taskQuantity.setText(x[3]);
+                taskEstimatedTime.setText(x[4]);
                 dialog.show();
 
 
@@ -160,8 +163,8 @@ public class HomeFragment extends Fragment {
                             @Override
                             protected Map<String,String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
-                                params.put("title","Task From Charity" );
-                                params.put("message",x[0]+"#"+ address.getText().toString() + "#" +taskQuantity.getText().toString() +"#"+taskEstimatedTime.getText().toString()+"#");
+                                params.put("title",requests[0] );
+                                params.put("message",x[0] +"#"+x[1]+"#"+ address.getText().toString() + "#" +taskQuantity.getText().toString() +"#"+taskEstimatedTime.getText().toString()+"#");
                                 params.put("charity_parent_id", ""+web.sharedPreferences.getInt("id" , 0));
 
 
