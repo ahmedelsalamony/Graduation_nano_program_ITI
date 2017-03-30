@@ -1,9 +1,9 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,7 +14,7 @@ import com.example.itimobiletrack.graduation_nano_program_iti.R;
 
 public class LoginRegisterActivity extends AppCompatActivity {
 
-    private  FragmentManager fm;
+    private FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
 
         // get fragment manager
-         fm = getFragmentManager();
+         fm = getSupportFragmentManager();
         // add
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.xPlaceHolder, new LoginFragment());
@@ -48,7 +48,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     public void toForgetPassword(View v){
 
         ForgetPass forgetPass=new ForgetPass();
-        FragmentManager fm =getFragmentManager();
+        FragmentManager fm =getSupportFragmentManager();
         FragmentTransaction  ft=fm.beginTransaction();
         ft.replace(R.id.xPlaceHolder,forgetPass);
         ft.addToBackStack(null);

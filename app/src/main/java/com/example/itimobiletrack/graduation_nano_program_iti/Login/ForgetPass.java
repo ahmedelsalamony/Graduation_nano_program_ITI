@@ -1,17 +1,16 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
 import android.app.AlertDialog;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,9 +18,13 @@ import android.widget.Toast;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.request_interface;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
+import com.labo.kaji.fragmentanimations.CubeAnimation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static com.daimajia.androidanimations.library.BaseViewAnimator.DURATION;
+
 
 /**
  * Created by ahmed on 3/21/2017.
@@ -38,7 +41,6 @@ public class ForgetPass extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.xlayoutforgetpass, parent, false);
@@ -83,8 +85,8 @@ public class ForgetPass extends Fragment {
 
                                             // TODO >> then Call Login fragment to Login again
                                             LoginFragment loginFragment =new LoginFragment();
-                                            FragmentManager fm=getFragmentManager();
-                                            FragmentTransaction ft=fm.beginTransaction();
+                                            android.support.v4.app.FragmentManager fm=getFragmentManager();
+                                            android.support.v4.app.FragmentTransaction ft=fm.beginTransaction();
                                             ft.addToBackStack(null);
                                             ft.replace(R.id.xPlaceHolder,loginFragment);
                                             ft.commit();
@@ -121,6 +123,9 @@ public class ForgetPass extends Fragment {
 
         return v;
     }
-
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        return CubeAnimation.create(CubeAnimation.UP, enter, DURATION);
+    }
 
 }

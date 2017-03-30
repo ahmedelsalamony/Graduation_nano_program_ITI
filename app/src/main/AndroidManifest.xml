@@ -67,9 +67,11 @@
             android:name=".Charity.CharityProfile"
             android:label="@string/title_activity_charity_profile"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".Login.LoginRegisterActivity"
         android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:configChanges="keyboardHidden|orientation|screenSize"  />
+
         <activity android:name=".Restaurant.SendRateActivity" />
         <activity android:name=".Member.MemberProfile"></activity>
 

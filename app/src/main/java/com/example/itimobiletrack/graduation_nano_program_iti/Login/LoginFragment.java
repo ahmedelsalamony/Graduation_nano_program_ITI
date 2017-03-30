@@ -1,6 +1,6 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
+import com.labo.kaji.fragmentanimations.CubeAnimation;
 
 /**
  * Created by ahmed on 3/21/2017.
@@ -27,7 +29,7 @@ public class LoginFragment extends Fragment {
     private View mProgressView;
     private View mLoginFormView;
     private Button signUp;
-
+    private static final long DURATION = 500;
     private webServices web;
 
 
@@ -50,8 +52,8 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // replace
-                FragmentManager fm=getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
+                android.support.v4.app.FragmentManager fm=getFragmentManager();
+                android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
                 ft.replace(R.id.xPlaceHolder, new RegisterFragment());
                 ft.addToBackStack(null);
                 ft.commit();
@@ -108,6 +110,11 @@ public class LoginFragment extends Fragment {
 
 
 
+    }
+
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        return CubeAnimation.create(CubeAnimation.UP, enter, DURATION);
     }
 
 
