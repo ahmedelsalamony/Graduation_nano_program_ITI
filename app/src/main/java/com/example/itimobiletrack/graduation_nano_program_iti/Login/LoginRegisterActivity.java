@@ -5,13 +5,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 
 public class LoginRegisterActivity extends AppCompatActivity {
 
     private FragmentManager fm;
-    int counter = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +24,12 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
 
         // get fragment manager
-         fm = getSupportFragmentManager();
+        fm = getSupportFragmentManager();
         // add
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.xPlaceHolder, new LoginFragment());
         ft.addToBackStack("logingrament");
         ft.commit();
-
-        LoginFragment lg = new LoginFragment();
 
 
     }
@@ -53,21 +52,21 @@ public class LoginRegisterActivity extends AppCompatActivity {
         ft.replace(R.id.xPlaceHolder,forgetPass);
         ft.addToBackStack(null);
         ft.commit();
-
+//////////////////
     }
-
     @Override
     public void onBackPressed() {
 
         int count = getFragmentManager().getBackStackEntryCount();
-        count++;
-        if (count == 1) {
-            super.onBackPressed();
-
-            finish();
-        } else {
-            getFragmentManager().popBackStack();
+        if (fm.findFragmentByTag("logingrament") != null)
+            count++;
+            if (count == 0 ) {
+                getFragmentManager().popBackStack();
+                finish();
+            //additional code
+        } else if (count == 2){
+                super.onBackPressed();
         }
-
     }
+
 }
