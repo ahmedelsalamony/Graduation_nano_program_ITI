@@ -106,7 +106,7 @@ web.sharedPreferences=getActivity().getSharedPreferences("load_data" ,0);
 
             @Override
             public void onError() {
-                //Snackbar.make(getActivity().findViewById(android.R.id.content), "Internet Connection Fair", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(getActivity().findViewById(android.R.id.content), "Internet Connection Fair", Snackbar.LENGTH_LONG).show();
 
             }
 
