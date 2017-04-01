@@ -1,9 +1,11 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
-import android.app.FragmentManager;
+
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,8 @@ import android.widget.TextView;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 import com.labo.kaji.fragmentanimations.CubeAnimation;
+
+import net.skoumal.fragmentback.BackFragment;
 
 /**
  * Created by ahmed on 3/21/2017.
@@ -52,7 +56,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // replace
-                android.support.v4.app.FragmentManager fm=getFragmentManager();
+                FragmentManager fm=getFragmentManager();
                 android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
                 ft.replace(R.id.xPlaceHolder, new RegisterFragment());
                 ft.addToBackStack(null);
@@ -88,8 +92,8 @@ public class LoginFragment extends Fragment {
         });
 
         mLoginFormView = v.findViewById(R.id.login_form);
-
         return v;
+
     }
 
 
@@ -116,6 +120,5 @@ public class LoginFragment extends Fragment {
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
         return CubeAnimation.create(CubeAnimation.UP, enter, DURATION);
     }
-
 
 }

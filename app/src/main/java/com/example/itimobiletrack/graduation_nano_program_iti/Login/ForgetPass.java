@@ -3,8 +3,6 @@ package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 import android.app.AlertDialog;
 import android.support.v4.app.Fragment;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -43,7 +41,7 @@ public class ForgetPass extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.xlayoutforgetpass, parent, false);
+        View v = inflater.inflate(R.layout.fragment_forgetpass, parent, false);
 
         web =new webServices();
         edRestorePassword= (EditText) v.findViewById(R.id.xRestorePasswordEditText);
