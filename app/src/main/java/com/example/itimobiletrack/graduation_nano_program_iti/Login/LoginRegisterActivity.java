@@ -53,7 +53,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
         ft.replace(R.id.xPlaceHolder,forgetPass);
         ft.addToBackStack(null);
         ft.commit();
-
+//////////////////
     }
 
     @Override
