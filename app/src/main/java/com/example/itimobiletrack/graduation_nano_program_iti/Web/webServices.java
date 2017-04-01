@@ -95,11 +95,13 @@ public class webServices {
     public static String UPDATETASK="update_Task";
     public static String ADDCHARITYTASK="add_Charity_Task";
     public static String CHARITY_RATE_BY_USER="rateCharityByRestaurant";
+    public static String CHECK_STATUS="check_status";
+
+
+
 
     private RequestQueue queue;
     private String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
-
-    //
 
 
     // TODO Login Method ----------------------------------//
@@ -883,6 +885,42 @@ public class webServices {
     }
 
 
+
+
+    //=================================================================================================//
+
+    //TODO check Request Task
+    public void checkRequestTask(final Activity activity, final int id , final request_interface object) {
+        queue = Volley.newRequestQueue(activity);
+        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+
+
+            @Override
+            public void onResponse(String response) {
+                object.onResponse(response);
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                object.onError();
+
+            }
+        })
+        {
+            @Override
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+                params.put(ID, ""+id);
+                params.put(TAG, CHECK_STATUS);
+                return params;
+            }
+        };
+        queue.add(request);
+
+    }
 
 
 }

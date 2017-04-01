@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
@@ -42,6 +43,7 @@ public class Member_GoogleMap extends Fragment implements OnMapReadyCallback,Act
     String mlocation;
     Address address;
 
+    private TextView  mAddress  , mQuantity , mEstimatedTime ;
 
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -60,18 +62,23 @@ public class Member_GoogleMap extends Fragment implements OnMapReadyCallback,Act
         mapView.getMapAsync(this);
 
 
-        mlocation = "الابراهيميه الاسكندرية";
+
+         mAddress= (TextView) v.findViewById(R.id.xTextView3);
+         mQuantity= (TextView) v.findViewById(R.id.xTextView4);
+         mEstimatedTime= (TextView) v.findViewById(R.id.xTextView5);
 
 
-//      done = (Button) v.findViewById(R.id.b);
-//       done.setOnClickListener(new View.OnClickListener() {
-//           @Override
-//           public void onClick(View view) {
-//
-//
-//
-//           }
-//       });
+
+        mlocation=MemberReceiveNotification.address;
+
+        mAddress.setText(MemberReceiveNotification.address);
+        mQuantity.setText(MemberReceiveNotification.quantity);
+        mEstimatedTime.setText(MemberReceiveNotification.time);
+
+
+
+
+
 
         return  v;
     }
@@ -91,7 +98,6 @@ public class Member_GoogleMap extends Fragment implements OnMapReadyCallback,Act
             double lat = address.getLatitude();
             double lng = address.getLongitude();
 
-            Toast.makeText(getActivity(), "Try", Toast.LENGTH_SHORT).show();
             LatLng latLng = new LatLng(lat,lng);
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,11));
 

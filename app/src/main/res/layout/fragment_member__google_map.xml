@@ -1,4 +1,3 @@
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,50 +11,112 @@
 
 
     <LinearLayout
+
+        android:weightSum="6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        >
         <TextView
-            android:hint="Restaurant"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
             android:layout_weight="1"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
             />
 
         <TextView
-            android:hint="Quantity"
-            android:layout_width="match_parent"
+
+            android:layout_weight="5"
+            android:textColor="@color/Black"
+            android:textSize="14sp"
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView4"
+            android:text="Address "
+            android:id="@+id/xTextView3"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
             android:layout_weight="1"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/xtaskname"
+            android:text="Quantity"
             />
 
         <TextView
-            android:hint="Estimated Time"
-            android:layout_width="match_parent"
+            android:layout_weight="5"
+            android:textColor="@color/Black"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView5"
+            android:layout_below="@+id/xtaskname"
+            android:text="Quantity"
+            android:id="@+id/xTextView4"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:weightSum="6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
             android:layout_weight="1"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_below="@+id/xtasQuantity"
+            android:layout_marginBottom="30dp"
             />
+        <TextView
+            android:layout_weight="5"
+            android:textColor="@color/Black"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estimated Time"
+            android:layout_below="@+id/xtasQuantity"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/xTextView5"/>
     </LinearLayout>
 
     <Button
-        android:text="Button"
+        android:textSize="22sp"
+        android:textColor="@color/AntiqueWhite"
+        android:textAllCaps="false"
+        android:background="@color/primary"
+        android:text="Done"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
-        android:layout_weight="1"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"/>
 
     <com.google.android.gms.maps.MapView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/mapView"
-        android:layout_weight="5"
-        android:layout_marginTop="10dp"/>
-
+        />
 
     </LinearLayout>
 

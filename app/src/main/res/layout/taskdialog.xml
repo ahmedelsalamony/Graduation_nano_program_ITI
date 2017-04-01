@@ -1,47 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/member_dialog"
+     android:paddingLeft="10dp"
+    >
+
+   <TextView
+       android:layout_marginTop="10dp"
+       android:textColor="@color/Black"
+       android:text="date and Time"
+    android:id="@+id/xNotiDateTime"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+
+<LinearLayout
+
+    android:weightSum="6"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
     <TextView
-        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:textColor="@color/primary"
+        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Task name "
-        android:id="@+id/xtaskname"/>
+        android:text="Address"
+        />
+
     <TextView
-        android:layout_width="match_parent"
+
+        android:layout_weight="4"
+        android:textColor="@color/Black"
+        android:textSize="14sp"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address "
+        android:id="@+id/xtaskname"/>
+</LinearLayout>
+
+   <LinearLayout
+       android:orientation="horizontal"
+       android:weightSum="6"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+    <TextView
+        android:layout_weight="1"
+        android:textColor="@color/primary"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/xtaskname"
         android:text="Quantity"
-        android:id="@+id/xtasQuantity"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Estimated Time"
-        android:layout_below="@+id/xtasQuantity"
-        android:layout_marginBottom="30dp"
-        android:id="@+id/xtaskEstimatedtime"/>
-    <Button
-        android:text="Accept"
+        />
+
+       <TextView
+           android:layout_weight="5"
+           android:textColor="@color/Black"
+           android:textSize="14sp"
+           android:layout_marginTop="10dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/xtaskname"
+           android:text="Quantity"
+           android:id="@+id/xtasQuantity"/>
+
+   </LinearLayout>
+
+
+     <LinearLayout
+         android:weightSum="6"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         >
+
+       <TextView
+           android:layout_weight="2"
+        android:textColor="@color/primary"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/xtaskEstimatedtime"
-        android:layout_marginRight="120dp"
-        android:id="@+id/xbtnAccept" />
+        android:text="Time"
+        android:layout_below="@+id/xtasQuantity"
+        android:layout_marginBottom="30dp"
+       />
+         <TextView
+             android:layout_weight="4"
+             android:textColor="@color/Black"
+             android:textSize="14sp"
+             android:layout_marginTop="10dp"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Estimated Time"
+             android:layout_below="@+id/xtasQuantity"
+             android:layout_marginBottom="30dp"
+             android:id="@+id/xtaskEstimatedtime"/>
+     </LinearLayout>
 
-    <Button
+  <LinearLayout
+
+      android:weightSum="3"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+
+      <Button
+          android:layout_marginLeft="10dp"
+          android:layout_weight="1.5"
+          android:textColor="#fef6eb"
+          android:background="@color/primary"
+          android:text="Accept"
+          android:textAllCaps="false"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/xtaskEstimatedtime"
+          android:id="@+id/xbtnAccept" />
+
+      <Button
+
+          android:layout_marginRight="10dp"
+          android:layout_weight="1.5"
+        android:textColor="#fef6eb"
+        android:background="@color/primary"
+        android:textAllCaps="false"
         android:text="Reject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="90dp"
         android:onClick="onClick"
         android:id="@+id/xbtReject"
 
         />
 
+  </LinearLayout>
 
 
 
 
-
-</RelativeLayout>
+</LinearLayout>

@@ -52,7 +52,9 @@ public class MyNotificationManager {
 
         if (web.sharedPreferences.getString("type" , "******").equals("Member")) {
             intent = new Intent(mCtx, MemberProfile.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+            // intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+            intent.addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY);
+
 
         }
 
@@ -73,11 +75,7 @@ public class MyNotificationManager {
             intent = new Intent(mCtx, LoginRegisterActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
 
-
         }
-
-
-
 
         PendingIntent resultPendingIntent = PendingIntent.getActivity(mCtx, ID_BIG_NOTIFICATION, intent,PendingIntent.FLAG_UPDATE_CURRENT
         );
@@ -96,6 +94,7 @@ public class MyNotificationManager {
                 .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.green))
                 .setContentText(message)
                 .build();
+
 
         notification.defaults |= Notification.DEFAULT_SOUND;
         notification.defaults |= Notification.DEFAULT_VIBRATE;
@@ -119,6 +118,7 @@ public class MyNotificationManager {
             intent.putExtra("message" , message);
 
             intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+
 
         }
 
@@ -169,6 +169,7 @@ public class MyNotificationManager {
         notification.defaults |= Notification.DEFAULT_SOUND;
         notification.defaults |= Notification.DEFAULT_VIBRATE;
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
+
 
         NotificationManager notificationManager = (NotificationManager) mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(ID_SMALL_NOTIFICATION, notification);

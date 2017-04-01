@@ -7,6 +7,7 @@
         import android.os.Bundle;
         import android.app.Fragment;
         import android.support.design.widget.Snackbar;
+        import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -50,6 +51,8 @@ public class HomeFragment extends Fragment {
      String quantity[]=null;
      String x[];
      String charity_NameType;
+     int charity_parent_id;
+
      private ProgressDialog progressDialog;
     public HomeFragment() {
         // Required empty public constructor
@@ -67,10 +70,17 @@ public class HomeFragment extends Fragment {
         typeNameBuffer =new StringBuffer();
          task_quantity=new StringBuffer();
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
-web.sharedPreferences=getActivity().getSharedPreferences("load_data" ,0);
+        web.sharedPreferences=getActivity().getSharedPreferences("load_data" ,0);
         charity_NameType=web.sharedPreferences.getString("typename" , "******");
+        charity_parent_id =  web.sharedPreferences.getInt("id" , 0);
+
+
+        System.out.println(charity_parent_id);
+        Log.d("***" , ""+charity_parent_id);
 
         final ListView requests_list = (ListView) view.findViewById(R.id.home_requests);
+
+
 
 
         web.getAllRequests(getActivity() , new request_interface() {
@@ -165,7 +175,7 @@ web.sharedPreferences=getActivity().getSharedPreferences("load_data" ,0);
                                 Map<String, String> params = new HashMap<>();
                                 params.put("title",requests[0] );
                                 params.put("message",x[0] +"#"+x[1]+"#"+ address.getText().toString() + "#" +taskQuantity.getText().toString() +"#"+taskEstimatedTime.getText().toString()+"#");
-                                params.put("charity_parent_id", ""+web.sharedPreferences.getInt("id" , 0));
+                                params.put("charity_parent_id", ""+charity_parent_id);
 
 
 //                            if (!TextUtils.isEmpty(image))
