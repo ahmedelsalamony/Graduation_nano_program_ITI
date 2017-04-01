@@ -214,7 +214,7 @@ public class MemberReceiveNotification extends Fragment {
 */
 
 
-
+//
 //-----------------------------------------------------------
                                 FragmentManager fragmentManager = getActivity().getFragmentManager();
                                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
