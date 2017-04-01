@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,116 +9,122 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-
     <LinearLayout
-
-        android:weightSum="6"
+        android:id="@+id/row1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:orientation="horizontal"
-        >
+        android:weightSum="6">
+
         <TextView
-            android:layout_weight="1"
-            android:textColor="@color/primary"
-            android:textSize="20sp"
-            android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_weight="1"
             android:text="Address"
-            />
-
-        <TextView
-
-            android:layout_weight="5"
-            android:textColor="@color/Black"
-            android:textSize="14sp"
-            android:layout_marginTop="40dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Address "
-            android:id="@+id/xTextView3"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:weightSum="6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_weight="1"
             android:textColor="@color/primary"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/xtaskname"
-            android:text="Quantity"
-            />
+            android:textSize="20sp" />
 
         <TextView
-            android:layout_weight="5"
-            android:textColor="@color/Black"
-            android:textSize="14sp"
-            android:layout_marginTop="10dp"
+
+            android:id="@+id/xTextView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/xtaskname"
-            android:text="Quantity"
-            android:id="@+id/xTextView4"/>
-
+            android:layout_marginTop="40dp"
+            android:layout_weight="5"
+            android:text="Address "
+            android:textColor="@color/Black"
+            android:textSize="14sp" />
     </LinearLayout>
 
-
     <LinearLayout
-        android:weightSum="6"
+        android:id="@+id/row2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/row1"
         android:orientation="horizontal"
-        >
+        android:weightSum="6">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/xtaskname"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
+            android:text="Quantity"
             android:textColor="@color/primary"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time"
-            android:layout_below="@+id/xtasQuantity"
-            android:layout_marginBottom="30dp"
-            />
+            android:textSize="20sp" />
+
         <TextView
-            android:layout_weight="5"
-            android:textColor="@color/Black"
-            android:textSize="14sp"
-            android:layout_marginTop="10dp"
+            android:id="@+id/xTextView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estimated Time"
+            android:layout_below="@+id/xtaskname"
+            android:layout_marginTop="10dp"
+            android:layout_weight="5"
+            android:text="Quantity"
+            android:textColor="@color/Black"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/row3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/row2"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/xtasQuantity"
             android:layout_marginBottom="30dp"
-            android:id="@+id/xTextView5"/>
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="Time"
+            android:textColor="@color/primary"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/xTextView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/xtasQuantity"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="5"
+            android:text="Estimated Time"
+            android:textColor="@color/Black"
+            android:textSize="14sp" />
     </LinearLayout>
+
 
     <Button
-        android:textSize="22sp"
-        android:textColor="@color/AntiqueWhite"
-        android:textAllCaps="false"
-        android:background="@color/primary"
-        android:text="Done"
+        android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:background="@color/primary"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:textColor="@color/AntiqueWhite"
+        android:textSize="22sp" />
+
 
     <com.google.android.gms.maps.MapView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_below="@+id/row3"
+        android:layout_above="@+id/btnSubmit"
         android:id="@+id/mapView"
-        />
-
-    </LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="6" />
+</RelativeLayout>
 
 
 

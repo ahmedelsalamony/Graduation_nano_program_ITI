@@ -163,16 +163,17 @@ public class MemberReceiveNotification extends Fragment {
                         @Override
                         public void onClick(View view) {
 
-/*
+
                             web.checkRequestTask(getActivity(), Integer.parseInt(note[1]), new request_interface() {
                                 @Override
                                 public void onResponse(String response) {
 
                                     try {
                                         JSONObject jsonResponse = new JSONObject(response);
-
+                                        Toast.makeText(getActivity(), ""+jsonResponse.toString(), Toast.LENGTH_SHORT).show();
                                         JSONArray jsonArray = jsonResponse.getJSONArray("check");
 
+                                        Toast.makeText(getActivity(), ""+jsonArray.toString(), Toast.LENGTH_SHORT).show();
 
                                         for (int i = 0; i < jsonArray.length(); i++) {
                                             JSONObject search_object = jsonArray.getJSONObject(i);
@@ -183,14 +184,23 @@ public class MemberReceiveNotification extends Fragment {
                                         if(status.equals("Confirmed")){
                                             acceptBtn.setVisibility(View.INVISIBLE);
 
-                                        }else {
+                                        }
+                                        else {
 
+
+                                            // To update Charity_tasks Table
                                             web.updateTask(getActivity(), my_id, Integer.parseInt(note[1]));
                                             web.addCharityTask(getActivity(), xx, Integer.parseInt(note[1]));
 
 
                                             sendToRstaurant();
                                             sendToCharity();
+                                            //to update Tasks Table
+                                            taskdialog.dismiss();
+                                            FragmentManager fragmentManager = getActivity().getFragmentManager();
+                                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                            fragmentTransaction.replace(R.id.xactivity_main, new Member_GoogleMap()).commit();
+
 
                                         }
 
@@ -211,23 +221,10 @@ public class MemberReceiveNotification extends Fragment {
                             });
 
 
-*/
 
 
 //
 //-----------------------------------------------------------
-                                FragmentManager fragmentManager = getActivity().getFragmentManager();
-                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                fragmentTransaction.replace(R.id.xactivity_main, new Member_GoogleMap()).commit();
-
-
-                                // To update Charity_tasks Table
-                            web.updateTask(getActivity(), my_id, Integer.parseInt(note[1]));
-                            web.addCharityTask(getActivity(), xx, Integer.parseInt(note[1]));
-
-
-                            sendToRstaurant();
-                            sendToCharity();                     //to update Tasks Table
 
 
 

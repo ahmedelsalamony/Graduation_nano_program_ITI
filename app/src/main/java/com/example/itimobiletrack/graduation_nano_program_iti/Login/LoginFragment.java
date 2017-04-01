@@ -1,10 +1,7 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
-import android.app.Activity;
-import android.support.v4.app.Fragment;
-
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -19,8 +16,6 @@ import android.widget.TextView;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 import com.labo.kaji.fragmentanimations.CubeAnimation;
-
-import net.skoumal.fragmentback.BackFragment;
 
 /**
  * Created by ahmed on 3/21/2017.
