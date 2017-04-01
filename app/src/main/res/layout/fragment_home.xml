@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.owner.community.HomeFragment"
-    android:background="@android:drawable/screen_background_light">
+    android:background="@color/primary_light">
 
 
     <ListView

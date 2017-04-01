@@ -6,11 +6,12 @@
 
 
     <TextView
-        android:textColor="#000"
+        android:textColor="@color/primary"
         android:gravity="center"
         android:id="@+id/xNoRequestsTextView"
-    android:textSize="35sp"
-    android:text="No Requests yet!"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+        android:textSize="35sp"
+        android:background="@color/primary_light"
+        android:text="No Requests yet!"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

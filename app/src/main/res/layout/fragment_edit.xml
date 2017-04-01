@@ -1,53 +1,92 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.owner.community.EditFragment"
-    android:weightSum="5"
+    android:weightSum="8"
+    android:background="@color/primary_light"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
 
-
-    <EditText
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Name"
-        android:ems="10"
-        android:id="@+id/xUserNameEdit"
-        android:layout_weight="1"
-        android:layout_margin="5dp"/>
+        app:srcCompat="@mipmap/green"
+        android:id="@+id/imageView3"
+        android:layout_weight="4"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:hint="Phone"
-        android:ems="10"
-        android:id="@+id/xPhoneEdit"
-        android:layout_weight="1"
-        android:layout_margin="5dp"/>
+        >
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            android:ems="10"
+            android:textColor="@color/primary"
+            android:id="@+id/xUserNameEdit"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="Phone"
+            android:ems="10"
+            android:textColor="@color/primary"
+            android:id="@+id/xPhoneEdit"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPostalAddress"
         android:hint="Address"
         android:ems="10"
+        android:textColor="@color/primary"
         android:id="@+id/xAddressEdit"
         android:layout_weight="1"
         android:layout_margin="5dp"/>
+    </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberPassword"
         android:hint="Password"
         android:ems="10"
+        android:textColor="@color/primary"
         android:id="@+id/xPasswordEdit"
         android:layout_weight="1"
         android:layout_margin="5dp"/>
+    </android.support.design.widget.TextInputLayout>
+
 
     <LinearLayout
         android:layout_weight="1"
@@ -57,6 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp">
 
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,11 +104,14 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:text="Save"
-            android:background="#00A5F1"
             android:textColor="@color/WhiteSmoke"
             android:id="@+id/Save"
+            android:background="@drawable/txtstyle"
+            android:textAllCaps="false"
             android:layout_margin="5dp"
             />
+
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,9 +119,10 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:text="Cancel"
-            android:background="#00A5F1"
             android:textColor="@color/WhiteSmoke"
             android:id="@+id/Cancel"
+            android:background="@drawable/txtstyle"
+            android:textAllCaps="false"
             android:layout_margin="5dp"/>
 
     </LinearLayout>
