@@ -22,7 +22,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/title.ttf");
         txtTitle.setTypeface(custom_font);*/
 
-
+//
         // get fragment manager
         fm = getSupportFragmentManager();
         // add
