@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,7 +34,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by ahmed on 3/21/2017.
  */
 
-public class RegisterFragment extends Fragment {
+public class RegisterFragment extends Fragment  {
 
     TextView txtTitle;
     EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress,edtCharity;
@@ -55,11 +56,11 @@ public class RegisterFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.activity_registeration, parent, false);
+        View v=inflater.inflate(R.layout.fragment_registeration, parent, false);
 
 
         web=new webServices();
-//
+
 //        txtTitle=(TextView)v.findViewById(R.id.xTitle);
 //        Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/title.ttf");
 //        txtTitle.setTypeface(custom_font);
@@ -219,11 +220,5 @@ public class RegisterFragment extends Fragment {
             }
         }
     }
-
-
-
-
-
-
 
 }

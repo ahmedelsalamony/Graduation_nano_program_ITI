@@ -51,6 +51,12 @@ dependencies {
 
     //fragment animation
     compile 'com.labo.kaji:fragmentanimations:0.1.1'
+
+    //ripple effect
+    compile 'com.github.traex.rippleeffect:library:1.3'
+
+    //enumfrag library handle back button in fragments and activities
+    compile 'net.skoumal.fragmentback:fragment-back:0.2.3'
 }
 
 

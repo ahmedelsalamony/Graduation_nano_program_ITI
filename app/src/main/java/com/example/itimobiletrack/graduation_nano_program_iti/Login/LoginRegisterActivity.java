@@ -1,16 +1,10 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 
@@ -33,8 +27,10 @@ public class LoginRegisterActivity extends AppCompatActivity {
         // add
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.xPlaceHolder, new LoginFragment());
-        ft.addToBackStack(null);
+        ft.addToBackStack("logingrament");
         ft.commit();
+
+        LoginFragment lg = new LoginFragment();
 
 
     }
@@ -55,10 +51,23 @@ public class LoginRegisterActivity extends AppCompatActivity {
         FragmentManager fm =getSupportFragmentManager();
         FragmentTransaction  ft=fm.beginTransaction();
         ft.replace(R.id.xPlaceHolder,forgetPass);
-        //ft.addToBackStack(null);
+        ft.addToBackStack(null);
         ft.commit();
 
     }
 
+    @Override
+    public void onBackPressed() {
 
+        int count = getFragmentManager().getBackStackEntryCount();
+        count++;
+        if (count == 1) {
+            super.onBackPressed();
+
+            finish();
+        } else {
+            getFragmentManager().popBackStack();
+        }
+
+    }
 }
