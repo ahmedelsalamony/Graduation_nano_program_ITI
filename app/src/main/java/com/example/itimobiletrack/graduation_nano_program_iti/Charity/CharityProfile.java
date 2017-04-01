@@ -1,6 +1,7 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Charity;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -19,8 +20,10 @@ import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
 public class CharityProfile extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,FragmentManager.OnBackStackChangedListener {
 
+
+    FragmentManager manager;
 
     private webServices web ;
 
@@ -34,9 +37,13 @@ public class CharityProfile extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         HomeFragment homeFragment = new HomeFragment();
-        FragmentManager manager = getFragmentManager();
-        manager.beginTransaction().replace(R.id.content_main,homeFragment,homeFragment.getTag()).commit();
-//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.green);
+        manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.content_main,homeFragment);
+        transaction.addToBackStack("home");
+        transaction.commit();
+        //manager.beginTransaction().replace(R.id.content_main,homeFragment,homeFragment.getTag()).commit();
+       //getSupportActionBar().setHomeAsUpIndicator(R.drawable.green);
 
 //
 //          toolbar.setTitle(getIntent().getStringExtra("typename"));
@@ -117,21 +124,37 @@ public class CharityProfile extends AppCompatActivity
         if (id == R.id.nav_home) {
             HomeFragment homeFragment = new HomeFragment();
             FragmentManager manager = getFragmentManager();
-            manager.beginTransaction().replace(R.id.content_main,homeFragment,homeFragment.getTag()).commit();
+            //manager.beginTransaction().replace(R.id.content_main,homeFragment,homeFragment.getTag()).commit();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.content_main,homeFragment);
+            //transaction.addToBackStack("home");
+            transaction.commit();
         } else if (id == R.id.nav_members) {
             MembersFragment membersFragment = new MembersFragment();
             FragmentManager manager = getFragmentManager();
-            manager.beginTransaction().replace(R.id.content_main,membersFragment,membersFragment.getTag()).commit();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.content_main,membersFragment,membersFragment.getTag());
+            transaction.addToBackStack("members");
+            transaction.commit();
+            //manager.beginTransaction().replace(R.id.content_main,membersFragment,membersFragment.getTag()).commit();
 
         } else if (id == R.id.nav_edit) {
             EditFragment editFragment = new EditFragment();
             FragmentManager manager = getFragmentManager();
-            manager.beginTransaction().replace(R.id.content_main,editFragment,editFragment.getTag()).commit();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.content_main,editFragment,editFragment.getTag());
+            transaction.addToBackStack("edit");
+            transaction.commit();
+            //transaction.replace(R.id.content_main,editFragment,editFragment.getTag()).commit();
 
         } else if (id == R.id.nav_about) {
             AboutFragment aboutFragment = new AboutFragment();
             FragmentManager manager = getFragmentManager();
-            manager.beginTransaction().replace(R.id.content_main,aboutFragment,aboutFragment.getTag()).commit();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.content_main,aboutFragment,aboutFragment.getTag());
+            transaction.addToBackStack("about");
+            transaction.commit();
+            //manager.beginTransaction().replace(R.id.content_main,aboutFragment,aboutFragment.getTag()).commit();
 
         } else if (id == R.id.nav_logout) {
             Intent intent  = new Intent(CharityProfile.this, LoginRegisterActivity.class);
@@ -143,5 +166,11 @@ public class CharityProfile extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.content_main,new HomeFragment()).commit();
     }
 }

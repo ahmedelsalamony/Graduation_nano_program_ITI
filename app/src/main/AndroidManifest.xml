@@ -64,7 +64,8 @@
         <activity
             android:name=".Charity.CharityProfile"
             android:label="@string/title_activity_charity_profile"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".Login.LoginRegisterActivity"
         android:theme="@style/AppTheme.NoActionBar"

@@ -85,6 +85,9 @@ public class Member_GoogleMap extends Fragment implements OnMapReadyCallback,Act
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_INTERNET);
+        }
         googleMap.getUiSettings().setMapToolbarEnabled(true);
         googleMap.getUiSettings().setZoomControlsEnabled(true);
         googleMap.setMyLocationEnabled(true);
@@ -118,11 +121,9 @@ public class Member_GoogleMap extends Fragment implements OnMapReadyCallback,Act
     public void onResume() {
         super.onResume();
         mapView.onResume();
-        if(android.os.Build.VERSION.SDK_INT >= 23) {
-            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_INTERNET);
-            }
-        }
+//        if(android.os.Build.VERSION.SDK_INT >= 23) {
+//
+//        }
     }
 
     @Override
