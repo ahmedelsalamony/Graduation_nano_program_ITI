@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -33,7 +32,7 @@ public class AddMemberFragment extends Fragment {
     TextView txtTitle;
     EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress;
     boolean flag = false;
-    Intent intent;
+    //Intent intent;
     public Place startAddress;
     private webServices web;
 
@@ -105,14 +104,18 @@ public class AddMemberFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 flag = false;
+                Intent intent = null;
                 try {
                     intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY).build(getActivity());
+                    startActivityForResult(intent, 1);
                 } catch (GooglePlayServicesRepairableException e) {
                     e.printStackTrace();
+                    Toast.makeText(getActivity(), "GooglePlayServicesRepairableException", Toast.LENGTH_SHORT).show();
                 } catch (GooglePlayServicesNotAvailableException e) {
                     e.printStackTrace();
+                    Toast.makeText(getActivity(), "GooglePlayServicesNotAvailableException", Toast.LENGTH_SHORT).show();
                 }
-                startActivityForResult(intent, 1);
+
             }
         });
 
@@ -133,12 +136,9 @@ public class AddMemberFragment extends Fragment {
 
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-
-                if (flag == false) {
                     startAddress = PlaceAutocomplete.getPlace(getActivity(), data);
                     edtAddress.setText(startAddress.getAddress());
-                    Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
-                }
+
 
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);

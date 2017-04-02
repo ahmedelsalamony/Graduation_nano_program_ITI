@@ -8,6 +8,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,7 @@ public class MembersFragment extends Fragment {
 
 
         web = new webServices();
+        web.sharedPreferences = getActivity().getSharedPreferences("load_data",0);
         userNameBuffer = new StringBuffer();
         idBuffer =new StringBuffer();
 
@@ -72,11 +74,13 @@ public class MembersFragment extends Fragment {
          // TODO call getMemberData
 
 
- // TODO ERRRORRRRRRRRRRRR
-            if(getActivity().getIntent().getStringExtra("id") !=null) {
+        Toast.makeText(getActivity()," before"+web.sharedPreferences.getInt("id",2017),Toast.LENGTH_SHORT).show();
+        // TODO ERRRORRRRRRRRRRRR
+            if(web.sharedPreferences.getInt("id",2017) != 0) {
+                Toast.makeText(getActivity(),"after"+web.sharedPreferences.getInt("id",2017),Toast.LENGTH_SHORT).show();
 
 
-                int id = Integer.parseInt(getActivity().getIntent().getStringExtra("id"));
+                int id = web.sharedPreferences.getInt("id",2017);
                 web.getMemberData(getActivity(), id, new request_interface() {
                     @Override
                     public void onResponse(String response) {
@@ -84,7 +88,10 @@ public class MembersFragment extends Fragment {
                         try {
 
                             JSONObject jsonResponse = new JSONObject(response);
+                            Toast.makeText(getActivity(), ""+jsonResponse, Toast.LENGTH_SHORT).show();
+                            Log.i("json:  " ,""+jsonResponse);
                             JSONArray jsonArray = jsonResponse.getJSONArray("search");
+                            Log.i("json:  " ,""+jsonArray);
 
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject search_object = jsonArray.getJSONObject(i);

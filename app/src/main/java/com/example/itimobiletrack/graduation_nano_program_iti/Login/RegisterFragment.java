@@ -158,12 +158,13 @@ public class RegisterFragment extends Fragment  {
                 flag = false;
                 try {
                     intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY).build(getActivity());
+                    startActivityForResult(intent, 1);
                 } catch (GooglePlayServicesRepairableException e) {
                     e.printStackTrace();
                 } catch (GooglePlayServicesNotAvailableException e) {
                     e.printStackTrace();
                 }
-                startActivityForResult(intent, 1);
+
             }
         });
         return v;
@@ -203,6 +204,7 @@ public class RegisterFragment extends Fragment  {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        Toast.makeText(getActivity(), ""+requestCode+"  "+resultCode, Toast.LENGTH_SHORT).show();
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
 

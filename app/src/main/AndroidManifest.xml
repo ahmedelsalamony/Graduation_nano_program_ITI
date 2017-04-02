@@ -40,6 +40,10 @@
              android:name="com.google.android.maps.v2.API_KEY"
              android:value="AIzaSyDS4h8ashp4JW9F_1Ze3cDVO26QZW_gqRs"/>
 
+         <meta-data
+             android:name="com.google.android.geo.API_KEY"
+             android:value="AIzaSyD0pkiPVLhV4F8TQDs64Ym75MimYzHj2y0" />
+
 
           <!--for maps member -->
 

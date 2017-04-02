@@ -168,6 +168,7 @@ public class webServices {
                             editor.putString("password" , getProfileInfo.getPassword());
                             editor.putString("phone" , getProfileInfo.getPhone());
                             editor.putString("address" , getProfileInfo.getAddress());
+                            editor.putString("charity_parent_id" , getProfileInfo.getCharity_parent_id());
                             editor.commit();
 
 
