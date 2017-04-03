@@ -23,7 +23,8 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <!--For rating bar -->
     <style name="RatingBarfeed" parent="Theme.AppCompat">
-        <item name="colorControlNormal">@color/colorPrimary</item>
-        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/LightSlateGray</item>
+        <item name="colorControlActivated">@color/Red</item>
     </style>
+
 </resources>

@@ -149,8 +149,8 @@ public class CharityProfile extends AppCompatActivity
 
         } else if (id == R.id.nav_about) {
             AboutFragment aboutFragment = new AboutFragment();
-            FragmentManager manager = getFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
+            android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
             transaction.replace(R.id.content_main,aboutFragment,aboutFragment.getTag());
             transaction.addToBackStack("about");
             transaction.commit();

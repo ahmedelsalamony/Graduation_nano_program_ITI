@@ -67,7 +67,7 @@ public abstract class PermissionUtils {
             mFinishActivity = getArguments().getBoolean(ARGUMENT_FINISH_ACTIVITY);
 
             return new AlertDialog.Builder(getActivity())
-                    .setMessage(R.string.location_permission_denied)
+                    .setMessage("dismiss")
                     .setPositiveButton(android.R.string.ok, null)
                     .create();
         }
@@ -76,7 +76,7 @@ public abstract class PermissionUtils {
         public void onDismiss(DialogInterface dialog) {
             super.onDismiss(dialog);
             if (mFinishActivity) {
-                Toast.makeText(getActivity(), R.string.permission_required_toast,
+                Toast.makeText(getActivity(), "dismiss",
                         Toast.LENGTH_SHORT).show();
                 getActivity().finish();
             }
@@ -120,7 +120,7 @@ public abstract class PermissionUtils {
             mFinishActivity = arguments.getBoolean(ARGUMENT_FINISH_ACTIVITY);
 
             return new AlertDialog.Builder(getActivity())
-                    .setMessage(R.string.permission_rationale_location)
+                    .setMessage("ai haga ")
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -139,7 +139,7 @@ public abstract class PermissionUtils {
             super.onDismiss(dialog);
             if (mFinishActivity) {
                 Toast.makeText(getActivity(),
-                        R.string.permission_required_toast,
+                        "on dismiss",
                         Toast.LENGTH_SHORT)
                         .show();
                 getActivity().finish();

@@ -2,7 +2,7 @@ package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;

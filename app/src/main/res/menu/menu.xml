@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/fragment_about"
-        android:title="About"
+        android:title="@string/fragment_about"
         app:showAsAction="never"/>
     <item android:id="@+id/fragment_edit_restaurant_profile"
-        android:title="Edit Profile"
+        android:title="@string/fragment_edit_restaurant_profile"
         app:showAsAction="never"/>
     <item android:id="@+id/fragment_logout"
-        android:title="Logout"
+        android:title="@string/fragment_logout"
         app:showAsAction="never"/>
 
 </menu>

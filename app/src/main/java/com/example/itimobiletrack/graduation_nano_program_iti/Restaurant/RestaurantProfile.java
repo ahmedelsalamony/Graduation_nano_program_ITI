@@ -21,7 +21,7 @@ import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
 public class RestaurantProfile extends AppCompatActivity {
-    FragmentManager fragmentManager;
+    android.support.v4.app.FragmentManager fragmentManager;
     ImageView imageView;
      Toolbar toolbar;
      private  webServices web ;
@@ -44,11 +44,11 @@ public class RestaurantProfile extends AppCompatActivity {
           txt.setText(web.sharedPreferences.getString("typename" , "******"));
 
 
-        fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Restaurant_ProfileFragment restaurantProfileFragment = new Restaurant_ProfileFragment();
-        fragmentTransaction.replace(R.id.xContainer, restaurantProfileFragment);
-        fragmentTransaction.addToBackStack(null);
+        fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+       Restaurant_ProfileFragment restaurant_profileFragment = new Restaurant_ProfileFragment();
+        fragmentTransaction.replace(R.id.xContainer, restaurant_profileFragment);
+        fragmentTransaction.addToBackStack(String.valueOf(R.layout.fragment_login));
         fragmentTransaction.commit();
 
 
@@ -68,20 +68,20 @@ public class RestaurantProfile extends AppCompatActivity {
             case R.id.fragment_about:
 
                 AboutFragment aboutFragment =new AboutFragment();
-                FragmentManager fm =getFragmentManager();
-                FragmentTransaction ft=fm.beginTransaction();
-                ft.replace(R.id.xContainer , aboutFragment);
+                android.support.v4.app.FragmentManager fm =getSupportFragmentManager();
+                android.support.v4.app.FragmentTransaction ft=fm.beginTransaction();
+                ft.replace(R.id.xContainer , aboutFragment).addToBackStack("tag");
                 ft.commit();
                 break;
 
 
             case R.id.fragment_edit_restaurant_profile:
 
-                fragmentManager = getFragmentManager();
-                FragmentTransaction  fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentManager = getSupportFragmentManager();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 EditRestaurantProfile editProfile = new EditRestaurantProfile();
                 fragmentTransaction.replace(R.id.xContainer, editProfile);
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.addToBackStack("tag");
                 fragmentTransaction.commit();
                 break;
 

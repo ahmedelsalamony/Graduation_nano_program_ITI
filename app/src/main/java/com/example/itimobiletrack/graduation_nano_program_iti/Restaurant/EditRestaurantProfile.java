@@ -1,23 +1,28 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 
-
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
+import com.labo.kaji.fragmentanimations.CubeAnimation;
+
+import static com.daimajia.androidanimations.library.BaseViewAnimator.DURATION;
 
 
 public class EditRestaurantProfile extends Fragment {
 EditText edtUserName,edtPassword,edtConfirmPassword,edtPhone,edtAddress,edtCharity,edtEmail;
-Button bEditRestaurant;
+Button bEditRestaurant,mCancelEditRestaurant;
    webServices web;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,6 +39,7 @@ Button bEditRestaurant;
 
 
         bEditRestaurant= (Button) v.findViewById(R.id.xEditRestaurantFinish);
+        mCancelEditRestaurant= (Button) v.findViewById(R.id.xCancelEditRestaurant);
         edtUserName=(EditText)v.findViewById(R.id.xUserName);
         edtPassword=(EditText)v.findViewById(R.id.xPassword);
         edtConfirmPassword=(EditText)v.findViewById(R.id.xConfirmPassword);
@@ -75,8 +81,20 @@ Button bEditRestaurant;
 
             }
         });
+        // btn cancel
 
+         mCancelEditRestaurant.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 android.support.v4.app.FragmentManager fragmentManager = getFragmentManager();
+                 android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                 Restaurant_ProfileFragment restaurant_profileFragment = new Restaurant_ProfileFragment();
+                 fragmentTransaction.replace(R.id.xContainer, restaurant_profileFragment);
+                 fragmentTransaction.addToBackStack("tag");
+                 fragmentTransaction.commit();
 
+             }
+         });
 
 
 
@@ -91,5 +109,9 @@ Button bEditRestaurant;
         return m.matches();
     }
 
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        return CubeAnimation.create(CubeAnimation.UP, enter, DURATION);
+    }
 
 }

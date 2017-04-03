@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
 
 
     <RatingBar
+        android:gravity="center"
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
         android:stepSize="1.0"
+        android:layout_marginTop="20dp"
         android:rating="2.0"
-        android:theme="@style/RatingBarfeed"
+        android:layout_marginBottom="20dp"
+
+
         />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="@string/btnSubmit"
+        android:textAllCaps="false"
+        android:background="@drawable/txtstyle"
+        android:textColor="@color/GhostWhite"
         android:layout_gravity="center"
         />
 
