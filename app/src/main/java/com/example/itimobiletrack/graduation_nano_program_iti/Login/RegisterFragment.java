@@ -1,5 +1,11 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
+import android.app.ProgressDialog;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -7,6 +13,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,10 +21,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.SharedPrefManager;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
@@ -27,6 +42,14 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Hashtable;
+import java.util.Map;
+
+import static android.R.attr.bitmap;
+import static android.R.attr.theme;
+import static android.R.attr.thickness;
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
@@ -40,11 +63,14 @@ public class RegisterFragment extends Fragment  {
     EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress,edtCharity;
     RadioButton rdCharity,rdRestaurant;
     String strUserName, strPassword, strConfirm, strEmail, strPhone, strAddress, strCharity;
+    ImageButton imgbtn;
 
     boolean flag = false;
     Intent intent;
     public Place startAddress;
     TextInputLayout layCharity;
+    private int PICK_IMAGE_REQUEST=2;
+    private Bitmap bitmap;
 
 
     private webServices web;
@@ -74,6 +100,7 @@ public class RegisterFragment extends Fragment  {
         rdCharity=(RadioButton)v.findViewById(R.id.xrdCharity);
         rdRestaurant=(RadioButton)v.findViewById(R.id.xrdRestaurant);
         layCharity=(TextInputLayout)v.findViewById(R.id.input_layout_CharityName) ;
+        imgbtn=(ImageButton)v.findViewById(R.id.ximgbtn);
 
         strUserName = edtUserName.getText().toString();
         strPassword = edtPassword.getText().toString();
@@ -84,6 +111,12 @@ public class RegisterFragment extends Fragment  {
         strCharity = edtCharity.getText().toString();
 
         Button btn=(Button)v.findViewById(R.id.xbtnsave);
+        imgbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showFileChooser();
+            }
+        });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,8 +154,9 @@ public class RegisterFragment extends Fragment  {
                     edtEmail.setError("enter valid email");
                 }else{
                   String token = SharedPrefManager.getInstance(getActivity()).getDeviceToken();
-
-                    web.addUser(getActivity(), userName, password, email, phone, address, type, typeName, 0,122,token);
+                    //convert bitmap to string
+                    String strImage = getStringImage(bitmap);
+                    web.addUser(getActivity(), userName, password, email, phone, address, type, typeName, 0,122, token,strImage);
                 }
 
             }
@@ -203,6 +237,7 @@ public class RegisterFragment extends Fragment  {
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+       // Context applicationContext = LoginRegisterActivity.getContextOfApplication();
 
         Toast.makeText(getActivity(), ""+requestCode+"  "+resultCode, Toast.LENGTH_SHORT).show();
         if (requestCode == 1) {
@@ -218,9 +253,38 @@ public class RegisterFragment extends Fragment  {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
                 Log.e("Tag", status.getStatusMessage());
 
-            } else if (resultCode == RESULT_CANCELED) {
+            }
+        }else if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri filePath = data.getData();
+            Toast.makeText(getActivity(), filePath + " pathhhhhhhhhhhh", Toast.LENGTH_SHORT).show();
+            try {
+                ContentResolver resolver = getActivity().getContentResolver();
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),filePath);
+               imgbtn.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
+
+    //this method is to open file chooser to choose image
+    public void showFileChooser(){
+        Intent i=new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(i.createChooser(i,"choose image"),PICK_IMAGE_REQUEST);
+    }
+    //for upload image
+//convert bitmap to string as following
+    public String getStringImage(Bitmap bmp){
+        ByteArrayOutputStream baos=new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG,100,baos);
+        byte[] imagearray=baos.toByteArray();
+        String encodeImg= Base64.encodeToString(imagearray,Base64.DEFAULT);
+        return encodeImg;
+    }
+
+
+
 
 }

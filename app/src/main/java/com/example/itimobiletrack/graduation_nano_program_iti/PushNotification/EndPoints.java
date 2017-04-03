@@ -11,4 +11,5 @@ public class EndPoints {
     public static final String URL_FETCH_DEVICES = "https://re-restaurant.000webhostapp.com/uploads/re_database/GetRegisteredDevices.php";
     public static final String URL_SEND_TO_MEMBERS = "https://re-restaurant.000webhostapp.com/uploads/re_database/sendToMembers.php";
 
+
 }

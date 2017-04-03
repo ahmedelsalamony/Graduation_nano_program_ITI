@@ -1,5 +1,6 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,7 +14,12 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
     private FragmentManager fm;
 
-
+//    // a static variable to get a reference of our application context
+//    public static Context contextOfApplication;
+//    public static Context getContextOfApplication()
+//    {
+//        return contextOfApplication;
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +36,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
         ft.add(R.id.xPlaceHolder, new LoginFragment());
         ft.addToBackStack("logingrament");
         ft.commit();
-
+     //   contextOfApplication = getApplicationContext();
 
     }
 

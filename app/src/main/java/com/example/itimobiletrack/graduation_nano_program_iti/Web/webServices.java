@@ -1,11 +1,13 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Web;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceGroup;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.itimobiletrack.graduation_nano_program_iti.Charity.CharityProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.Charity.MembersFragment;
 import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
+import com.example.itimobiletrack.graduation_nano_program_iti.Login.RegisterFragment;
 import com.example.itimobiletrack.graduation_nano_program_iti.Member.MemberProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.EndPoints;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.SharedPrefManager;
@@ -58,6 +61,7 @@ public class webServices {
     public static String STATUS = "status_of_member";
     public static String CHARITY_PARENT_ID = "charity_parent_id";
     public static String KEY_TOKEN = "token";
+    public static String KEY_imgUrl="imgurl";
 
   // For table Tasks
     public static String RESTAURANT_ID = "restaurant_id";
@@ -253,10 +257,12 @@ public class webServices {
 
     public void addUser(final Activity activity, final String username, final String password, final String email,
                         final String phone, final String address, final String type ,final  String typename, final int status
-                        ,final int charityParentId ,   final  String keyToken)
+                        ,final int charityParentId ,   final  String keyToken,final String img)
         {
 
-
+            mProgressDialog=new ProgressDialog(activity);
+            mProgressDialog.setTitle("plaese wait...");
+            mProgressDialog.show();
 
         sharedPreferences =activity.getSharedPreferences("register_data" , 0);
         editor =sharedPreferences.edit();
@@ -266,6 +272,7 @@ public class webServices {
             @Override
             public void onResponse(String response) {
 
+                mProgressDialog.dismiss();
                 editor.putString("username_r",username);
                 editor.putString("password_r" , password);
                 editor.putString("token_r" , keyToken);
@@ -289,6 +296,8 @@ public class webServices {
             @Override
             protected java.util.Map<String, String> getParams() throws AuthFailureError {
                 java.util.Map<String, String> params = new HashMap<String, String>();
+
+
                 params.put(USERNAME, username);
                 params.put(PASSWORD, password);
                 params.put(EMAIL, email);
@@ -299,7 +308,7 @@ public class webServices {
                 params.put(STATUS, ""+status);
                 params.put(CHARITY_PARENT_ID, ""+charityParentId);
                 params.put(KEY_TOKEN, keyToken);
-
+                params.put(KEY_imgUrl,img);
                 params.put(TAG,ADD_USER_TAG );
                 return params;
             }

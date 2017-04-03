@@ -3,6 +3,7 @@ package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.CircleTransform;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
+import com.squareup.picasso.Picasso;
 
 import static com.example.itimobiletrack.graduation_nano_program_iti.R.id.btnSubmit;
 import static com.example.itimobiletrack.graduation_nano_program_iti.R.id.ratingBar;
@@ -69,13 +72,15 @@ public class ImageAdapterGrid extends BaseAdapter {
                     .findViewById(R.id.grid_item_image);
 
 
+            mobile= CharityValues[position];
+            web =new webServices();
+            web.sharedPreferences = context.getSharedPreferences("load_data" , 0);
+            String imagename= web.sharedPreferences.getString("username","username");
+            Log.d("imagename",mobile);
 
-             mobile= CharityValues[position];
-
-
-                imageView.setImageResource(R.drawable.img4);
-
-
+            Picasso.with(context).
+                    load("https://re-restaurant.000webhostapp.com/uploads/re_database/"+mobile+".jpg")
+                    .transform(new CircleTransform()).placeholder(R.drawable.img1).error(R.drawable.img2).into(imageView);
 
         } else {
             v = (View) convertview;

@@ -58,6 +58,8 @@ dependencies {
 
     //enumfrag library handle back button in fragments and activities
     compile 'net.skoumal.fragmentback:fragment-back:0.2.3'
+    /*picasso library for cicular imageview*/
+    compile 'com.squareup.picasso:picasso:2.4.0'
 }
 
 
