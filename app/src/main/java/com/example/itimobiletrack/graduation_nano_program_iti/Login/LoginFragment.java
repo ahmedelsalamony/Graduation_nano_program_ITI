@@ -28,7 +28,7 @@ public class LoginFragment extends Fragment {
     private View mProgressView;
     private View mLoginFormView;
     private Button signUp;
-    private static final long DURATION = 500;
+    private static final long DURATION = 600;
     private webServices web;
 
 
@@ -40,10 +40,6 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_login, parent, false);
-
-
-
-
         web= new webServices();
 
         signUp = (Button) v.findViewById(R.id.signUp);
@@ -61,11 +57,9 @@ public class LoginFragment extends Fragment {
         });
 
 
-
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) v.findViewById(R.id.email);
         mPasswordView = (EditText) v.findViewById(R.id.password);
-
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -77,7 +71,6 @@ public class LoginFragment extends Fragment {
             }
         });
 
-
         Button mEmailSignInButton = (Button) v.findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,30 +78,17 @@ public class LoginFragment extends Fragment {
                 attemptLogin();
             }
         });
-
         mLoginFormView = v.findViewById(R.id.login_form);
         return v;
 
     }
-
-
-
-
-
 
     //TODO Login Action
     private void attemptLogin() {
 
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
-
-
-
-
         web.user_login(getActivity(),email,password);
-
-
-
     }
 
     @Override

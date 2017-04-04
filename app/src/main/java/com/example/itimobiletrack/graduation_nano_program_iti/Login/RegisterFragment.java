@@ -1,17 +1,13 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
-import android.app.ProgressDialog;
 import android.content.ContentResolver;
-import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
-import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -19,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -26,31 +23,21 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.SharedPrefManager;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.CircleTransform;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.labo.kaji.fragmentanimations.CubeAnimation;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Hashtable;
-import java.util.Map;
 
-import static android.R.attr.bitmap;
-import static android.R.attr.theme;
-import static android.R.attr.thickness;
-import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 /**
@@ -71,6 +58,7 @@ public class RegisterFragment extends Fragment  {
     TextInputLayout layCharity;
     private int PICK_IMAGE_REQUEST=2;
     private Bitmap bitmap;
+    private static final long DURATION = 600;
 
 
     private webServices web;
@@ -137,22 +125,24 @@ public class RegisterFragment extends Fragment  {
                 String typeName = edtCharity.getText().toString();
 
                 if (edtUserName.getText().toString().trim().equals("")){
-                    edtUserName.setError("enter valid username");
+                    edtUserName.setError(" enter valid username");
                 }else if (edtPassword.getText().toString().trim().equals("")){
-                    edtPassword.setError("enter valid password");
+                    edtPassword.setError(" enter valid password");
                 }else if (!edtConfirmPassword.getText().toString().trim().equals(password)) {
-                    edtConfirmPassword.setError("password not match");
+                    edtConfirmPassword.setError("enter password not match");
                 }else if (edtConfirmPassword.getText().toString().trim().equals("")){
                     edtConfirmPassword.setError("error ");
                 }else if (edtPhone.getText().toString().trim().toString().equals("")){
                     edtPhone.setError("enter valid phone");
                 }else if (edtAddress.getText().toString().trim().equals("")){
-                    edtAddress.setError("enter valid address");
+                    edtAddress.setError(" enter valid address");
                 }else if(edtCharity.getText().toString().trim().equals("")){
                     edtCharity.setError("enter valid charity name");
                 }else if (!isValidEmailAddress(edtEmail.getText().toString().trim())){
                     edtEmail.setError("enter valid email");
-                }else{
+                }else if (!rdCharity.isChecked()&&!rdRestaurant.isChecked()){
+                    rdRestaurant.setError("please choose your type");
+                }else {
                   String token = SharedPrefManager.getInstance(getActivity()).getDeviceToken();
                     //convert bitmap to string
                     String strImage = getStringImage(bitmap);
@@ -168,7 +158,8 @@ public class RegisterFragment extends Fragment  {
 
                 layCharity.setVisibility(View.VISIBLE);
                 edtCharity.setVisibility(View.VISIBLE);
-                edtCharity.setHint("Charity name");
+                String charityname = getActivity().getResources().getString (R.string.charityname);
+                edtCharity.setHint(charityname);
 
                 return false;
             }
@@ -180,11 +171,11 @@ public class RegisterFragment extends Fragment  {
 
                 layCharity.setVisibility(View.VISIBLE);
                 edtCharity.setVisibility(View.VISIBLE);
-                edtCharity.setHint("Restaurant name");
+                String restaurantname = getActivity().getResources().getString (R.string.restaurantname);
+                edtCharity.setHint(restaurantname);
                 return false;
             }
         });
-
 
         edtAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,9 +189,9 @@ public class RegisterFragment extends Fragment  {
                 } catch (GooglePlayServicesNotAvailableException e) {
                     e.printStackTrace();
                 }
-
             }
         });
+
         return v;
     }
     public boolean isValidEmailAddress(String email) {
@@ -260,7 +251,8 @@ public class RegisterFragment extends Fragment  {
             try {
                 ContentResolver resolver = getActivity().getContentResolver();
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),filePath);
-               imgbtn.setImageBitmap(bitmap);
+                Picasso.with(getActivity()).load(filePath).fit().into(imgbtn);
+              //  imgbtn.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -284,7 +276,9 @@ public class RegisterFragment extends Fragment  {
         return encodeImg;
     }
 
-
-
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        return CubeAnimation.create(CubeAnimation.UP, enter, DURATION);
+    }
 
 }

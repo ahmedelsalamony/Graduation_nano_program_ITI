@@ -1,34 +1,53 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.itimobiletrack.graduation_nano_program_iti.Charity.CharityProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile;
 
 public class LoginRegisterActivity extends AppCompatActivity {
 
     private FragmentManager fm;
 
-//    // a static variable to get a reference of our application context
-//    public static Context contextOfApplication;
-//    public static Context getContextOfApplication()
-//    {
-//        return contextOfApplication;
-//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register_phase);
-        /*TextView txtTitle=(TextView)findViewById(R.id.xxxx);
+        TextView txtTitle = (TextView) findViewById(R.id.xTitle);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/title.ttf");
-        txtTitle.setTypeface(custom_font);*/
+        txtTitle.setTypeface(custom_font);
 
-//
+        SharedPreferences shared = getSharedPreferences("load_data", 0);
+        String user = shared.getString("username", "");
+        Toast.makeText(this, "user ==== " + user, Toast.LENGTH_SHORT).show();
+        //------TODO when shared is empity-------------//
+        if (user.equals("")) {
+            Toast.makeText(this, "shared is empity", Toast.LENGTH_SHORT).show();
+        }
+        //--------------------------------------------//
+        else {
+            String usertype = shared.getString("type", "");
+            if (usertype.equals("Restaurant")) {
+                Intent i = new Intent(LoginRegisterActivity.this, RestaurantProfile.class);
+                startActivity(i);
+                this.finish();
+            } else if (usertype.equals("Charity")) {
+                Intent i = new Intent(LoginRegisterActivity.this, CharityProfile.class);
+                startActivity(i);
+                this.finish();
+            }
+        }
         // get fragment manager
         fm = getSupportFragmentManager();
         // add
@@ -36,12 +55,11 @@ public class LoginRegisterActivity extends AppCompatActivity {
         ft.add(R.id.xPlaceHolder, new LoginFragment());
         ft.addToBackStack("logingrament");
         ft.commit();
-     //   contextOfApplication = getApplicationContext();
-
+        //contextOfApplication = getApplicationContext();
     }
 
 
-    public void toSignUp(View v){
+    public void toSignUp(View v) {
         // replace
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.xPlaceHolder, new RegisterFragment());
@@ -50,29 +68,32 @@ public class LoginRegisterActivity extends AppCompatActivity {
     }
 
 
-    public void toForgetPassword(View v){
+    public void toForgetPassword(View v) {
 
-        ForgetPass forgetPass=new ForgetPass();
-        FragmentManager fm =getSupportFragmentManager();
-        FragmentTransaction  ft=fm.beginTransaction();
-        ft.replace(R.id.xPlaceHolder,forgetPass);
+        ForgetPass forgetPass = new ForgetPass();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.xPlaceHolder, forgetPass);
         ft.addToBackStack(null);
         ft.commit();
 //////////////////
     }
+
     @Override
     public void onBackPressed() {
 
-        int count = getFragmentManager().getBackStackEntryCount();
-        if (fm.findFragmentByTag("logingrament") != null)
-            count++;
-            if (count == 0 ) {
+
+            int count = getFragmentManager().getBackStackEntryCount();
+            if (fm.findFragmentByTag("logingrament") != null)
+                count++;
+            if (count == 0) {
                 getFragmentManager().popBackStack();
                 finish();
-            //additional code
-        } else if (count == 2){
+                //additional code
+            } else if (count == 2) {
                 super.onBackPressed();
-        }
-    }
+            }
 
-}
+        }
+
+    }

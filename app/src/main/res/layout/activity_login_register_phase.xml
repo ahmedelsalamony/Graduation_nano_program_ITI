@@ -8,13 +8,17 @@
     android:background="@color/primary_light"
     tools:context="com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity">
 
-
-
-<ImageView
+    <TextView
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="25dp"
+    android:textColor="#00A5F1"
+    android:textStyle="bold"
+    android:textSize="50sp"
+    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:src="@drawable/green"
-    android:layout_margin="16dp"
+    android:text="Itt3am"
+    android:id="@+id/xTitle"
     />
 
     <FrameLayout

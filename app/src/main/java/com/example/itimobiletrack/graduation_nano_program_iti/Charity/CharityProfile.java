@@ -3,6 +3,7 @@ package com.example.itimobiletrack.graduation_nano_program_iti.Charity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
@@ -90,10 +92,15 @@ public class CharityProfile extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        LoginRegisterActivity loginRegisterActivity=new LoginRegisterActivity();
+        SharedPreferences shared = getSharedPreferences("load_data", 0);
+        String user = shared.getString("username", "");
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }
+        else {
             super.onBackPressed();
         }
     }
@@ -157,9 +164,15 @@ public class CharityProfile extends AppCompatActivity
             //manager.beginTransaction().replace(R.id.content_main,aboutFragment,aboutFragment.getTag()).commit();
 
         } else if (id == R.id.nav_logout) {
+
+            SharedPreferences shared = getSharedPreferences("load_data", 0);
+            SharedPreferences.Editor editor = shared.edit();
+            editor.clear();
+            editor.commit();
+            Toast.makeText(this,shared.getString("username","") +"from logout", Toast.LENGTH_SHORT).show();
             Intent intent  = new Intent(CharityProfile.this, LoginRegisterActivity.class);
             startActivity(intent);
-            finish();
+            this.finish();
 
         }
 

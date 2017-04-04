@@ -27,9 +27,36 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">الايميل</string>
-    <string name="prompt_password">كلمة السر</string>
+
+
+    <string name="login">دخول</string>
+    <string name="signup">تسجيل الدخول</string>
+    <string name="forgetpass">نسيت كلمة المرور؟</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="Vusername">ادخل اسم المستخدم</string>
+    <string name="password">كلمة السر</string>
+    <string name="Vpassword">ادخل كلمة السر</string>
+    <string name="confirmpassword">تاكيد كلمة السر</string>
+    <string name="Vconfrimpassword">كلمة السر غير متطابقة</string>
+    <string name="email">البريد الالكترونى (الايميل)</string>
+    <string name="Vemail">ادخل البريد الالكترونى</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="Vphone">ادخل رقم الهاتف</string>
+    <string name="address">العنوان</string>
+    <string name="Vaddress">ادخل العنوان</string>
+    <string name="rdrestaurant">مطعم</string>
+    <string name="Vrdrestaurant">اختر من فضلك </string>
+    <string name="rdcharity">جمعية</string>
+    <string name="charityname">اسم الجمعية</string>
+    <string name="Vcharityname">اخل اسم الجمعية</string>
+    <string name="restaurantname">اسم المطعم</string>
+    <string name="Vrestaurantname">ادخل اسم المطعم</string>
+    <string name="save">حفظ</string>
+    <string name="restorepassword">استعادة الرقم السرى</string>
+    <string name="VemailRestore">ادخل البريد الالكترونى</string>
+    <string name="forgethint">ادخل البريد الالكترونى الذى سجلت به وسوف نرسل لك كلمة السر الى هذا البريد</string>
     <string name="action_sign_in">Sign in or register</string>
+
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>

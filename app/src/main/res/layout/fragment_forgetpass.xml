@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:layout_marginBottom="50dp"
+    >
 
 
 
@@ -14,10 +17,21 @@
             android:id="@+id/xRestorePasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="enter user name"
+            android:hint="@string/email"
             android:inputType="text"
+            android:textColor="@color/accent"
+            android:layout_marginBottom="4dp"
             />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/forgethint"
+            android:id="@+id/xForgetHint"
+            android:gravity="center"
+            android:textColor="@color/accent"
+            android:layout_marginBottom="4dp"
+            />
     </android.support.design.widget.TextInputLayout>
     <com.andexert.library.RippleView
         android:id="@+id/more3"
@@ -30,13 +44,14 @@
     <Button
         android:id="@+id/xRestorePasswordButton"
         android:background="@drawable/txtstyle"
-        android:text="restore password"
-        android:layout_width="wrap_content"
+        android:text="@string/restorepassword"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:layout_gravity="center"
         android:padding="6dp"
-
+        android:textColor="@color/primary_light"
+        android:textStyle="bold"
         />
 </com.andexert.library.RippleView>
 </LinearLayout>

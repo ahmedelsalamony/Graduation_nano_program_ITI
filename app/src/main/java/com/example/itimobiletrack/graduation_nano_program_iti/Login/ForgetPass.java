@@ -33,6 +33,7 @@ public class ForgetPass extends Fragment {
     private EditText edRestorePassword;
     private Button   buRestorePassword;
     private webServices web;
+    private static final long DURATION = 600;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,10 @@ public class ForgetPass extends Fragment {
                 {
 
                     String userName= edRestorePassword.getText().toString().trim();
+                    if (userName.isEmpty()){
+                        String errormsg = getActivity().getResources().getString (R.string.VemailRestore);
+                        edRestorePassword.setError(errormsg);
+                    }
                     // TODO  >> Call forget web Service
                     web.forgetPasswordUser(getActivity(), userName, new request_interface() {
                         @Override
@@ -89,7 +94,6 @@ public class ForgetPass extends Fragment {
                                             ft.replace(R.id.xPlaceHolder,loginFragment);
                                             ft.commit();
 
-
                                         }
                                     });
 
@@ -98,7 +102,6 @@ public class ForgetPass extends Fragment {
                                 else
                                 {
                                     Toast.makeText(getActivity(), " not found account with user name", Toast.LENGTH_LONG).show();
-
                                 }
 
                             } catch (JSONException e) {
@@ -108,14 +111,9 @@ public class ForgetPass extends Fragment {
 
                         @Override
                         public void onError() {
-
                         }
                     });
-
-
                 }
-
-
             }
         });
 

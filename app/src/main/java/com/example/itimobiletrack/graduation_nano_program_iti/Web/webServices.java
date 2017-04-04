@@ -159,6 +159,7 @@ public class webServices {
                             new webServices().updateToken(activity ,SharedPrefManager.getInstance(activity).getDeviceToken() ,sharedPreferences.getString("username" , "******"));
                             Intent intent = new Intent(activity,RestaurantProfile.class);
                             activity.startActivity(intent);
+                            activity.finish();
                         }
                         else if(userType.equals("Charity"))
                         {
@@ -185,8 +186,7 @@ public class webServices {
                      new webServices().updateToken(activity ,SharedPrefManager.getInstance(activity).getDeviceToken() ,sharedPreferences.getString("username" , "******"));
                             Intent intent = new Intent(activity,CharityProfile.class);
                             activity.startActivity(intent);
-
-
+                            activity.finish();
 
                         }
                         else if(userType.equals("Member"))
@@ -209,9 +209,8 @@ public class webServices {
                             sharedPreferences=activity.getSharedPreferences("load_data" , 0);
                             new webServices().updateToken(activity ,SharedPrefManager.getInstance(activity).getDeviceToken() ,sharedPreferences.getString("username" , "******"));
                             Intent intent = new Intent(activity,MemberProfile.class);
-
                             activity.startActivity(intent);
-
+                            activity.finish();
 
                         }
 
