@@ -1,8 +1,7 @@
  package com.example.itimobiletrack.graduation_nano_program_iti.Charity;
 
         import android.app.Dialog;
-        import android.app.FragmentManager;
-        import android.app.FragmentTransaction;
+        import android.app.ListFragment;
         import android.app.ProgressDialog;
         import android.os.Bundle;
         import android.app.Fragment;
@@ -26,8 +25,6 @@
         import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.EndPoints;
         import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.MyVolley;
         import com.example.itimobiletrack.graduation_nano_program_iti.R;
-        import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.ImageAdapterGrid;
-        import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.Restaurant_ProfileFragment;
         import com.example.itimobiletrack.graduation_nano_program_iti.Web.request_interface;
         import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
@@ -43,18 +40,19 @@
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
-   private  StringBuffer typeNameBuffer;
+     private  StringBuffer typeNameBuffer;
      private  StringBuffer task_quantity;
-    private  webServices web;
+     private  webServices web;
      String[] requests = null;
      String address[]=null;
      String quantity[]=null;
      String x[];
      String charity_NameType;
      int charity_parent_id;
+     ListView requests_list;
 
      private ProgressDialog progressDialog;
-    public HomeFragment() {
+       public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -63,22 +61,22 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
+        final View view = inflater.inflate(R.layout.fragment_home, container, false);
+        requests_list  = (ListView) view.findViewById(R.id.home_requests);
+
         web= new webServices();
         progressDialog =new ProgressDialog(getActivity());
 
 
         typeNameBuffer =new StringBuffer();
          task_quantity=new StringBuffer();
-        final View view = inflater.inflate(R.layout.fragment_home, container, false);
         web.sharedPreferences=getActivity().getSharedPreferences("load_data" ,0);
         charity_NameType=web.sharedPreferences.getString("typename" , "******");
         charity_parent_id =  web.sharedPreferences.getInt("id" , 0);
 
-
         System.out.println(charity_parent_id);
         Log.d("***" , ""+charity_parent_id);
-
-        final ListView requests_list = (ListView) view.findViewById(R.id.home_requests);
 
 
 
@@ -103,8 +101,8 @@ public class HomeFragment extends Fragment {
                     requests = typeNameBuffer.toString().split("#");
                     quantity = task_quantity.toString().split("#");
 
-                    ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, requests);
-
+                    //ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, requests);
+                    ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(), R.layout.single_row_request, R.id.xml_text,requests);
                     requests_list.setAdapter(listViewAdapter);
 
 

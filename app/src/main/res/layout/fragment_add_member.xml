@@ -138,6 +138,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Address"
+                    android:editable="false"
+                    android:focusableInTouchMode="false"
                     android:textColorHint="@color/accent"
                     android:textColor="@color/primary"
                     />

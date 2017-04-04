@@ -26,7 +26,6 @@ public class CharityProfile extends AppCompatActivity
 
 
     FragmentManager manager;
-
     private webServices web ;
 
     @Override
@@ -183,7 +182,7 @@ public class CharityProfile extends AppCompatActivity
 
     @Override
     public void onBackStackChanged() {
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.content_main,new HomeFragment()).commit();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.content_main,new HomeFragment()).commit();
     }
 }

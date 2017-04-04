@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.Selection;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,23 +74,44 @@ public class AddMemberFragment extends Fragment {
                 String type = "Member";
 
                 String typeName = web.sharedPreferences.getString("typename" , "******");
-             int    strCharity=web.sharedPreferences.getInt("id" , 0);
+                int strCharity=web.sharedPreferences.getInt("id" , 0);
                 int charity_Id=strCharity;
 
                 if (edtUserName.getText().toString().trim().equals("")){
-                    edtUserName.setError("enter valid username");
+                    edtUserName.setError("This Field is required");
+                    edtUserName.requestFocus();
+                }
+                else if(edtUserName.getText().toString().length() < 3){
+                    edtUserName.setError("Minimum 3 characters");
+                    edtUserName.requestFocus();
                 }else if (edtPassword.getText().toString().trim().equals("")){
-                    edtPassword.setError("enter valid password");
+                    edtPassword.setError("This Field is required");
+                    edtPassword.requestFocus();
+                }
+                else if (edtPassword.getText().toString().length() < 4){
+                    edtPassword.setError("Too short Minimum 4 characters");
+                    edtPassword.requestFocus();
                 }else if (!edtConfirmPassword.getText().toString().trim().equals(password)) {
-                    edtConfirmPassword.setError("password not match");
+                    edtConfirmPassword.setError("Password Mismatch");
+                    edtConfirmPassword.requestFocus();
                 }else if (edtConfirmPassword.getText().toString().trim().equals("")){
-                    edtConfirmPassword.setError("error ");
-                }else if (edtPhone.getText().toString().trim().toString().equals("")){
-                    edtPhone.setError("enter valid phone");
-                }else if (edtAddress.getText().toString().trim().equals("")){
-                    edtAddress.setError("enter valid address");
+                    edtConfirmPassword.setError("This Field is required");
+                    edtConfirmPassword.requestFocus();
+                }else if (edtEmail.getText().toString().trim().equals("")){
+                    edtEmail.setError("This Field is required");
+                    edtEmail.requestFocus();
                 }else if (!isValidEmailAddress(edtEmail.getText().toString().trim())){
-                    edtEmail.setError("enter valid email");
+                    edtEmail.setError("Not valid Email");
+                    edtEmail.requestFocus();
+                }else if (edtPhone.getText().toString().trim().toString().equals("")){
+                    edtPhone.setError("This Field is required");
+                    edtPhone.requestFocus();
+                }else if (edtPhone.getText().toString().trim().toString().length() != 11){
+                    edtPhone.setError("Not valid Mobile number");
+                    edtPhone.requestFocus();
+                }else if (edtAddress.getText().toString().trim().equals("")){
+                    edtAddress.setError("This Field is required");
+                    edtAddress.requestFocus();
                 }else{
                     String token = SharedPrefManager.getInstance(getActivity()).getDeviceToken();
                     web.addMember(getActivity(), userName, password, email, phone, address, type, typeName, 0,charity_Id ,token);
