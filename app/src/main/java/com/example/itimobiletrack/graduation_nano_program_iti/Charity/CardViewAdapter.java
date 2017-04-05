@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,9 +28,12 @@ public class CardViewAdapter extends BaseAdapter {
     webServices web= new webServices();
     public String keyWord;
 
+
+
     public CardViewAdapter(Context context, String[] restaurantValues) {
         this.context=context;
         this.restaurantValues=restaurantValues;
+
     }
     @Override
     public int getCount() {
@@ -48,11 +53,13 @@ public class CardViewAdapter extends BaseAdapter {
         return 0;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.single_row_request,parent,false);
         View v;
+
         if(convertView == null) {
             v = new View(context);
             v = inflater.inflate(R.layout.single_row_request, null);
