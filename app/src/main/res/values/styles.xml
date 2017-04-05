@@ -24,7 +24,7 @@
     <!--For rating bar -->
     <style name="RatingBarfeed" parent="Theme.AppCompat">
         <item name="colorControlNormal">@color/LightSlateGray</item>
-        <item name="colorControlActivated">@color/Red</item>
+        <item name="colorControlActivated">@color/OrangeRed</item>
     </style>
 
 </resources>

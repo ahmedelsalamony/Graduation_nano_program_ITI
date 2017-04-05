@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/fragment_restaurant_profile"
+        android:title="@string/fragment_restaurant_profile"/>
     <item android:id="@+id/fragment_about"
-        android:title="@string/fragment_about"
+        android:title= "@string/fragment_about"
         app:showAsAction="never"/>
     <item android:id="@+id/fragment_edit_restaurant_profile"
         android:title="@string/fragment_edit_restaurant_profile"
         app:showAsAction="never"/>
     <item android:id="@+id/fragment_logout"
-        android:title="@string/fragment_logout"
-        app:showAsAction="never"/>
+    android:title="@string/fragment_logout"
+    app:showAsAction="never"/>
 
 </menu>
 

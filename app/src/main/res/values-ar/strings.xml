@@ -66,21 +66,25 @@
         completions."
     </string>
     <!--  Strings relatred to restaurant profile-->
-    <string name="xUserName">ادخل اسم المستخدم</string>
-    <string name="xPassword">ادخل كلمة السر </string>
-    <string name="xEmail">ادخل البريد الالكتروني</string>
-    <string name="xPhone">ادخل رقم الهاتف</string>
-    <string name="xAddress">ادخل العنوان</string>
+    <string name="xUserName"> اسم المستخدم</string>
+    <string name="xPassword"> كلمة السر </string>
+    <string name="xEmail"> البريد الالكتروني</string>
+    <string name="xPhone"> رقم الهاتف</string>
+    <string name="xAddress">العنوان</string>
     <string name="xEditRestaurantFinish">تعديل</string>
     <string name="xCancelEditRestaurant">الغاء</string>
-    <string name="xFoodQ">ادخل كمية الطعام</string>
-    <string name="xEstimatedTime">ادخل الوقت المقرر</string>
+    <string name="xFoodQ"> كمية الطعام</string>
+    <string name="xEstimatedTime"> الوقت المقرر</string>
     <string name="xbtnConfirmSend">ارسل</string>
     <string name="xCancel">الغاء</string>
-    <string name="btnSubmit">معدل</string>
+    <string name="btnSubmit">تقييم</string>
     <string name="fragment_about">عن التطبيق</string>
     <string name="fragment_edit_restaurant_profile">تعديل الحساب</string>
     <string name="fragment_logout">تسجيل الخروج</string>
+    <string name="fragment_restaurant_profile">الرئيسية</string>
+    <string name="tv_requestTitle">ارسال طلب للجمعية</string>
+    <string name="tv_rateCharity">تقييم الجمعية</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

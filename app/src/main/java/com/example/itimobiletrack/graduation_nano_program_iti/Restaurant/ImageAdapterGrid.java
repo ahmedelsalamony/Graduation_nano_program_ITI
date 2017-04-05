@@ -73,7 +73,7 @@ public class ImageAdapterGrid extends BaseAdapter {
 
             Picasso.with(context).
                     load("https://re-restaurant.000webhostapp.com/uploads/re_database/"+mobile+".jpg")
-                    .transform(new CircleTransform()).placeholder(R.drawable.img1).error(R.drawable.img2).into(imageView);
+                    .transform(new CircleTransform()).placeholder(R.drawable.img1).into(imageView);
 
         } else {
             v = (View) convertview;

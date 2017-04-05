@@ -130,7 +130,7 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
                 Toast.makeText(getActivity(), String.valueOf(ratingBar.getRating()), Toast.LENGTH_SHORT).show();
             }
         });
-        dialog.setTitle("Rate Charity");
+       // dialog.setTitle("Rate Charity");
         dialog.show();
     }
 
@@ -222,7 +222,7 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
             }
         });
 
-        dialog.setTitle(" request to charity ");
+      //  dialog.setTitle(" request to charity ");
         dialog.show();
 
     }

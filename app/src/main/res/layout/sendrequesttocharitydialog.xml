@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="300dp"
-    android:layout_height="300dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:layout_margin="8dp"
     android:gravity="center"
-
-        >
+    android:weightSum="1">
+    <TextView
+        android:id="@+id/tv_requestTitle"
+        android:text="@string/tv_requesrTitle"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:layout_weight="0.21" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/xinput_layout_foodQ"
@@ -18,22 +25,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/xFoodQ"
-            android:textColor="@color/primary"
-            />
+                  />
     </android.support.design.widget.TextInputLayout>
+
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/xinput_layout_estimatedTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="10dp">
 
         <EditText
             android:id="@+id/xEstimatedTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/xEstimatedTime"
-            android:textColor="@color/primary"
             />
 
     </android.support.design.widget.TextInputLayout>
@@ -42,6 +48,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="10dp"
+
         >
     <Button
         android:layout_weight="1"
@@ -52,10 +60,11 @@
         android:textAllCaps="false"
         android:background="@drawable/txtstyle"
         android:layout_margin="3dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
         android:textColor="@color/GhostWhite"
         android:id="@+id/xbtnConfirmSend"
-        />
+
+        android:layout_marginRight="20dp" />
     <Button
         android:layout_weight="1"
         android:layout_width="wrap_content"

@@ -562,6 +562,9 @@ public class webServices {
     // TODO   getAllCharity
     public void getAllCharity(final Activity activity, final String type, final request_interface object) {
         queue = Volley.newRequestQueue(activity);
+        final ProgressDialog mProgressDialog = new ProgressDialog(activity);
+      // mProgressDialog.setMessage("please wait ............");
+        mProgressDialog.show();
         StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
 
 
@@ -569,6 +572,8 @@ public class webServices {
             @Override
             public void onResponse(String response) {
                 object.onResponse(response);
+                mProgressDialog.dismiss();
+
 
             }
 

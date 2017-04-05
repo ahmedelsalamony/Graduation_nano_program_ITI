@@ -76,7 +76,8 @@
         android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="keyboardHidden|orientation|screenSize"  />
 
-        <activity android:name=".Restaurant.SendRateActivity" />
+        <activity android:name=".Restaurant.SendRateActivity"
+            />
 
 
         <activity android:name=".Member.MemberProfile"

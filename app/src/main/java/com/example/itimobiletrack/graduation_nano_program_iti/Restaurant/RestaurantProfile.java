@@ -3,11 +3,18 @@ package com.example.itimobiletrack.graduation_nano_program_iti.Restaurant;
 import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
+import android.view.InflateException;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,24 +34,14 @@ public class RestaurantProfile extends AppCompatActivity {
      Toolbar toolbar;
      private  webServices web ;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_profile);
-        //this line to delete shadow between actionbar and tool bar
-        getSupportActionBar().setElevation(0);
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
-        setTitle("");
-
-         TextView txt=(TextView)findViewById(R.id.xTxtTitleBar);
-
-
-          web =new webServices();
+        web =new webServices();
            web.sharedPreferences =getSharedPreferences("load_data",0);
-
-          txt.setText(web.sharedPreferences.getString("typename" , "******"));
-
-
+        setTitle(web.sharedPreferences.getString("typename" , "******"));
         fragmentManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
        Restaurant_ProfileFragment restaurant_profileFragment = new Restaurant_ProfileFragment();
@@ -62,15 +59,24 @@ public class RestaurantProfile extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.fragment_restaurant_profile:
+                Restaurant_ProfileFragment restaurant_profileFragment = new Restaurant_ProfileFragment();
+                android.support.v4.app.FragmentManager fm =  getSupportFragmentManager();
+                android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.xContainer,restaurant_profileFragment).addToBackStack("tag");
+                ft.commit();
+                break;
+
 
             case R.id.fragment_about:
 
                 AboutFragment aboutFragment =new AboutFragment();
-                android.support.v4.app.FragmentManager fm =getSupportFragmentManager();
-                android.support.v4.app.FragmentTransaction ft=fm.beginTransaction();
+                fm = getSupportFragmentManager();
+                ft = fm.beginTransaction();
                 ft.replace(R.id.xContainer , aboutFragment).addToBackStack("tag");
                 ft.commit();
                 break;
@@ -93,7 +99,7 @@ public class RestaurantProfile extends AppCompatActivity {
                 SharedPreferences.Editor editor = shared.edit();
                 editor.clear();
                 editor.commit();
-                Toast.makeText(this,shared.getString("username","") +"from logout", Toast.LENGTH_SHORT).show();
+               Toast.makeText(this,shared.getString("username","") +"from logout", Toast.LENGTH_SHORT).show();
                  Intent intent = new Intent(RestaurantProfile.this,LoginRegisterActivity.class);
                 startActivity(intent);
                 this.finish();
