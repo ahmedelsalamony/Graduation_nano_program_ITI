@@ -63,9 +63,7 @@ public class ImageAdapterGrid extends BaseAdapter {
             textView.setText(CharityValues[position]);
              textView.setTextSize(20);
             //---------------------------- set image based on selected text--------------------------------------//
-            ImageView imageView = (ImageView) v
-                    .findViewById(R.id.grid_item_image);
-
+            ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
 
             mobile= CharityValues[position];
             web =new webServices();

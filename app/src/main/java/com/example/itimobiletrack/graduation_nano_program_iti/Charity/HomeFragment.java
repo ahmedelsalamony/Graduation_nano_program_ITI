@@ -13,6 +13,7 @@
         import android.widget.AdapterView;
         import android.widget.ArrayAdapter;
         import android.widget.Button;
+        import android.widget.ImageView;
         import android.widget.ListView;
         import android.widget.TextView;
         import android.widget.Toast;
@@ -25,6 +26,7 @@
         import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.EndPoints;
         import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.MyVolley;
         import com.example.itimobiletrack.graduation_nano_program_iti.R;
+        import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.ImageAdapterGrid;
         import com.example.itimobiletrack.graduation_nano_program_iti.Web.request_interface;
         import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
@@ -47,9 +49,10 @@ public class HomeFragment extends Fragment {
      String address[]=null;
      String quantity[]=null;
      String x[];
-     String charity_NameType;
+     String   charity_NameType;
      int charity_parent_id;
      ListView requests_list;
+     CardViewAdapter adapter;
 
      private ProgressDialog progressDialog;
        public HomeFragment() {
@@ -99,11 +102,12 @@ public class HomeFragment extends Fragment {
 
 
                     requests = typeNameBuffer.toString().split("#");
+                    adapter = new CardViewAdapter(getActivity(),requests);
                     quantity = task_quantity.toString().split("#");
 
                     //ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, requests);
-                    ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(), R.layout.single_row_request, R.id.xml_text,requests);
-                    requests_list.setAdapter(listViewAdapter);
+                    //ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(), R.layout.single_row_request, R.id.xml_text,requests);
+                    requests_list.setAdapter(adapter);
 
 
 

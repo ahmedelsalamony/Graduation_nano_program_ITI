@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -88,8 +89,14 @@ public class RestaurantProfile extends AppCompatActivity {
 
 
             case R.id.fragment_logout:
-                 Intent intent = new Intent(this,LoginRegisterActivity.class);
+                SharedPreferences shared = getSharedPreferences("load_data", 0);
+                SharedPreferences.Editor editor = shared.edit();
+                editor.clear();
+                editor.commit();
+                Toast.makeText(this,shared.getString("username","") +"from logout", Toast.LENGTH_SHORT).show();
+                 Intent intent = new Intent(RestaurantProfile.this,LoginRegisterActivity.class);
                 startActivity(intent);
+                this.finish();
 
             default:
                 // If we got here, the user's action was not recognized.
