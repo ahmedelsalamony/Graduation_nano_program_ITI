@@ -781,15 +781,15 @@ public class webServices {
           {
 
 
-              mProgressDialog =new ProgressDialog(activity);
-              mProgressDialog.setMessage("Loading.....");
-              mProgressDialog.show();
+//              mProgressDialog =new ProgressDialog(activity);
+//              mProgressDialog.setMessage("Loading.....");
+//              mProgressDialog.show();
         queue = Volley.newRequestQueue(activity);
         StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-              mProgressDialog .dismiss();
+//              mProgressDialog .dismiss();
             }
 
 

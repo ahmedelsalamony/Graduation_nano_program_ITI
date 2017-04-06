@@ -68,19 +68,10 @@ public class HomeFragment extends Fragment {
 
 
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
+//        adapter=new CardViewAdapter();
         requests_list  = (ListView) view.findViewById(R.id.home_requests);
 //-----------following lines for testing animation for listview -------------------------
-        Animation anim = AnimationUtils.loadAnimation(
-                getActivity(), android.R.anim.slide_out_right
-        );
-        anim.setDuration(500);
-        int numids=adapter.getCount();
-        int arr[]=new int[numids];
-        int xanimate;
-        for (int i=0;i<numids;i++){
-            xanimate=arr[i];
-            requests_list.getChildAt(xanimate).startAnimation(anim );
-        }
+
 //---------------------------------------------------------------------------------------------
 
         web= new webServices();

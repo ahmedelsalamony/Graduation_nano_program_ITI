@@ -48,7 +48,7 @@ public class SplashActivity extends AwesomeSplash {
 
 
         //Customize Title
-        configSplash.setTitleSplash("Re-restaurant");
+        configSplash.setTitleSplash("SharEat");
         configSplash.setTitleTextColor(R.color.WhiteSmoke);
         configSplash.setTitleTextSize(60f); //float value
         configSplash.setAnimTitleDuration(500);

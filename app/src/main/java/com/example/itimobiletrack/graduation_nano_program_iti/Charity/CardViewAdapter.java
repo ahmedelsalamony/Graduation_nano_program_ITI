@@ -40,7 +40,6 @@ public class CardViewAdapter extends BaseAdapter {
         /*return number of elements inside this array*/
         return restaurantValues.length;
     }
-
     @Override
     public Object getItem(int position) {
         /*return the item at posion -position-*/
