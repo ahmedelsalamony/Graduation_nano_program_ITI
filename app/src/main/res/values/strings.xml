@@ -48,7 +48,7 @@
     <string name="restaurantname">Restaurant Name</string>
     <string name="Vrestaurantname">please enter restaurant name</string>
     <string name="save">Save</string>
-    <string name="restorepassword">Resatore Password</string>
+    <string name="restorepassword">Restore Password</string>
     <string name="VemailRestore">enter email address</string>
     <string name="forgethint">Enter the email address you registered with and we will send the password to this email</string>
 

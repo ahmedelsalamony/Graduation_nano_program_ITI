@@ -5,21 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/primary_light"
+    android:background="@color/colorPrimary"
     tools:context="com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity">
 
-    <TextView
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="25dp"
-    android:textColor="#00A5F1"
-    android:textStyle="bold"
-    android:textSize="50sp"
-    android:gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="SharEat"
-    android:id="@+id/xTitle"
-    />
+
 
     <FrameLayout
         android:id="@+id/xPlaceHolder"

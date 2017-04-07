@@ -1,6 +1,9 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Login;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
@@ -16,6 +19,9 @@ import android.widget.TextView;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 import com.labo.kaji.fragmentanimations.CubeAnimation;
+import com.tuyenmonkey.mkloader.MKLoader;
+
+import ng.max.slideview.SlideView;
 
 /**
  * Created by ahmed on 3/21/2017.
@@ -78,6 +84,19 @@ public class LoginFragment extends Fragment {
                 attemptLogin();
             }
         });
+
+   /*     ((SlideView) v.findViewById(R.id.email_sign_in_button)).setOnSlideCompleteListener(new SlideView.OnSlideCompleteListener() {
+            @Override
+            public void onSlideComplete(SlideView slideView) {
+                // vibrate the device
+                Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+                vibrator.vibrate(100);
+
+                attemptLogin();
+
+            }
+        });*/
+
         mLoginFormView = v.findViewById(R.id.login_form);
         return v;
 

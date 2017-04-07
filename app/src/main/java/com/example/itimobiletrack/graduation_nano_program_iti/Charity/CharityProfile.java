@@ -1,5 +1,6 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Charity;
 
+import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -154,13 +155,11 @@ public class CharityProfile extends AppCompatActivity
             //transaction.replace(R.id.content_main,editFragment,editFragment.getTag()).commit();
 
         } else if (id == R.id.nav_about) {
-            AboutFragment aboutFragment = new AboutFragment();
-            android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
-            android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
-            transaction.replace(R.id.content_main,aboutFragment,aboutFragment.getTag());
-            transaction.addToBackStack("about");
-            transaction.commit();
-            //manager.beginTransaction().replace(R.id.content_main,aboutFragment,aboutFragment.getTag()).commit();
+
+            final Dialog dialog = new Dialog(this) ;
+            dialog.setContentView(R.layout.dialog_about);
+            dialog.setTitle("About");
+            dialog.show();
 
         } else if (id == R.id.nav_logout) {
 

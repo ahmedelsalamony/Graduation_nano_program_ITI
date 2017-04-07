@@ -7,10 +7,12 @@ import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.preference.PreferenceGroup;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -29,6 +31,9 @@ import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.S
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.EditRestaurantProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile;
+import com.tuyenmonkey.mkloader.MKLoader;
+
+import net.bohush.geometricprogressview.GeometricProgressView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -113,6 +118,12 @@ public class webServices {
     public void  user_login(final Activity activity, final String username, final String password)
         {
             getProfileInfo = new GetProfileInfo();
+            final ProgressDialog mProgressDialog;
+            mProgressDialog = new ProgressDialog(activity);
+            mProgressDialog.setMessage("Signing........");
+            mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            mProgressDialog.show();
+
 
         queue = Volley.newRequestQueue(activity);
         final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
@@ -121,6 +132,8 @@ public class webServices {
                 try {
 
 
+
+                    mProgressDialog.dismiss();
                     sharedPreferences = activity.getSharedPreferences("load_data",0);
                     editor = sharedPreferences.edit();
 

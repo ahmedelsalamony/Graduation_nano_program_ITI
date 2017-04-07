@@ -87,7 +87,6 @@ public class RegisterFragment extends Fragment  {
         edtCharity=(EditText)v.findViewById(R.id.xCharityName);
         rdCharity=(RadioButton)v.findViewById(R.id.xrdCharity);
         rdRestaurant=(RadioButton)v.findViewById(R.id.xrdRestaurant);
-        layCharity=(TextInputLayout)v.findViewById(R.id.input_layout_CharityName) ;
         imgbtn=(ImageButton)v.findViewById(R.id.ximgbtn);
 
         strUserName = edtUserName.getText().toString();
@@ -156,7 +155,7 @@ public class RegisterFragment extends Fragment  {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-                layCharity.setVisibility(View.VISIBLE);
+
                 edtCharity.setVisibility(View.VISIBLE);
                 String charityname = getActivity().getResources().getString (R.string.charityname);
                 edtCharity.setHint(charityname);
@@ -169,7 +168,7 @@ public class RegisterFragment extends Fragment  {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-                layCharity.setVisibility(View.VISIBLE);
+
                 edtCharity.setVisibility(View.VISIBLE);
                 String restaurantname = getActivity().getResources().getString (R.string.restaurantname);
                 edtCharity.setHint(restaurantname);

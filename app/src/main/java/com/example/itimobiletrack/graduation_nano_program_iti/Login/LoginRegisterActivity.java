@@ -24,9 +24,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register_phase);
-        TextView txtTitle = (TextView) findViewById(R.id.xTitle);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/title.ttf");
-        txtTitle.setTypeface(custom_font);
+
 
         SharedPreferences shared = getSharedPreferences("load_data", 0);
         String user = shared.getString("username", "");

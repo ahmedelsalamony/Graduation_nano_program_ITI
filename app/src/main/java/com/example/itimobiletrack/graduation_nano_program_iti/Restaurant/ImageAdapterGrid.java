@@ -69,6 +69,7 @@ public class ImageAdapterGrid extends BaseAdapter {
             web =new webServices();
             web.sharedPreferences = context.getSharedPreferences("load_data" , 0);
             String imagename= web.sharedPreferences.getString("username","username");
+
             Log.d("imagename",mobile);
 
             Picasso.with(context).

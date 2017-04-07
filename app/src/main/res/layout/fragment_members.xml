@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
+    android:background="@color/button_color_default"
     android:id="@+id/add_member_layoutContainer"
     tools:context="com.example.owner.community.MembersFragment">
 
@@ -14,7 +14,8 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="400dp"
-        android:id="@+id/members"/>
+        android:id="@+id/members"
+        />
 
 
     <android.support.design.widget.FloatingActionButton

@@ -70,6 +70,7 @@ public class CardViewAdapter extends BaseAdapter {
             web = new webServices();
             web.sharedPreferences = context.getSharedPreferences("load_data", 0);
             String imagename = web.sharedPreferences.getString("username", "username");
+            Log.d("keyword******",keyWord);
 
             Picasso.with(context).
                     load("https://re-restaurant.000webhostapp.com/uploads/re_database/" + keyWord + ".jpg")
