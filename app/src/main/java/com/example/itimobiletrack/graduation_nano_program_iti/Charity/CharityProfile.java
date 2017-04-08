@@ -23,7 +23,8 @@ import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
 public class CharityProfile extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,FragmentManager.OnBackStackChangedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,FragmentManager.OnBackStackChangedListener
+{
 
 
     FragmentManager manager;
@@ -40,30 +41,32 @@ public class CharityProfile extends AppCompatActivity
 
         HomeFragment homeFragment = new HomeFragment();
         manager = getFragmentManager();
+
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.content_main,homeFragment);
         transaction.addToBackStack("home");
         transaction.commit();
+
+
         //manager.beginTransaction().replace(R.id.content_main,homeFragment,homeFragment.getTag()).commit();
-       //getSupportActionBar().setHomeAsUpIndicator(R.drawable.green);
+        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.green);
 
 //
 //          toolbar.setTitle(getIntent().getStringExtra("typename"));
 //          setTitle(getIntent().getStringExtra("typename"));
 
 
-          toolbar.setTitle(web.sharedPreferences.getString("typename" , "******"));
-          setTitle(web.sharedPreferences.getString("typename" , "******"));
+        toolbar.setTitle(web.sharedPreferences.getString("typename" , "******"));
+        setTitle(web.sharedPreferences.getString("typename" , "******"));
 
 
-        /*Default fragment*/
 
 //        /*the floating action button declaration and action*/
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                /*Action*/
+
 //            }
 //        });
 
@@ -84,9 +87,14 @@ public class CharityProfile extends AppCompatActivity
 
 
 
-         txtTypeName.setText(web.sharedPreferences.getString("typename" , "******"));
+        txtTypeName.setText(web.sharedPreferences.getString("typename" , "******"));
 
-         txtEmail.setText(web.sharedPreferences.getString("email" , "******"));
+        txtEmail.setText(web.sharedPreferences.getString("email" , "******"));
+
+
+
+
+
 
     }
 
@@ -184,4 +192,7 @@ public class CharityProfile extends AppCompatActivity
 //        FragmentTransaction transaction = manager.beginTransaction();
 //        transaction.replace(R.id.content_main,new HomeFragment()).commit();
     }
+
+
+
 }

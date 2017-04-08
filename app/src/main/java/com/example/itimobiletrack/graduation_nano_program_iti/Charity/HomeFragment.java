@@ -102,17 +102,20 @@ public class HomeFragment extends Fragment {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject search_object = jsonArray.getJSONObject(i);
                         typeNameBuffer.append(search_object.getString("typename") + "#");
-                        task_quantity.append(charity_NameType+":"+search_object.getInt("id")+":"+search_object.getString("address")+":"+search_object.getString("task_quantity")+":"+search_object.getString("task_estimated_time")+ "#");
+                        Toast.makeText(getActivity(), ""+typeNameBuffer.toString(), Toast.LENGTH_SHORT).show();
+                        task_quantity.append(charity_NameType+":"+search_object.getInt("id")+":"
+                                +search_object.getString("address")+":"+search_object.getString("task_quantity")+":"
+                                +search_object.getString("task_estimated_time")+ "#");
 
                     }
 
 
                     requests = typeNameBuffer.toString().split("#");
                     adapter = new CardViewAdapter(getActivity(),requests);
+
                     quantity = task_quantity.toString().split("#");
 
-                    //ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, requests);
-                    //ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(), R.layout.single_row_request, R.id.xml_text,requests);
+
                     requests_list.setAdapter(adapter);
 
 
@@ -157,9 +160,8 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
 
-//                        final String title =web.sharedPreferences.getString("typename" , "******");
-//                        final String quantity =edtFoodQ.getText().toString() ;
-                        // final String image = editTextImage.getText().toString();
+//
+                        System.out.println(requests[0]);
 
                         progressDialog.setMessage("Sending.......");
                         progressDialog.show();
@@ -170,6 +172,8 @@ public class HomeFragment extends Fragment {
                                     @Override
                                     public void onResponse(String response) {
                                         progressDialog.dismiss();
+
+
                                     }
                                 },
                                 new Response.ErrorListener() {
@@ -182,6 +186,8 @@ public class HomeFragment extends Fragment {
                             protected Map<String,String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
                                 params.put("title",requests[0] );
+
+
                                 params.put("message",x[0] +"#"+x[1]+"#"+ address.getText().toString() + "#" +taskQuantity.getText().toString() +"#"+taskEstimatedTime.getText().toString()+"#");
                                 params.put("charity_parent_id", ""+charity_parent_id);
 
@@ -193,13 +199,6 @@ public class HomeFragment extends Fragment {
                         };
 
                         MyVolley.getInstance(getActivity()).addToRequestQueue(stringRequest);
-
-
-
-
-
-
-
 
 
 

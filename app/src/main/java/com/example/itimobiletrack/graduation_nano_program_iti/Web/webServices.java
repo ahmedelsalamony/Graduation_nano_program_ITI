@@ -1,18 +1,13 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Web;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.preference.PreferenceGroup;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -24,18 +19,11 @@ import com.android.volley.toolbox.Volley;
 import com.example.itimobiletrack.graduation_nano_program_iti.Charity.CharityProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.Charity.MembersFragment;
 import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
-import com.example.itimobiletrack.graduation_nano_program_iti.Login.RegisterFragment;
 import com.example.itimobiletrack.graduation_nano_program_iti.Member.MemberProfile;
-import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.EndPoints;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.SharedPrefManager;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
-import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.EditRestaurantProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile;
-import com.tuyenmonkey.mkloader.MKLoader;
 
-import net.bohush.geometricprogressview.GeometricProgressView;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -148,13 +136,16 @@ public class webServices {
                         getProfileInfo. setUser_id(jsonObject.getString("user_id"));
                         getProfileInfo. setTypeNameVar(jsonObject.getString("typename"));
                         getProfileInfo. setType(jsonObject.getString("type"));
-                        getProfileInfo. setTypeNameVar(jsonObject.getString("typename"));
+//                        getProfileInfo. setTypeNameVar(jsonObject.getString("typename"));
                         getProfileInfo. setEmailVar(jsonObject.getString("email"));
                         getProfileInfo. setUserName(jsonObject.getString("username"));
                         getProfileInfo. setPassword(jsonObject.getString("password"));
                         getProfileInfo. setPhone(jsonObject.getString("phone"));
                         getProfileInfo. setAddress(jsonObject.getString("address"));
                         getProfileInfo. setCharity_parent_id(jsonObject.getString("charity_parent_id"));
+
+                        Toast.makeText(activity, "ok ok ", Toast.LENGTH_SHORT).show();
+
                         if(userType.equals("Restaurant")){
 
                              editor.putInt("id" ,Integer.parseInt(getProfileInfo.getUser_id()));
@@ -177,6 +168,7 @@ public class webServices {
                         else if(userType.equals("Charity"))
                         {
 
+                            Toast.makeText(activity, "ok ok 2", Toast.LENGTH_SHORT).show();
 
 
                             editor.putInt("id" ,Integer.parseInt(getProfileInfo.getUser_id()));
@@ -197,6 +189,9 @@ public class webServices {
 
                     sharedPreferences=activity.getSharedPreferences("load_data" , 0);
                      new webServices().updateToken(activity ,SharedPrefManager.getInstance(activity).getDeviceToken() ,sharedPreferences.getString("username" , "******"));
+
+
+
                             Intent intent = new Intent(activity,CharityProfile.class);
                             activity.startActivity(intent);
                             activity.finish();
@@ -794,19 +789,19 @@ public class webServices {
           {
 
 
-//              mProgressDialog =new ProgressDialog(activity);
-//              mProgressDialog.setMessage("Loading.....");
-//              mProgressDialog.show();
+
+
         queue = Volley.newRequestQueue(activity);
-        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+              StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-//              mProgressDialog .dismiss();
+
             }
 
 
-        }, new Response.ErrorListener() {
+        }     , new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Snackbar.make(activity.findViewById(android.R.id.content), "Internet Connection", Snackbar.LENGTH_LONG).show();

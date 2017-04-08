@@ -14,30 +14,30 @@ android:background="#fef6eb"
     tools:context="com.example.safiermool.memberprofile.MainActivity">
 
 
-    <ImageView
-        android:src="@drawable/green"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-
-        />
-    <ListView
-
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="40dp"/>
+    <android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="160dp">
+      <ImageView
+          android:id="@+id/imageView_member"
+          android:layout_marginTop="30dp"
+          android:src="@drawable/green"
+          android:layout_width="100dp"
+          android:layout_height="100dp" />
 
 
+        <TextView
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="110dp"
+            android:textColor="@color/Black"
+            android:textSize="20sp"
+            android:id="@+id/xNoTasksSent_tv"
+            android:text="No Tasks Sent."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.CardView>
 
-    <TextView
-        android:gravity="center"
-        android:textColor="@color/Black"
-        android:textSize="40sp"
-        android:id="@+id/xNoTasksSent_tv"
-        android:text="No Tasks Sent."
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
+
 
     <!-- A RecyclerView with some commonly used attributes -->
 

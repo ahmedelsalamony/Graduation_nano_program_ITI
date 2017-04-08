@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +44,7 @@ import java.util.Map;
 public class MemberReceiveNotification extends Fragment {
 
     Button acceptBtn;
-    ListView listView;
+//    ListView listView;
     TextView noTaskTv;
     private webServices web;
     String tasks[] = null;
@@ -53,6 +54,7 @@ public class MemberReceiveNotification extends Fragment {
     ProgressDialog progressDialog;
     Dialog taskdialog;
     int xx;
+    ImageView img;
 
     static  String address ,quantity , time;
 
@@ -69,6 +71,7 @@ public class MemberReceiveNotification extends Fragment {
         progressDialog =new ProgressDialog(getActivity());
         web.sharedPreferences = getActivity().getSharedPreferences("load_data", 0);
         noTaskTv= (TextView) v.findViewById(R.id.xNoTasksSent_tv);
+        img= (ImageView) v.findViewById(R.id.imageView_member);
 
 
 
@@ -82,7 +85,7 @@ public class MemberReceiveNotification extends Fragment {
         my_id = web.sharedPreferences.getInt("id", 2017);
 
         // Get ListView object from xml
-        listView = (ListView) v.findViewById(R.id.list);
+        //listView = (ListView) v.findViewById(R.id.list);
         type_Name=getActivity().getIntent().getStringExtra("title");
         // Defined Array values to show in ListView
 
@@ -97,7 +100,7 @@ public class MemberReceiveNotification extends Fragment {
 
         if(type_Name == null){
 
-            listView.setVisibility(View.INVISIBLE);
+          //  listView.setVisibility(View.INVISIBLE);
             noTaskTv.setVisibility(View.VISIBLE);
 
 
@@ -107,13 +110,17 @@ public class MemberReceiveNotification extends Fragment {
         else {
 
 
-
+/*
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                     android.R.layout.simple_list_item_1, android.R.id.text1, tasks);
 
             listView.setAdapter(adapter);
+
+  */
         }
 
+
+        /*
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -247,7 +254,7 @@ public class MemberReceiveNotification extends Fragment {
 
         });
 
-
+*/
 
 return   v;
 

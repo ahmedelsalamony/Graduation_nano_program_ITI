@@ -72,6 +72,7 @@ public class RestaurantProfile extends AppCompatActivity {
                 break;
 
 
+
             case R.id.fragment_about:
 
                 AboutFragment aboutFragment =new AboutFragment();
@@ -88,7 +89,7 @@ public class RestaurantProfile extends AppCompatActivity {
                 android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 EditRestaurantProfile editProfile = new EditRestaurantProfile();
                 fragmentTransaction.replace(R.id.xContainer, editProfile);
-                fragmentTransaction.addToBackStack("tag");
+//                fragmentTransaction.addToBackStack("tag");
                 fragmentTransaction.commit();
                 break;
 
@@ -99,9 +100,9 @@ public class RestaurantProfile extends AppCompatActivity {
                 SharedPreferences.Editor editor = shared.edit();
                 editor.clear();
                 editor.commit();
-               Toast.makeText(this,shared.getString("username","") +"from logout", Toast.LENGTH_SHORT).show();
+
                  Intent intent = new Intent(RestaurantProfile.this,LoginRegisterActivity.class);
-                startActivity(intent);
+                 startActivity(intent);
                 this.finish();
 
             default:
