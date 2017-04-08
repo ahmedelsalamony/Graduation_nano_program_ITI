@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_margin="8dp"
-    android:gravity="center"
-    android:weightSum="1">
-    <TextView
-        android:id="@+id/tv_requestTitle"
-        android:text="@string/tv_requesrTitle"
-        android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    >
+    <com.tuyenmonkey.mkloader.MKLoader
         android:layout_width="wrap_content"
-        android:textStyle="bold"
-        android:textColor="@color/primary"
-        android:layout_weight="0.21" />
+        android:layout_height="wrap_content"
+        app:mk_type="Sharingan"
+        app:mk_color="@color/AliceBlue"
+        android:layout_gravity="center"
+        />
+
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/xinput_layout_foodQ"
@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/xFoodQ"
+            android:textColorHint="@color/WhiteSmoke"
                   />
     </android.support.design.widget.TextInputLayout>
 
@@ -40,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/xEstimatedTime"
-            />
+            android:textColorHint="@color/WhiteSmoke" />
 
     </android.support.design.widget.TextInputLayout>
     <LinearLayout
@@ -53,17 +54,16 @@
         >
     <Button
         android:layout_weight="1"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/xbtnConfirmSend"
         android:textAllCaps="false"
-        android:background="@drawable/txtstyle"
+        android:background="@drawable/txtstyle_white"
         android:layout_margin="3dp"
         android:layout_marginEnd="20dp"
-        android:textColor="@color/GhostWhite"
+        android:textColor="@color/accent_dark"
         android:id="@+id/xbtnConfirmSend"
-
+         android:textSize="18sp"
         android:layout_marginRight="20dp" />
     <Button
         android:layout_weight="1"
@@ -71,11 +71,12 @@
         android:layout_height="wrap_content"
         android:text="@string/xCancel"
         android:textAllCaps="false"
-        android:background="@drawable/txtstyle"
-        android:textColor="@color/GhostWhite"
+        android:background="@drawable/txtstyle_white"
         android:layout_margin="3dp"
-       android:layout_marginRight="20dp"
         android:id="@+id/xCancel"
+        android:textSize="18sp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/accent_dark"
         />
     </LinearLayout>
 

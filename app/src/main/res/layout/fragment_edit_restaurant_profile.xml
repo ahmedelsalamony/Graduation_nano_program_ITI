@@ -5,19 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.owner.community.EditRestaurantProfile"
     android:weightSum="8"
-    android:background="@color/primary_light"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/green"
-        android:id="@+id/imageView3"
-        android:layout_weight="4"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -30,10 +22,13 @@
             android:inputType="textPersonName"
             android:hint="@string/xUserName"
             android:ems="10"
-            android:textColor="@color/primary"
             android:id="@+id/xUserName"
             android:layout_weight="1"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:textColor="@color/WhiteSmoke"
+            android:textColorHint="@color/WhiteSmoke"
+
+            />
     </android.support.design.widget.TextInputLayout>
 
 
@@ -47,7 +42,8 @@
             android:inputType="textPassword"
             android:hint="@string/xPassword"
             android:ems="10"
-            android:textColor="@color/primary"
+            android:textColor="@color/WhiteSmoke"
+            android:textColorHint="@color/WhiteSmoke"
             android:id="@+id/xPassword"
             android:layout_weight="1"
             android:layout_margin="5dp"/>
@@ -63,7 +59,8 @@
         android:inputType="text"
         android:hint="@string/xEmail"
         android:ems="10"
-        android:textColor="@color/primary"
+        android:textColor="@color/WhiteSmoke"
+        android:textColorHint="@color/WhiteSmoke"
         android:id="@+id/xEmail"
         android:layout_weight="1"
         android:layout_margin="5dp"/>
@@ -79,7 +76,8 @@
             android:inputType="phone"
             android:hint="@string/xPhone"
             android:ems="10"
-            android:textColor="@color/primary"
+            android:textColor="@color/WhiteSmoke"
+            android:textColorHint="@color/WhiteSmoke"
             android:id="@+id/xPhone"
             android:layout_weight="1"
             android:layout_margin="5dp"/>
@@ -96,7 +94,8 @@
             android:inputType="textPostalAddress"
             android:hint="@string/xAddress"
             android:ems="10"
-            android:textColor="@color/primary"
+            android:textColor="@color/WhiteSmoke"
+            android:textColorHint="@color/WhiteSmoke"
             android:id="@+id/xAddress"
             android:layout_weight="1"
             android:layout_margin="5dp"/>
@@ -139,7 +138,6 @@
             android:background="@drawable/txtstyle"
             android:textAllCaps="false"
             android:layout_margin="5dp"/>
-
     </LinearLayout>
 
 

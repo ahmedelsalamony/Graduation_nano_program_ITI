@@ -8,7 +8,7 @@
     tools:context="com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile"
     android:orientation="vertical"
     android:weightSum="1"
-    android:background="#fef6eb"
+    android:background="@color/AliceBlue"
     >
 
 
@@ -17,30 +17,6 @@
         android:layout_height="wrap_content"
       >
 
-
-
-        <!--<android.support.v7.widget.Toolbar-->
-            <!--android:id="@+id/toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="?attr/actionBarSize"-->
-            <!--android:background="?attr/colorPrimary"-->
-            <!--&gt;-->
-            <!--<ImageView-->
-                <!--android:layout_width="50dp"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:src="@drawable/green"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="restaurant name"-->
-                <!--android:textSize="20sp"-->
-                <!--android:textColor="@color/icons"-->
-                <!--android:id="@+id/xTxtTitleBar"-->
-                <!--/>-->
-
-
-        <!--</android.support.v7.widget.Toolbar>-->
     </android.support.design.widget.AppBarLayout>
 
     <FrameLayout

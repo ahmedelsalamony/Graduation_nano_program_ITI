@@ -269,6 +269,7 @@ public class webServices {
 
             mProgressDialog=new ProgressDialog(activity);
             mProgressDialog.setTitle("plaese wait...");
+            mProgressDialog.setMessage("loading...");
             mProgressDialog.show();
 
         sharedPreferences =activity.getSharedPreferences("register_data" , 0);
@@ -571,7 +572,7 @@ public class webServices {
     public void getAllCharity(final Activity activity, final String type, final request_interface object) {
         queue = Volley.newRequestQueue(activity);
         final ProgressDialog mProgressDialog = new ProgressDialog(activity);
-      // mProgressDialog.setMessage("please wait ............");
+        mProgressDialog.setMessage("loading...");
         mProgressDialog.show();
         StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
 

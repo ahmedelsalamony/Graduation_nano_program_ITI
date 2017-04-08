@@ -2,45 +2,43 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/member_dialog"
      android:paddingLeft="10dp"
     >
 
    <TextView
-       android:layout_marginTop="10dp"
+       android:layout_margin="10dp"
        android:textColor="@color/Black"
        android:text="date and Time"
-    android:id="@+id/xNotiDateTime"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+       android:id="@+id/xNotiDateTime"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" />
 
 
 <LinearLayout
-
-    android:weightSum="6"
+    android:weightSum="3"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:layout_margin="4dp"
     >
     <TextView
         android:layout_weight="2"
         android:textColor="@color/primary"
         android:textSize="20sp"
-        android:layout_marginTop="40dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Address"
         />
 
     <TextView
 
-        android:layout_weight="4"
+        android:layout_weight="1"
         android:textColor="@color/Black"
         android:textSize="14sp"
-        android:layout_marginTop="40dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Address "
         android:id="@+id/xtaskname"/>
@@ -48,26 +46,26 @@
 
    <LinearLayout
        android:orientation="horizontal"
-       android:weightSum="6"
+       android:weightSum="3"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+       android:layout_height="wrap_content"
+       android:layout_margin="4dp"
+       >
     <TextView
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:textColor="@color/primary"
         android:textSize="20sp"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/xtaskname"
         android:text="Quantity"
         />
 
        <TextView
-           android:layout_weight="5"
+           android:layout_weight="1"
            android:textColor="@color/Black"
            android:textSize="14sp"
-           android:layout_marginTop="10dp"
-           android:layout_width="wrap_content"
+           android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_below="@+id/xtaskname"
            android:text="Quantity"
@@ -77,70 +75,67 @@
 
 
      <LinearLayout
-         android:weightSum="6"
+         android:weightSum="3"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:orientation="horizontal"
+         android:layout_margin="4dp"
          >
 
        <TextView
-           android:layout_weight="2"
+        android:layout_weight="2"
         android:textColor="@color/primary"
         android:textSize="20sp"
         android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Time"
         android:layout_below="@+id/xtasQuantity"
-        android:layout_marginBottom="30dp"
        />
          <TextView
-             android:layout_weight="4"
+             android:layout_weight="1"
              android:textColor="@color/Black"
              android:textSize="14sp"
              android:layout_marginTop="10dp"
-             android:layout_width="wrap_content"
+             android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:text="Estimated Time"
              android:layout_below="@+id/xtasQuantity"
-             android:layout_marginBottom="30dp"
              android:id="@+id/xtaskEstimatedtime"/>
      </LinearLayout>
 
   <LinearLayout
 
-      android:weightSum="3"
+      android:weightSum="2"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="horizontal"
       >
 
       <Button
-          android:layout_marginLeft="10dp"
-          android:layout_weight="1.5"
+          android:layout_weight="1"
           android:textColor="#fef6eb"
-          android:background="@color/primary"
+          android:background="@drawable/txtstyle"
           android:text="Accept"
           android:textAllCaps="false"
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_below="@+id/xtaskEstimatedtime"
-          android:id="@+id/xbtnAccept" />
+          android:id="@+id/xbtnAccept"
+          android:layout_margin="2dp"
+          />
 
       <Button
-
-          android:layout_marginRight="10dp"
-          android:layout_weight="1.5"
+        android:layout_weight="1"
         android:textColor="#fef6eb"
-        android:background="@color/primary"
+        android:background="@drawable/txtstyle"
         android:textAllCaps="false"
         android:text="Reject"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
         android:onClick="onClick"
         android:id="@+id/xbtReject"
-
+        android:layout_margin="2dp"
         />
 
   </LinearLayout>

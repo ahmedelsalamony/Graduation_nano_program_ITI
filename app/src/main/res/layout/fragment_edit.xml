@@ -21,6 +21,7 @@
         app:mtf_openKeyboardOnFocus="true"
         android:layout_marginBottom="4dp"
         >
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

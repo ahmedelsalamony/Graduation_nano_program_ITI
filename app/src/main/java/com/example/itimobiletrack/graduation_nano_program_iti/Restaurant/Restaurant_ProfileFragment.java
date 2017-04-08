@@ -84,7 +84,6 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
                     btn.setOnClickListener(Restaurant_ProfileFragment.this);
 
 
-                     btn.setOnClickListener(Restaurant_ProfileFragment.this);
 
                 } catch (JSONException e) {
                     Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -145,6 +144,7 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
     public void onClick(View view) {
         dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.sendrequesttocharitydialog);
+        dialog.setTitle("Send Request");
         btnSend = (Button) dialog.findViewById(R.id.xbtnConfirmSend);
         btnCancel = (Button) dialog.findViewById(R.id.xCancel);
         edtFoodQ = (EditText) dialog.findViewById(R.id.xFoodQ);
@@ -160,8 +160,6 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
                     edtEstimatedTime.setError("enter valid time");
                 } else {
                     showConfirmSendToast();
-
-
                     dialog.dismiss();
 
 
@@ -193,9 +191,7 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
                             Map<String, String> params = new HashMap<>();
                             params.put("title", title);
                             params.put("message", quantity);
-//
-//                            if (!TextUtils.isEmpty(image))
-//                                params.put("image", image);
+
                             return params;
                         }
                     };

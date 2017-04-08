@@ -49,9 +49,9 @@ public class AddMemberFragment extends Fragment {
 
         web=new webServices();
         web.sharedPreferences=getActivity().getSharedPreferences("load_data" , 0 );
-        txtTitle=(TextView)v.findViewById(R.id.xTitle);
+       /* txtTitle=(TextView)v.findViewById(R.id.xTitle);
         Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/title.ttf");
-        txtTitle.setTypeface(custom_font);
+        txtTitle.setTypeface(custom_font);*/
         edtUserName=(EditText)v.findViewById(R.id.xUserName);
         edtPassword=(EditText)v.findViewById(R.id.xPassword);
         edtConfirmPassword=(EditText)v.findViewById(R.id.xConfirmPassword);

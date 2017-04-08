@@ -64,6 +64,8 @@ dependencies {
     compile 'net.bohush.geometricprogressview:geometricprogressview:1.1.1'
     //for cicular imageview
     compile 'com.mikhaellopez:circularimageview:3.0.2'
+
+
 }
 
 

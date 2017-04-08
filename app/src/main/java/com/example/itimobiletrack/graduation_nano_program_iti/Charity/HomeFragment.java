@@ -139,7 +139,7 @@ public class HomeFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                final Dialog dialog = new Dialog( getActivity()) ;
                 dialog.setContentView(R.layout.task_details_dialog);
-                dialog.setTitle("Task Details");
+                dialog.setTitle("Order Details");
 
 
                 final TextView address= (TextView) dialog.findViewById(R.id.xRestaurantAddress);

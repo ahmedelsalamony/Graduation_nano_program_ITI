@@ -15,13 +15,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
-        android:weightSum="6">
+        android:weightSum="3">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="Address"
             android:textColor="@color/primary"
             android:textSize="20sp" />
@@ -29,10 +29,10 @@
         <TextView
 
             android:id="@+id/xTextView3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_weight="5"
+            android:layout_weight="1"
             android:text="Address "
             android:textColor="@color/Black"
             android:textSize="14sp" />
@@ -44,25 +44,25 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/row1"
         android:orientation="horizontal"
-        android:weightSum="6">
+        android:weightSum="3">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/xtaskname"
             android:layout_marginTop="10dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="Quantity"
             android:textColor="@color/primary"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/xTextView4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/xtaskname"
             android:layout_marginTop="10dp"
-            android:layout_weight="5"
+            android:layout_weight="1"
             android:text="Quantity"
             android:textColor="@color/Black"
             android:textSize="14sp" />
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/row2"
         android:orientation="horizontal"
-        android:weightSum="6">
+        android:weightSum="3">
 
         <TextView
             android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
             android:layout_below="@+id/xtasQuantity"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="10dp"
-            android:layout_weight="5"
+            android:layout_weight="2"
             android:text="Estimated Time"
             android:textColor="@color/Black"
             android:textSize="14sp" />
@@ -108,13 +108,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/primary"
+        android:layout_margin="10dp"
+        android:background="@drawable/txtstyle"
         android:text="Done"
         android:textAllCaps="false"
         android:textColor="@color/AntiqueWhite"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+
+        />
 
 
     <com.google.android.gms.maps.MapView

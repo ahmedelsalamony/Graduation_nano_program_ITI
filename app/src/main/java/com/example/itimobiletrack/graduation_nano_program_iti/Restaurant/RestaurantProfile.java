@@ -75,11 +75,10 @@ public class RestaurantProfile extends AppCompatActivity {
 
             case R.id.fragment_about:
 
-                AboutFragment aboutFragment =new AboutFragment();
-                fm = getSupportFragmentManager();
-                ft = fm.beginTransaction();
-                ft.replace(R.id.xContainer , aboutFragment).addToBackStack("tag");
-                ft.commit();
+                final Dialog dialog = new Dialog(this) ;
+                dialog.setContentView(R.layout.dialog_about);
+                dialog.setTitle("About");
+                dialog.show();
                 break;
 
 
