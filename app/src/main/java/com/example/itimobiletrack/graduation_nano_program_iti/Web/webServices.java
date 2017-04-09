@@ -98,6 +98,7 @@ public class webServices {
 
 
 
+
     private RequestQueue queue;
     private String url = "https://re-restaurant.000webhostapp.com/uploads/re_database/re_tags.php";
 
@@ -144,7 +145,7 @@ public class webServices {
                         getProfileInfo. setAddress(jsonObject.getString("address"));
                         getProfileInfo. setCharity_parent_id(jsonObject.getString("charity_parent_id"));
 
-                        Toast.makeText(activity, "ok ok ", Toast.LENGTH_SHORT).show();
+
 
                         if(userType.equals("Restaurant")){
 
@@ -168,7 +169,7 @@ public class webServices {
                         else if(userType.equals("Charity"))
                         {
 
-                            Toast.makeText(activity, "ok ok 2", Toast.LENGTH_SHORT).show();
+
 
 
                             editor.putInt("id" ,Integer.parseInt(getProfileInfo.getUser_id()));
@@ -852,8 +853,8 @@ public class webServices {
             protected java.util.Map<String, String> getParams() throws AuthFailureError {
                 java.util.Map<String, String> params = new HashMap<String, String>();
 
-                params.put(MEMBER_ID, ""+member_id);
-                params.put(ID, ""+id);
+                params.put("member_id", ""+member_id);
+                params.put("id", ""+id);
                 params.put(TAG,UPDATETASK );
                 return params;
             }
@@ -911,33 +912,72 @@ public class webServices {
     //=================================================================================================//
 
     //TODO check Request Task
-    public void checkRequestTask(final Activity activity, final int id , final request_interface object) {
+//    public void checkRequestTask(final Activity activity, final int id , final request_interface object) {
+//        queue = Volley.newRequestQueue(activity);
+//        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+//
+//
+//
+//            @Override
+//            public void onResponse(String response) {
+//                Toast.makeText(activity, ""+response, Toast.LENGTH_SHORT).show();
+//                object.onResponse(response);
+//
+//            }
+//
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                object.onError();
+//
+//            }
+//        })
+//        {
+//            @Override
+//            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+//                java.util.Map<String, String> params = new HashMap<String, String>();
+//                params.put(ID, ""+id);
+//                params.put(TAG, CHECK_STATUS);
+//                return params;
+//            }
+//        };
+//        queue.add(request);
+//
+//    }
+
+
+
+
+
+    // TODO Check Status
+    public void  check_Status(final Activity activity, final String id ,final request_interface object)
+    {
+
+
         queue = Volley.newRequestQueue(activity);
-        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
-
-
-
+        final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                object.onResponse(response);
-
+              object.onResponse(response);
+                System.out.println(response);
             }
 
-        }, new Response.ErrorListener() {
+
+        },new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                object.onError();
 
+                object.onError();
             }
-        })
-        {
-            @Override
+        }){
             protected java.util.Map<String, String> getParams() throws AuthFailureError {
                 java.util.Map<String, String> params = new HashMap<String, String>();
-                params.put(ID, ""+id);
-                params.put(TAG, CHECK_STATUS);
+                params.put("id", id);
+
+                params.put(TAG,CHECK_STATUS );
                 return params;
             }
+
         };
         queue.add(request);
 

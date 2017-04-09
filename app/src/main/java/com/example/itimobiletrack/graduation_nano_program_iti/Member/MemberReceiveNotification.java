@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +28,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.EndPoints;
 import com.example.itimobiletrack.graduation_nano_program_iti.PushNotification.MyVolley;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Web.CircleTransform;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.request_interface;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,9 +58,9 @@ public class MemberReceiveNotification extends Fragment {
     Dialog taskdialog;
     int xx;
     ImageView img;
-
+String phone_Member=null;
     static  String address ,quantity , time;
-
+CardView cardView;
 
     String status=null;
     @Override
@@ -73,12 +76,15 @@ public class MemberReceiveNotification extends Fragment {
         noTaskTv= (TextView) v.findViewById(R.id.xNoTasksSent_tv);
         img= (ImageView) v.findViewById(R.id.imageView_member);
 
+        cardView= (CardView) v.findViewById(R.id.xCardView_Member);
+        phone_Member=web.sharedPreferences.getString("phone","******");
 
 
         Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/title.ttf");
         noTaskTv.setTypeface(custom_font);
 
         noTaskTv.setVisibility(View.INVISIBLE);
+        noTaskTv.setTextSize(35);
         getActivity().setTitle(web.sharedPreferences.getString("username", "******"));
         xx=  Integer.parseInt(web.sharedPreferences.getString("charity_parent_id", "*****"));
 
@@ -109,7 +115,11 @@ public class MemberReceiveNotification extends Fragment {
 
         else {
 
+             noTaskTv.setText(""+tasks[0]);
+            noTaskTv.setVisibility(View.VISIBLE);
 
+            Picasso.with(getActivity()).load("https://re-restaurant.000webhostapp.com/uploads/re_database/" + type_Name + ".jpg")
+                    .transform(new CircleTransform()).placeholder(R.drawable.mainloginlogo).error(R.drawable.img2).into(img);
 /*
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                     android.R.layout.simple_list_item_1, android.R.id.text1, tasks);
@@ -119,6 +129,132 @@ public class MemberReceiveNotification extends Fragment {
   */
         }
 
+
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                String message = getActivity().getIntent().getStringExtra("message");
+
+                note = message.split("#");
+
+                taskdialog = new Dialog(getActivity());
+                taskdialog.setContentView(R.layout.taskdialog);
+                taskdialog.setTitle(type_Name);
+                taskdialog.show();
+
+                TextView taskName_tv = (TextView) taskdialog.findViewById(R.id.xtaskname);
+                TextView taskQuantity_tv = (TextView) taskdialog.findViewById(R.id.xtasQuantity);
+                TextView taskEstimatedTime_tv = (TextView) taskdialog.findViewById(R.id.xtaskEstimatedtime);
+
+
+                acceptBtn = (Button) taskdialog.findViewById(R.id.xbtnAccept);
+                Button rejectBtn = (Button) taskdialog.findViewById(R.id.xbtReject);
+
+
+
+                taskName_tv.setText(note[2]);
+                taskQuantity_tv.setText(note[3]);
+                taskEstimatedTime_tv.setText(note[4]);
+
+                address=note[2];
+                quantity=note[3];
+                time=note[4];
+
+                // End Check
+
+                acceptBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+
+
+
+                        Toast.makeText(getActivity(), note[1], Toast.LENGTH_SHORT).show();
+
+                        web.check_Status(getActivity(), note[1], new request_interface() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                try {
+
+                                    JSONObject jsonObject=new JSONObject(response);
+                                    String login_response=jsonObject.getString("check_status");
+
+                                    if(login_response.equals("done")) {
+
+                                        String my_Status = jsonObject.getString("request_status");
+
+                                        if (my_Status.equals("Confirmed")) {
+
+                                            Toast.makeText(getActivity(), "Confirmed.", Toast.LENGTH_SHORT).show();
+
+                                        } else {
+
+
+                                            // To update Charity_tasks Table
+                                            web.updateTask(getActivity(), my_id, Integer.parseInt(note[1]));
+                                            web.addCharityTask(getActivity(), xx, Integer.parseInt(note[1]));
+
+                                            Toast.makeText(getActivity(), ""+my_id +"\n"+xx, Toast.LENGTH_SHORT).show();
+                                            sendToRstaurant();
+                                            sendToCharity();
+                                            //to update Tasks Table
+                                            taskdialog.dismiss();
+                                            FragmentManager fragmentManager = getActivity().getFragmentManager();
+                                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                            fragmentTransaction.replace(R.id.xactivity_main, new Member_GoogleMap()).commit();
+
+
+                                        }
+
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onError() {
+
+                                Toast.makeText(getActivity(), "error y basha ", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+
+
+
+//
+//-----------------------------------------------------------
+
+
+
+
+
+
+                    }
+                });
+
+
+                rejectBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+
+
+
+
+            }
+        });
 
         /*
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -300,8 +436,9 @@ return   v;
 
                 addToRequestQueue(stringRequest);
 
-
     }
+
+
 
 
     // TODO
@@ -327,8 +464,8 @@ return   v;
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("title", type_Name);
-                params.put("message", "to Restaurant ");
+                params.put("title", note[0]);
+                params.put("message", phone_Member);
 
                 params.put("typename", type_Name);
 

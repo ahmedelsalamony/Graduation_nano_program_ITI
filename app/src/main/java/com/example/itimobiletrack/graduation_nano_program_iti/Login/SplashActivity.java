@@ -25,7 +25,7 @@ public class SplashActivity extends AwesomeSplash {
         //Choose LOGO OR PATH; if you don't provide String value for path it's logo by default
 
         //Customize Logo
-        configSplash.setLogoSplash(R.drawable.green); //or any other drawable
+        configSplash.setLogoSplash(R.drawable.mainlogo); //or any other drawable
         configSplash.setAnimLogoSplashDuration(300); //int ms
         configSplash.setAnimLogoSplashDuration(300); //int ms
         configSplash.setAnimLogoSplashTechnique(Techniques.FlipInX);

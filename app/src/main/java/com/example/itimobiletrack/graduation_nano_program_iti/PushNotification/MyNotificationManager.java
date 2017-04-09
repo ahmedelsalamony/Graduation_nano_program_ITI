@@ -1,5 +1,6 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.PushNotification;
 
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -69,6 +70,10 @@ public class MyNotificationManager {
             intent = new Intent(mCtx, RestaurantProfile.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
 
+
+
+
+
         }
         else {
 
@@ -132,6 +137,12 @@ public class MyNotificationManager {
 
 
         else    if (web.sharedPreferences.getString("type" , "******").equals("Restaurant")) {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(mCtx);
+//            builder.setIcon(R.drawable.mainloginlogo);
+//            builder.setTitle(title);
+//            builder.setMessage(message);
+//            builder.show();
+
             intent = new Intent(mCtx, RestaurantProfile.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
 
@@ -157,13 +168,13 @@ public class MyNotificationManager {
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mCtx);
         Notification notification;
-        notification = mBuilder.setSmallIcon(R.mipmap.green).setTicker(title).setWhen(0)
+        notification = mBuilder.setSmallIcon(R.drawable.mainloginlogo).setTicker(title).setWhen(0)
                 .setAutoCancel(true)
                 .setContentIntent(resultPendingIntent)
                 .setContentTitle(title)
-                .setSmallIcon(R.mipmap.green)
-                .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.green))
-                .setContentText("click to see task")
+                .setSmallIcon(R.drawable.mainloginlogo)
+                .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.drawable.mainloginlogo))
+                .setContentText("details...")
                 .build();
 
         notification.defaults |= Notification.DEFAULT_SOUND;

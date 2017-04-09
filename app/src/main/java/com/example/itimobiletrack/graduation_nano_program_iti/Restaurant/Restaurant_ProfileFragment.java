@@ -61,6 +61,8 @@ public class Restaurant_ProfileFragment extends Fragment implements View.OnClick
         web =new webServices();
         web.sharedPreferences = getActivity().getSharedPreferences("load_data" , 0);
         charityBuffer=new StringBuffer();
+        RestaurantProfile.flag=true;
+
 
         progressDialog = new ProgressDialog(getActivity());
      //TODO Call getAllCharity

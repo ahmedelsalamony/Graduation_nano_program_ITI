@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.itimobiletrack.graduation_nano_program_iti.Member.Member_GoogleMap;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile;
 import com.labo.kaji.fragmentanimations.CubeAnimation;
 
 import static com.daimajia.androidanimations.library.BaseViewAnimator.DURATION;
@@ -45,7 +46,7 @@ public class AboutFragment extends Fragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_about, container, false);
 
-
+        RestaurantProfile.flag=false;
         TextView txtTitle= (TextView) v.findViewById(R.id.xaboutTxtView);
 
              Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/title.ttf");

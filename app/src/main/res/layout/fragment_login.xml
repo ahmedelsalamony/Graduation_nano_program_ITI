@@ -21,16 +21,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="0dp"
             >
 
-            <com.tuyenmonkey.mkloader.MKLoader
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:mk_type="Sharingan"
-                app:mk_color="@color/AliceBlue"
-                android:layout_gravity="center"
-            />
+            <ImageView
+
+                android:src="@drawable/mainloginlogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <!--<com.tuyenmonkey.mkloader.MKLoader-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:mk_type="Sharingan"-->
+                <!--app:mk_color="@color/AliceBlue"-->
+                <!--android:layout_gravity="center"-->
+            <!--/>-->
 
 
             <com.github.florent37.materialtextfield.MaterialTextField
@@ -49,7 +54,7 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/email"
+                    android:hint="Username"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true"

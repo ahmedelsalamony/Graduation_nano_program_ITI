@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/tv_rateCharity"
-        android:text="Rate Charity"
+        android:text="@string/tv_rateCharity"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textStyle="bold"
