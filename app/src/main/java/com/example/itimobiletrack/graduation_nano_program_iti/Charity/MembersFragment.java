@@ -129,7 +129,7 @@ public class MembersFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final Dialog dialog =new Dialog(getActivity());
                 dialog.setContentView(R.layout.member_data_dialog);
-                dialog.setTitle("My Member Information");
+                dialog.setTitle("Member Information");
                 dialog.show();
 
                 final TextView userName= (TextView) dialog.findViewById(R.id.xUserNameTextView);
