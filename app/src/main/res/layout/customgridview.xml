@@ -4,7 +4,9 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:padding="5dp"
-    android:orientation="vertical"    >
+    android:orientation="vertical"
+    android:textColor="@color/AliceBlue"
+    >
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/grid_item_image"
@@ -22,8 +24,7 @@
         android:id="@+id/grid_item_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@+id/label"
-        android:layout_marginTop="5px"
+        android:layout_marginTop="5dp"
         android:textSize="12sp"
         android:textStyle="normal"
         android:textColor="@color/accent"

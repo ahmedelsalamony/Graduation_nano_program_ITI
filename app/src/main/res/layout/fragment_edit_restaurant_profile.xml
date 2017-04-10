@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.owner.community.EditRestaurantProfile"
     android:weightSum="8"
-    android:background="@color/colorPrimary"
+    android:textColor="@color/AliceBlue"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
@@ -25,7 +25,7 @@
             android:id="@+id/xUserName"
             android:layout_weight="1"
             android:layout_margin="5dp"
-            android:textColor="@color/WhiteSmoke"
+            android:textColor="@color/colorPrimary"
             android:textColorHint="@color/WhiteSmoke"
 
             />
@@ -42,7 +42,7 @@
             android:inputType="textPassword"
             android:hint="@string/xPassword"
             android:ems="10"
-            android:textColor="@color/WhiteSmoke"
+            android:textColor="@color/colorPrimary"
             android:textColorHint="@color/WhiteSmoke"
             android:id="@+id/xPassword"
             android:layout_weight="1"
@@ -59,7 +59,7 @@
         android:inputType="text"
         android:hint="@string/xEmail"
         android:ems="10"
-        android:textColor="@color/WhiteSmoke"
+        android:textColor="@color/colorPrimary"
         android:textColorHint="@color/WhiteSmoke"
         android:id="@+id/xEmail"
         android:layout_weight="1"
@@ -76,7 +76,7 @@
             android:inputType="phone"
             android:hint="@string/xPhone"
             android:ems="10"
-            android:textColor="@color/WhiteSmoke"
+            android:textColor="@color/colorPrimary"
             android:textColorHint="@color/WhiteSmoke"
             android:id="@+id/xPhone"
             android:layout_weight="1"
@@ -94,8 +94,8 @@
             android:inputType="textPostalAddress"
             android:hint="@string/xAddress"
             android:ems="10"
-            android:textColor="@color/WhiteSmoke"
-            android:textColorHint="@color/WhiteSmoke"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
             android:id="@+id/xAddress"
             android:layout_weight="1"
             android:layout_margin="5dp"/>

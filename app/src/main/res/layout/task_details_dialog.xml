@@ -13,6 +13,9 @@
         android:layout_height="1dp"
         android:background="@color/AliceBlue"
         ></LinearLayout>
+
+
+
     <com.tuyenmonkey.mkloader.MKLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,6 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColor="@color/AliceBlue"
+        android:gravity="center"
         />
 
     </LinearLayout>
@@ -59,14 +64,17 @@
             android:text="@string/xFoodQ"
             android:textColor="@color/AliceBlue"
             android:textStyle="bold"
+            android:id="@+id/textView3" />
+        <TextView
+            android:id="@+id/xTaskQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/AliceBlue"
             />
-    <TextView
-        android:id="@+id/xTaskQuantity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
-</LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,6 +96,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColor="@color/AliceBlue"
+        android:gravity="center"
         />
 </LinearLayout>
     <com.andexert.library.RippleView
@@ -104,8 +114,9 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:background="@drawable/txtstyle_white"
-        android:textColor="@color/primary"
+        android:textColor="@color/accent_dark"
         android:layout_gravity="center"
+        android:layout_margin="6dp"
         />
 </com.andexert.library.RippleView>
 </LinearLayout>

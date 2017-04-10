@@ -5,23 +5,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.owner.community.EditFragment"
     android:weightSum="8"
-    android:background="@color/colorPrimary"
+    android:textColor="@color/AliceBlue"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <com.github.florent37.materialtextfield.MaterialTextField
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mtf_image="@drawable/username_icon"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        app:mtf_cardCollapsedHeight="4dp"
-        app:mtf_animationDuration="1000"
-        app:mtf_openKeyboardOnFocus="true"
-        android:layout_marginBottom="4dp"
+        android:layout_margin="10dp"
         >
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,22 +24,17 @@
             android:textColor="@color/primary"
             android:id="@+id/xUserNameEdit"
             android:layout_weight="1"
-            android:layout_margin="5dp"/>
-    </com.github.florent37.materialtextfield.MaterialTextField>
+            android:layout_margin="5dp"
+            android:textColorHint="@color/WhiteSmoke"
+            />
+    </android.support.design.widget.TextInputLayout>
 
 
-    <com.github.florent37.materialtextfield.MaterialTextField
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mtf_image="@drawable/username_icon"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        app:mtf_cardCollapsedHeight="4dp"
-        app:mtf_animationDuration="1000"
-        app:mtf_openKeyboardOnFocus="true"
-        android:layout_marginBottom="4dp"
+        android:layout_margin="10dp"
         >
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,20 +44,15 @@
             android:textColor="@color/primary"
             android:id="@+id/xPhoneEdit"
             android:layout_weight="1"
-            android:layout_margin="5dp"/>
-    </com.github.florent37.materialtextfield.MaterialTextField>
+            android:layout_margin="5dp"
+            android:textColorHint="@color/WhiteSmoke"
+            />
+    </android.support.design.widget.TextInputLayout>
 
-
-    <com.github.florent37.materialtextfield.MaterialTextField
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mtf_image="@drawable/username_icon"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        app:mtf_cardCollapsedHeight="4dp"
-        app:mtf_animationDuration="1000"
-        app:mtf_openKeyboardOnFocus="true"
-        android:layout_marginBottom="4dp"
+        android:layout_margin="10dp"
         >
     <EditText
         android:layout_width="match_parent"
@@ -80,20 +63,15 @@
         android:textColor="@color/primary"
         android:id="@+id/xAddressEdit"
         android:layout_weight="1"
-        android:layout_margin="5dp"/>
-    </com.github.florent37.materialtextfield.MaterialTextField>
+        android:layout_margin="5dp"
+        android:textColorHint="@color/WhiteSmoke"
+        />
+   </android.support.design.widget.TextInputLayout>
 
-    <com.github.florent37.materialtextfield.MaterialTextField
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mtf_image="@drawable/username_icon"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        app:mtf_cardCollapsedHeight="4dp"
-        app:mtf_animationDuration="1000"
-        app:mtf_openKeyboardOnFocus="true"
-        android:layout_marginBottom="50dp"
-
+        android:layout_margin="10dp"
         >
     <EditText
         android:layout_width="match_parent"
@@ -105,8 +83,9 @@
         android:id="@+id/xPasswordEdit"
         android:layout_weight="1"
         android:layout_margin="5dp"
+        android:textColorHint="@color/WhiteSmoke"
         />
-    </com.github.florent37.materialtextfield.MaterialTextField>
+   </android.support.design.widget.TextInputLayout>
 
 
     <LinearLayout

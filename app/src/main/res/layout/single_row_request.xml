@@ -8,6 +8,7 @@
     cardview:cardCornerRadius="3dp"
     cardview:cardElevation="1dp"
     cardview:cardUseCompatPadding="true"
+    android:textColor="@color/AliceBlue"
     >
 
 

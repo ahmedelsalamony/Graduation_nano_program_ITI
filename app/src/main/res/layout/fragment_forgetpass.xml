@@ -4,7 +4,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    android:background="@color/colorPrimary"
+    android:textColor="@color/AliceBlue"
     android:paddingBottom="50dp"
     >
 
@@ -19,6 +19,7 @@
         app:mtf_animationDuration="1000"
         app:mtf_openKeyboardOnFocus="true"
         android:layout_marginBottom="4dp"
+        app:mtf_backgroundColor="@color/colorPrimary"
         >
 
         <EditText
@@ -37,7 +38,7 @@
             android:text="@string/forgethint"
             android:id="@+id/xForgetHint"
             android:gravity="center"
-            android:textColor="@color/accent"
+            android:textColor="@color/colorPrimary"
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
