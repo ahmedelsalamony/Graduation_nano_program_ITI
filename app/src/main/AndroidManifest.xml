@@ -41,12 +41,12 @@
              android:name="com.google.android.maps.v2.API_KEY"
              android:value="AIzaSyDS4h8ashp4JW9F_1Ze3cDVO26QZW_gqRs"/>
 
-         <!--<meta-data-->
-             <!--android:name="com.google.android.geo.API_KEY"-->
-             <!--android:value="AIzaSyC1h3KjPizbeUg8fep-EtFc01uY_5kBkVM" />-->
+         <meta-data
+             android:name="com.google.android.geo.API_KEY"
+             android:value="AIzaSyC1h3KjPizbeUg8fep-EtFc01uY_5kBkVM" />
 
 
-          <!--for maps member -->
+          for maps member
 
 
 
