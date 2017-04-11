@@ -79,8 +79,7 @@
     <string name="fragment_edit_restaurant_profile">Edit Profile</string>
     <string name="fragment_logout">Logout</string>
     <string name="fragment_restaurant_profile">Home</string>
-    <string name="tv_requesrTitle">Request to Charity</string>
-    <string name="tv_rateCharity">Rate Charity</string>
+
 
     <!-- Strings related to navigation drawer items-->
     <string-array name="nav_item_activity_titles">

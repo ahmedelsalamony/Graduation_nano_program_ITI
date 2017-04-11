@@ -45,7 +45,6 @@
     <string name="address">العنوان</string>
     <string name="Vaddress">ادخل العنوان</string>
     <string name="rdrestaurant">مطعم</string>
-    <string name="Vrdrestaurant">اختر من فضلك </string>
     <string name="rdcharity">جمعية</string>
     <string name="charityname">اسم الجمعية</string>
     <string name="Vcharityname">اخل اسم الجمعية</string>
@@ -82,8 +81,7 @@
     <string name="fragment_edit_restaurant_profile">تعديل الحساب</string>
     <string name="fragment_logout">تسجيل الخروج</string>
     <string name="fragment_restaurant_profile">الرئيسية</string>
-    <string name="tv_requestTitle">ارسال طلب للجمعية</string>
-    <string name="tv_rateCharity">تقييم الجمعية</string>
+
 
 
     <!-- TODO: Remove or change this placeholder text -->
