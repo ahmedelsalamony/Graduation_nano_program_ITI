@@ -1,10 +1,12 @@
  package com.example.itimobiletrack.graduation_nano_program_iti.Charity;
 
         import android.app.Dialog;
+        import android.app.FragmentManager;
+        import android.app.FragmentTransaction;
         import android.app.ListFragment;
         import android.app.ProgressDialog;
         import android.os.Bundle;
-        import android.app.Fragment;
+        import android.support.v4.app.Fragment;
         import android.support.design.widget.Snackbar;
         import android.util.Log;
         import android.view.LayoutInflater;
@@ -44,6 +46,15 @@
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
+
+     /*hive part*/
+     private static final String ARG_PARAM1 = "param1";
+     private static final String ARG_PARAM2 = "param2";
+
+     // TODO: Rename and change types of parameters
+     private String mParam1;
+     private String mParam2;
+     /*/*hive part*/
      private  StringBuffer typeNameBuffer;
      private  StringBuffer task_quantity;
      private  webServices web;
@@ -62,6 +73,7 @@ public class HomeFragment extends Fragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,9 +82,6 @@ public class HomeFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
 //        adapter=new CardViewAdapter();
         requests_list  = (ListView) view.findViewById(R.id.home_requests);
-//-----------following lines for testing animation for listview -------------------------
-
-//---------------------------------------------------------------------------------------------
 
         web= new webServices();
         progressDialog =new ProgressDialog(getActivity());
@@ -102,10 +111,7 @@ public class HomeFragment extends Fragment {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject search_object = jsonArray.getJSONObject(i);
                         typeNameBuffer.append(search_object.getString("typename") + "#");
-                        Toast.makeText(getActivity(), ""+typeNameBuffer.toString(), Toast.LENGTH_SHORT).show();
-                        task_quantity.append(charity_NameType+":"+search_object.getInt("id")+":"
-                                +search_object.getString("address")+":"+search_object.getString("task_quantity")+":"
-                                +search_object.getString("task_estimated_time")+ "#");
+                        task_quantity.append(charity_NameType+":"+search_object.getInt("id")+":"+search_object.getString("address")+":"+search_object.getString("task_quantity")+":"+search_object.getString("task_estimated_time")+ "#");
 
                     }
 
@@ -121,13 +127,17 @@ public class HomeFragment extends Fragment {
 
 
                 } catch (JSONException e) {
-                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError() {
-                Snackbar.make(getActivity().findViewById(android.R.id.content), "Internet Connection Fair", Snackbar.LENGTH_LONG).show();
+                HomeFragment homeFragment =new HomeFragment();
+                android.support.v4.app.FragmentManager manager = getActivity().getSupportFragmentManager();
+                android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.content_main,homeFragment).commit();
+                //Snackbar.make(getActivity().findViewById(android.R.id.content), "Internet Connection Fair", Snackbar.LENGTH_LONG).show();
 
             }
 
@@ -216,16 +226,5 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-
-    /*this method will be called when deleting an member*/
-    public void deleteItem(int memberPosition){
-
-    }
-
-    /*this method will be called when adding new member*/
-    public void addMember(){
-
-    }
-
 
 }

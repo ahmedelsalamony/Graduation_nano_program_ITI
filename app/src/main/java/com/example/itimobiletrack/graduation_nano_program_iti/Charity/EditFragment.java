@@ -1,22 +1,22 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Charity;
 
 
-import android.os.Bundle;
-import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-import android.widget.Toolbar;
+
 
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
 
-import static com.example.itimobiletrack.graduation_nano_program_iti.R.id.toolbar;
+
 
 
 /**
@@ -64,15 +64,15 @@ public class EditFragment extends Fragment {
 
 
 
-        cancel = (Button) v.findViewById(R.id.Cancel);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager manager = getActivity().getFragmentManager();
-                manager.beginTransaction().replace(R.id.content_main,new HomeFragment(),new HomeFragment().getTag()).commit();
-
-            }
-        });
+//        cancel = (Button) v.findViewById(R.id.Cancel);
+//        cancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                android.support.v4.app.FragmentManager manager = getActivity().getSupportFragmentManager();
+//                android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
+//                transaction.replace(R.id.,new HomeFragment()).commit();
+//            }
+//        });
 
         edUserName.setText(web.sharedPreferences.getString("username" , "******"));
         edPassword.setText(web.sharedPreferences.getString("password" , "******"));
@@ -90,7 +90,6 @@ public class EditFragment extends Fragment {
                 , edPassword.getText().toString()
                 , edPhone.getText().toString() , edAddress.getText().toString());
 
-
                 System.out.println(web.sharedPreferences.getString("username" , "******"));
             }
         });
@@ -98,6 +97,8 @@ public class EditFragment extends Fragment {
        return  v;
 
     }
+
+
 
 
 }

@@ -73,7 +73,7 @@ public class CardViewAdapter extends BaseAdapter {
             Log.d("keyword******",keyWord);
 
             Picasso.with(context).load("https://re-restaurant.000webhostapp.com/uploads/re_database/" + keyWord + ".jpg")
-                    .transform(new CircleTransform()).placeholder(R.drawable.green).error(R.drawable.img2).into(imageView);
+                    .transform(new CircleTransform()).placeholder(R.drawable.mainlogo).error(R.drawable.img2).into(imageView);
         }else {
             v = (View) convertView;
         }

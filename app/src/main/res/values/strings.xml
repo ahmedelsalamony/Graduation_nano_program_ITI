@@ -82,6 +82,15 @@
     <string name="tv_requesrTitle">Request to Charity</string>
     <string name="tv_rateCharity">Rate Charity</string>
 
+    <!-- Strings related to navigation drawer items-->
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Members</item>
+        <item>Edit Profile</item>
+        <item>About Us</item>
+        <item>Logout</item>
+    </string-array>
+
 
 
 

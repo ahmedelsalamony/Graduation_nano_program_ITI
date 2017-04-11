@@ -6,7 +6,10 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,102 +18,162 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginFragment;
 import com.example.itimobiletrack.graduation_nano_program_iti.Login.LoginRegisterActivity;
 import com.example.itimobiletrack.graduation_nano_program_iti.R;
+import com.example.itimobiletrack.graduation_nano_program_iti.Restaurant.RestaurantProfile;
 import com.example.itimobiletrack.graduation_nano_program_iti.Web.webServices;
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
-public class CharityProfile extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,FragmentManager.OnBackStackChangedListener
+public class CharityProfile extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener
 {
 
-
-    FragmentManager manager;
     private webServices web ;
+    private Drawer drawer;
+    private AccountHeader headerResult;
+    android.support.v4.app.FragmentTransaction transaction;
+    android.support.v4.app.FragmentManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charity_profile);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        /*load home fragment*/
+        manager = getSupportFragmentManager();
+        transaction = manager.beginTransaction();
+        transaction.replace(R.id.content_main,new HomeFragment(),new HomeFragment().getTag());
+        transaction.commit();
+        /*/*load home fragment*/
+
 
         web =new webServices();
         web.sharedPreferences = getSharedPreferences("load_data" , 0);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        HomeFragment homeFragment = new HomeFragment();
-        manager = getFragmentManager();
-
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.content_main,homeFragment);
-        transaction.addToBackStack("home");
-        transaction.commit();
-
-
-        //manager.beginTransaction().replace(R.id.content_main,homeFragment,homeFragment.getTag()).commit();
-        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.green);
-
-//
-//          toolbar.setTitle(getIntent().getStringExtra("typename"));
-//          setTitle(getIntent().getStringExtra("typename"));
-
-
         toolbar.setTitle(web.sharedPreferences.getString("typename" , "******"));
         setTitle(web.sharedPreferences.getString("typename" , "******"));
 
 
-
-//        /*the floating action button declaration and action*/
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-
-//            }
-//        });
+        headerResult= new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.drawerback)
+                .addProfiles(
+                        new ProfileDrawerItem().withName(web.sharedPreferences.getString("typename" , "******")).withEmail(web.sharedPreferences.getString("email" , "******")).withIcon(getResources().getDrawable(R.drawable.mainlogo))
+                ).build();
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        final PrimaryDrawerItem homePage = new PrimaryDrawerItem().withIdentifier(1).withName("Home").withIcon(R.drawable.home);
+        final PrimaryDrawerItem memberPage = new PrimaryDrawerItem().withIdentifier(2).withName("Members").withIcon(R.drawable.members);
+        final PrimaryDrawerItem editPage = new PrimaryDrawerItem().withIdentifier(3).withName("Edit Profile").withIcon(R.drawable.edit);
+        final PrimaryDrawerItem aboutPage = new PrimaryDrawerItem().withIdentifier(3).withName("About").withIcon(R.drawable.information);
+        final PrimaryDrawerItem logoutPage = new PrimaryDrawerItem().withIdentifier(3).withName("Logout").withIcon(R.drawable.logout);
+//
+//        TextView txtTypeName = (TextView) headerView.findViewById(R.id.textView2);
+//        TextView txtEmail = (TextView) headerView.findViewById(R.id.textView);
+//        txtTypeName.setText(web.sharedPreferences.getString("typename" , "******"));
+//        txtEmail.setText(web.sharedPreferences.getString("email" , "******"));
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-
-        View headerView = navigationView.getHeaderView(0);
-        TextView txtTypeName = (TextView) headerView.findViewById(R.id.textView2);
-        TextView txtEmail = (TextView) headerView.findViewById(R.id.textView);
-
-
-
-        txtTypeName.setText(web.sharedPreferences.getString("typename" , "******"));
-
-        txtEmail.setText(web.sharedPreferences.getString("email" , "******"));
-
-
-
-
+        drawer = new DrawerBuilder().withActivity(this).withTranslucentStatusBar(true)
+                .withActionBarDrawerToggle(true).withAccountHeader(headerResult).withToolbar(toolbar).addDrawerItems(
+                        homePage,
+                        new DividerDrawerItem(),
+                        memberPage,
+                        new DividerDrawerItem(),
+                        editPage,
+                        new DividerDrawerItem(),
+                        aboutPage,
+                        new DividerDrawerItem(),
+                        logoutPage,
+                        new DividerDrawerItem()
+                ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        android.support.v4.app.FragmentTransaction transaction;
+                        android.support.v4.app.FragmentManager manager;
+                        Toast.makeText(CharityProfile.this, ""+position, Toast.LENGTH_SHORT).show();
+                        //position = drawer.getCurrentSelectedPosition();
+                        switch (position){
+                            case 1:
+                                //toolbar.setTitle("Home");
+                                Toast.makeText(CharityProfile.this, "HOME SCREEN", Toast.LENGTH_SHORT).show();
+                                manager = getSupportFragmentManager();
+                                manager.popBackStack();
+                                transaction = manager.beginTransaction();
+                                transaction.replace(R.id.content_main,new HomeFragment());
+                                transaction.commit();
+                                break;
+                            case 3:
+                                //toolbar.setTitle("Members");
+                                Toast.makeText(CharityProfile.this, "settings", Toast.LENGTH_SHORT).show();
+                                manager = getSupportFragmentManager();
+                                manager.popBackStack();
+                                transaction = manager.beginTransaction();
+                                transaction.replace(R.id.content_main,new MembersFragment(),new MembersFragment().getTag());
+                                transaction.addToBackStack("");
+                                transaction.commit();
+                                break;
+                            case 5:
+                                //toolbar.setTitle("Help");
+                                Toast.makeText(CharityProfile.this, "help", Toast.LENGTH_SHORT).show();
+                                manager = getSupportFragmentManager();
+                                manager.popBackStack();
+                                transaction = manager.beginTransaction();
+                                transaction.replace(R.id.content_main,new EditFragment(),new EditFragment().getTag());
+                                transaction.addToBackStack("");
+                                transaction.commit();
+                                break;
+                            case 7:
+                                final Dialog dialog = new Dialog(CharityProfile.this) ;
+                                dialog.setContentView(R.layout.dialog_about);
+                                dialog.setTitle("About");
+                                dialog.show();
+                                break;
+                            case 9:
+                                SharedPreferences shared = getSharedPreferences("load_data", 0);
+                                SharedPreferences.Editor editor = shared.edit();
+                                editor.clear();
+                                editor.commit();
+                                Intent intent = new Intent(CharityProfile.this,LoginRegisterActivity.class);
+                                startActivity(intent);
+                                finish();
+                            default:
+                                manager = getSupportFragmentManager();
+                                transaction = manager.beginTransaction();
+                                transaction.replace(R.id.content_main,new HomeFragment());
+                                transaction.commit();
+                        }
+                        return false;
+                    }
+                }).build();
 
 
     }
 
+
     @Override
     public void onBackPressed() {
-        LoginRegisterActivity loginRegisterActivity=new LoginRegisterActivity();
         SharedPreferences shared = getSharedPreferences("load_data", 0);
         String user = shared.getString("username", "");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        }
-        else {
-            super.onBackPressed();
-        }
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+                return;
+            }else{
+                super.onBackPressed();
+            }
+
     }
 
     @Override
@@ -130,69 +193,8 @@ public class CharityProfile extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-            HomeFragment homeFragment = new HomeFragment();
-            FragmentManager manager = getFragmentManager();
-            //manager.beginTransaction().replace(R.id.content_main,homeFragment,homeFragment.getTag()).commit();
-            FragmentTransaction transaction = manager.beginTransaction();
-            transaction.replace(R.id.content_main,homeFragment);
-            //transaction.addToBackStack("home");
-            transaction.commit();
-        } else if (id == R.id.nav_members) {
-            MembersFragment membersFragment = new MembersFragment();
-            FragmentManager manager = getFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-            transaction.replace(R.id.content_main,membersFragment,membersFragment.getTag());
-            transaction.addToBackStack("members");
-            transaction.commit();
-            //manager.beginTransaction().replace(R.id.content_main,membersFragment,membersFragment.getTag()).commit();
-
-        } else if (id == R.id.nav_edit) {
-            EditFragment editFragment = new EditFragment();
-            FragmentManager manager = getFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-            transaction.replace(R.id.content_main,editFragment,editFragment.getTag());
-            transaction.addToBackStack("edit");
-            transaction.commit();
-            //transaction.replace(R.id.content_main,editFragment,editFragment.getTag()).commit();
-
-        } else if (id == R.id.nav_about) {
-
-            final Dialog dialog = new Dialog(this) ;
-            dialog.setContentView(R.layout.dialog_about);
-            dialog.setTitle("About");
-            dialog.show();
-
-        } else if (id == R.id.nav_logout) {
-
-            SharedPreferences shared = getSharedPreferences("load_data", 0);
-            SharedPreferences.Editor editor = shared.edit();
-            editor.clear();
-            editor.commit();
-            Toast.makeText(this,shared.getString("username","") +"from logout", Toast.LENGTH_SHORT).show();
-            Intent intent  = new Intent(CharityProfile.this, LoginRegisterActivity.class);
-            startActivity(intent);
-            this.finish();
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
     @Override
     public void onBackStackChanged() {
-//        FragmentTransaction transaction = manager.beginTransaction();
-//        transaction.replace(R.id.content_main,new HomeFragment()).commit();
+
     }
-
-
-
 }

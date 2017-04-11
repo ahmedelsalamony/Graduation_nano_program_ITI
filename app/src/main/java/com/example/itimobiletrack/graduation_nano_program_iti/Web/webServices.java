@@ -1,12 +1,13 @@
 package com.example.itimobiletrack.graduation_nano_program_iti.Web;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -329,7 +330,7 @@ public class webServices {
     // TODO Add Memeber
 
 
-    public void addMember(final Activity activity, final String username, final String password, final String email,
+    public void addMember(final AppCompatActivity activity, final String username, final String password, final String email,
                         final String phone, final String address, final String type ,final  String typename, final int status
             ,final int charityParentId , final  String keyToken)
     {
@@ -340,10 +341,6 @@ public class webServices {
 
                 Snackbar.make(activity.findViewById(android.R.id.content), "Member added Successfully.", Snackbar.LENGTH_LONG).show();
 
-                FragmentManager fm =activity.getFragmentManager();
-                FragmentTransaction ft=fm.beginTransaction();
-                ft.replace(R.id.content_main,new MembersFragment());
-                ft.commit();
 
             }
 
@@ -486,7 +483,7 @@ public class webServices {
     //=======================================================================================//
 
     // TODO Delete Member
-    public void deleteMember(final Activity activity, final String username)
+    public void deleteMember(final AppCompatActivity activity, final String username)
     {
         queue = Volley.newRequestQueue(activity);
         StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
@@ -496,7 +493,7 @@ public class webServices {
 
                 Snackbar.make(activity.findViewById(android.R.id.content), "Member Deleted Successfully.", Snackbar.LENGTH_LONG).show();
 
-                FragmentManager fm =activity.getFragmentManager();
+                FragmentManager fm =activity.getSupportFragmentManager();
                 FragmentTransaction ft=fm.beginTransaction();
                 ft.replace(R.id.content_main,new MembersFragment());
                 ft.commit();

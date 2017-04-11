@@ -4,7 +4,8 @@ package com.example.itimobiletrack.graduation_nano_program_iti.Charity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Selection;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -113,8 +114,19 @@ public class AddMemberFragment extends Fragment {
                     edtAddress.setError("This Field is required");
                     edtAddress.requestFocus();
                 }else{
+//                    android.support.v4.app.FragmentManager manager = getActivity().getSupportFragmentManager();
+//                    manager.popBackStack();
+//                    android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
+//                    transaction.replace(R.id.content_main,new MembersFragment(),new MembersFragment().getTag());
+//                    transaction.commit();
                     String token = SharedPrefManager.getInstance(getActivity()).getDeviceToken();
-                    web.addMember(getActivity(), userName, password, email, phone, address, type, typeName, 0,charity_Id ,token);
+                    web.addMember((AppCompatActivity) getActivity(), userName, password, email, phone, address, type, typeName, 0,charity_Id ,token);
+
+                    android.support.v4.app.FragmentManager manager = getActivity().getSupportFragmentManager();
+                    manager.popBackStack();
+                    android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
+                    transaction.replace(R.id.content_main,new MembersFragment(),new MembersFragment().getTag());
+                    transaction.commit();
 
                 }
 

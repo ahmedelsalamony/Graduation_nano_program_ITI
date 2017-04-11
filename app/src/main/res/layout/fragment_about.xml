@@ -10,22 +10,21 @@
     tools:context="com.example.owner.community.AboutFragment">
 
 
-    <ImageView
-        android:layout_marginTop="50dp"
-         android:layout_marginLeft="120dp"
+
+
+    <com.tuyenmonkey.mkloader.MKLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/green"
-        android:id="@+id/xlogo"
+        app:mk_type="Sharingan"
+        app:mk_color="@color/AliceBlue"
+        android:layout_gravity="center"
         />
-
-
     <TextView
         android:gravity="center"
         android:id="@+id/xaboutTxtView"
         android:layout_marginTop="10dp"
         android:textSize="24sp"
-        android:textColor="@color/primary"
+        android:textColor="@color/WhiteSmoke"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:text="Re-Restaurant  version 1.0  © iti"

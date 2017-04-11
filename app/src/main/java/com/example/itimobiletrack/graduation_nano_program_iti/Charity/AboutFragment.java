@@ -4,8 +4,8 @@ package com.example.itimobiletrack.graduation_nano_program_iti.Charity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Typeface;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,8 +33,7 @@ public class AboutFragment extends Fragment {
 
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
-        image = (ImageView) getActivity().findViewById(R.id.xlogo);
-        image.setImageResource(R.drawable.green);
+        //image.setImageResource(R.drawable.green);
 
 
     }
@@ -54,6 +53,8 @@ public class AboutFragment extends Fragment {
 
     return  v;
     }
+
+
 
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {

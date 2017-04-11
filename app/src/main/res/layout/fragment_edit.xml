@@ -121,29 +121,6 @@
 
         </com.andexert.library.RippleView>
 
-        <com.andexert.library.RippleView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/more2"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            rv_centered="true"
-            android:layout_weight="1"
-            >
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="Cancel"
-            android:textColor="@color/WhiteSmoke"
-            android:id="@+id/Cancel"
-            android:background="@drawable/txtstyle"
-            android:textAllCaps="false"
-            android:layout_margin="5dp"/>
-</com.andexert.library.RippleView>
     </LinearLayout>
 
 

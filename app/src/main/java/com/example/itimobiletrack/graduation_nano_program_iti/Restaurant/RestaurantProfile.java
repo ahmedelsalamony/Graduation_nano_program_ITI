@@ -113,9 +113,9 @@ int i =0;
             case R.id.fragment_about:
 
                 flag=false;
-                final Dialog dialog_about = new Dialog(this);
-                dialog_about.setContentView(R.layout.dialog_about);
-                dialog_about.show();
+//                final Dialog dialog_about = new Dialog(this);
+//                dialog_about.setContentView(R.layout.dialog_about);
+//                dialog_about.show();
 //                AboutFragment aboutFragment =new AboutFragment();
 //
 //                fm = getSupportFragmentManager();
